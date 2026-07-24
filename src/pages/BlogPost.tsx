@@ -98,12 +98,12 @@ const BlogPost = () => {
     return (
       <div className="min-h-screen bg-background">
         <Navbar />
-        <div className="text-center py-32 px-5">
+        <main className="text-center py-32 px-5">
           <h1 className="font-heading text-3xl font-bold text-foreground mb-4">Post not found</h1>
           <Link to="/blog" className="text-accent hover:underline inline-flex items-center gap-1">
             <ArrowLeft size={14} /> Back to blog
           </Link>
-        </div>
+        </main>
         <Footer />
       </div>
     );

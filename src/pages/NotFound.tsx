@@ -5,7 +5,6 @@ const NotFound = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
     document.title = "Page Not Found | Okagua Kenoye";
 
     let robots = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
