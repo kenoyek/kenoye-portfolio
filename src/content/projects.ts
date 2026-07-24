@@ -259,39 +259,39 @@ export const projects = [
     shortTitle: "LearnEasy",
     category: ["Education", "Product", "Operations"],
     summary:
-      "An education company and tutoring platform that demonstrates product ownership, operational leadership, curriculum development, K-12 learning support, and education technology workflows.",
+      "An education tutoring context that demonstrates coding instruction, curriculum support, K-12 learning support, and education technology workflows.",
     shortSummary:
-      "Education company and tutoring platform showing product ownership, curriculum design, and operational leadership.",
-    role: "Founder and product lead",
+      "Coding tutoring work showing curriculum support, learner guidance, and education technology workflows.",
+    role: "Coding tutor",
     projectStatus: "available-on-request",
     featured: true,
     priority: 4,
     platforms: ["Operations", "Learning workflows"],
     technologies: ["Curriculum Design", "Education Technology", "Content Strategy", "Tutor Workflows"],
     responsibilities: [
-      "Education product ownership",
-      "Curriculum development",
+      "Coding instruction",
+      "Curriculum support",
       "Tutor, student, and parent workflow design",
-      "Operational leadership and content strategy",
+      "Learning support and content guidance",
     ],
     problem:
       "K-12 learners and families need structured tutoring experiences with clear curriculum, workflow, and progress support.",
     context:
-      "LearnEasy Academy connects Kenoye’s engineering and education work through product ownership, operations, and learning-system design.",
+      "LearnEasy Academy connects Kenoye’s engineering and education work through coding instruction, curriculum support, and learning-system awareness.",
     outcomes: [
-      { label: "K-12 tutoring workflows established", verified: true },
-      { label: "Curriculum development led", verified: true },
-      { label: "Education operations managed", verified: true },
+      { label: "K-12 coding tutoring delivered", verified: true },
+      { label: "Curriculum support provided", verified: true },
+      { label: "Learner guidance and education workflows supported", verified: true },
     ],
     metadata: {
-      productCategory: "Education company and tutoring platform",
-      ownership: "Founder and operator",
+      productCategory: "Coding tutoring and education support",
+      ownership: "Coding tutor",
       visibility: "private",
     },
     seo: {
-      title: "LearnEasy Academy Education Product Case Study",
+      title: "LearnEasy Academy Coding Tutoring Work",
       description:
-        "LearnEasy Academy demonstrates education product ownership, K-12 tutoring, curriculum development, tutor workflows, and operational leadership.",
+        "LearnEasy Academy demonstrates coding tutoring, K-12 learning support, curriculum support, tutor workflows, and education technology awareness.",
     },
   },
   {
