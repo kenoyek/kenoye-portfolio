@@ -42,6 +42,8 @@ Estimated complexity: medium.
 
 Objective: create a maintainable design/content foundation before rebuilding pages.
 
+Status: implemented on `refactor/portfolio-foundation`; pending review and approval before Milestone 2.
+
 Tasks:
 - Add `npm run typecheck`.
 - Fix lint errors and decide warning policy.
@@ -323,4 +325,3 @@ Recommended first task sequence:
 4. Decide lockfile strategy.
 5. Create typed project content data.
 6. Refactor `PortfolioSection` to consume typed project data without changing the visual design yet.
-
