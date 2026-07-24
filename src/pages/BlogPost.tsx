@@ -9,6 +9,7 @@ import { format } from "date-fns";
 import { ArrowLeft, Calendar, User } from "lucide-react";
 import { siteConfig } from "@/content/site";
 import { getOptimizedImageUrl } from "@/lib/images";
+import { buildBlogPostJsonLd, setPageMetadata } from "@/lib/seo";
 
 interface Post {
   id: string;
@@ -23,16 +24,6 @@ interface Post {
 }
 
 const SITE_URL = siteConfig.canonicalOrigin;
-
-const setMetaTag = (attr: string, key: string, content: string) => {
-  let el = document.querySelector(`meta[${attr}="${key}"]`) as HTMLMetaElement | null;
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute(attr, key);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("content", content);
-};
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -57,81 +48,39 @@ const BlogPost = () => {
   useEffect(() => {
     if (loading || post) return;
 
-    document.title = "Post Not Found | Okagua Kenoye";
-    let robots = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
-    const previousRobots = robots?.content;
-    if (!robots) {
-      robots = document.createElement("meta");
-      robots.name = "robots";
-      document.head.appendChild(robots);
-    }
-    robots.content = "noindex, nofollow";
-
-    return () => {
-      if (!robots) return;
-      if (previousRobots) {
-        robots.content = previousRobots;
-      } else {
-        robots.remove();
-      }
-    };
-  }, [loading, post]);
+    setPageMetadata({
+      title: "Post Not Found | Okagua Kenoye",
+      description: "The requested blog post could not be found.",
+      canonicalUrl: `${SITE_URL}/blog${slug ? `/${slug}` : ""}`,
+      imageUrl: "/og-blog.svg",
+      robots: "noindex, nofollow",
+    });
+  }, [loading, post, slug]);
 
   // Dynamic meta tags & JSON-LD
   useEffect(() => {
     if (!post) return;
-    const prevTitle = document.title;
     const description = post.excerpt || post.title;
     const url = `${SITE_URL}/blog/${post.slug}`;
 
-    document.title = `${post.title} | Okagua Blog`;
-    setMetaTag("name", "description", description);
-    setMetaTag("property", "og:title", post.title);
-    setMetaTag("property", "og:description", description);
-    setMetaTag("property", "og:url", url);
-    setMetaTag("property", "og:type", "article");
-    if (post.cover_image_url) setMetaTag("property", "og:image", post.cover_image_url);
-    setMetaTag("property", "og:image:width", "1200");
-    setMetaTag("property", "og:image:height", "630");
-    setMetaTag("name", "twitter:card", "summary_large_image");
-    setMetaTag("name", "twitter:title", post.title);
-    setMetaTag("name", "twitter:description", description);
-    if (post.cover_image_url) setMetaTag("name", "twitter:image", post.cover_image_url);
-
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.setAttribute("rel", "canonical");
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute("href", url);
-
-    const jsonLd = {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      headline: post.title,
+    setPageMetadata({
+      title: `${post.title} | Okagua Blog`,
       description,
-      url,
-      image: post.cover_image_url || undefined,
-      datePublished: post.published_at,
-      dateModified: post.updated_at,
-      author: { "@type": "Person", name: post.author_name },
-      publisher: { "@type": "Organization", name: "Okagua", url: SITE_URL },
-    };
-    let script = document.querySelector('#blogpost-jsonld') as HTMLScriptElement | null;
-    if (!script) {
-      script = document.createElement("script");
-      script.id = "blogpost-jsonld";
-      script.type = "application/ld+json";
-      document.head.appendChild(script);
-    }
-    script.textContent = JSON.stringify(jsonLd);
-
-    return () => {
-      document.title = prevTitle;
-      document.querySelector('#blogpost-jsonld')?.remove();
-      document.querySelector('link[rel="canonical"]')?.remove();
-    };
+      canonicalUrl: url,
+      imageUrl: post.cover_image_url ?? "/og-blog.svg",
+      type: "article",
+      ogTitle: post.title,
+      ogDescription: description,
+      jsonLd: buildBlogPostJsonLd({
+        title: post.title,
+        description,
+        url,
+        image: post.cover_image_url,
+        publishedAt: post.published_at,
+        updatedAt: post.updated_at,
+        authorName: post.author_name,
+      }),
+    });
   }, [post]);
 
   if (loading) {

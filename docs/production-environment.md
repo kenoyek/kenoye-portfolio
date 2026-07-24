@@ -23,6 +23,6 @@ Do not commit secret values. This document lists variable names only.
 
 ## Notes
 
-- The static `/sitemap.xml` now covers core public routes without requiring Edge Function secrets.
-- Published blog-post sitemap entries still require either the existing sitemap Edge Function or future build-time Supabase fetching.
-
+- The static `/sitemap.xml` covers core public routes without requiring Edge Function secrets.
+- The sitemap Edge Function also includes the core public routes and adds published blog-post entries from Supabase when deployed with its required secrets.
+- If `/sitemap.xml` remains static on Vercel, published blog-post sitemap entries still require either a deployed sitemap Edge Function URL or future build-time Supabase fetching.

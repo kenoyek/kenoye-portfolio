@@ -20,7 +20,7 @@ Statuses: Passed, Failed, Blocked, Requires user confirmation, Not applicable.
 - Light theme: Passed with screenshots.
 - Dark theme: Passed with screenshots.
 - Keyboard navigation: Passed by semantic/manual review; full recorded tab audit not captured.
-- Forms: Passed for validation paths; successful email delivery requires user confirmation.
+- Forms: Blocked for full production confirmation; local/client validation paths pass, but deployed invalid-email behavior still needs the fixed Supabase function deployed.
 - 404: Passed after contrast fix.
 
 ## SEO
@@ -28,7 +28,7 @@ Statuses: Passed, Failed, Blocked, Requires user confirmation, Not applicable.
 - Titles: Passed.
 - Descriptions: Passed.
 - Canonicals: Passed.
-- Sitemap: Passed for core public routes.
+- Sitemap: Passed in local built output for core public routes; deployed `/sitemap.xml` must be rechecked after the Phase 8 Vercel rewrite fix is deployed.
 - Robots: Passed.
 - Social previews: Passed with typographic SVG previews.
 - Structured data: Passed conservative review.
@@ -52,9 +52,10 @@ Statuses: Passed, Failed, Blocked, Requires user confirmation, Not applicable.
 ## Deployment
 
 - Vercel build: Passed locally.
-- Direct route refresh: Passed in production preview.
-- Domain redirect: Requires deployed Vercel verification.
+- Direct route refresh: Passed in local production preview.
+- Domain redirect: Passed on current production for apex-to-www.
 - Environment variables: Documented.
+- Supabase function deploy privileges: Blocked; `send-contact-email` deployment returned 403 from the CLI.
 - Rollback plan: Documented.
 
 ## Content
@@ -65,4 +66,3 @@ Statuses: Passed, Failed, Blocked, Requires user confirmation, Not applicable.
 - Claims: Passed; no fabricated metrics added.
 - Contact details: Passed.
 - Resume link: Passed.
-

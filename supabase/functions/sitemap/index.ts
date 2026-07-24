@@ -1,6 +1,7 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const SITE_URL = "https://www.kenoye.site";
+const STATIC_LASTMOD = "2026-07-24";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -30,9 +31,20 @@ Deno.serve(async (req) => {
     lastmod?: string;
   };
 
+  const escapeXml = (value: string) =>
+    value
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&apos;");
+
   const urls: SitemapUrl[] = [
-    { loc: SITE_URL + "/", priority: "1.0", changefreq: "weekly" },
-    { loc: SITE_URL + "/blog", priority: "0.8", changefreq: "daily" },
+    { loc: SITE_URL + "/", priority: "1.0", changefreq: "weekly", lastmod: STATIC_LASTMOD },
+    { loc: SITE_URL + "/projects/asele", priority: "0.8", changefreq: "monthly", lastmod: STATIC_LASTMOD },
+    { loc: SITE_URL + "/projects/teacheasy", priority: "0.8", changefreq: "monthly", lastmod: STATIC_LASTMOD },
+    { loc: SITE_URL + "/projects/reframe", priority: "0.8", changefreq: "monthly", lastmod: STATIC_LASTMOD },
+    { loc: SITE_URL + "/blog", priority: "0.7", changefreq: "weekly", lastmod: STATIC_LASTMOD },
     ...(posts || []).map((p) => ({
       loc: `${SITE_URL}/blog/${p.slug}`,
       lastmod: p.updated_at?.split("T")[0],
@@ -46,8 +58,8 @@ Deno.serve(async (req) => {
 ${urls
   .map(
     (u) => `  <url>
-    <loc>${u.loc}</loc>
-    ${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ""}
+    <loc>${escapeXml(u.loc)}</loc>
+    ${u.lastmod ? `<lastmod>${escapeXml(u.lastmod)}</lastmod>` : ""}
     <changefreq>${u.changefreq}</changefreq>
     <priority>${u.priority}</priority>
   </url>`

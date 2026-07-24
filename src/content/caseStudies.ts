@@ -202,9 +202,9 @@ export const caseStudies = [
       eyebrow: "Overview",
       title: "What the product is",
       lead:
-        "Asele is a women cycle and wellness platform delivered across web and mobile surfaces.",
+        "Asele is a women's cycle and wellness platform delivered across web and mobile surfaces.",
       body: [
-        "The product brings together wellness logging, cycle-aware reminders, health-context summaries, authentication, administrative workflows, and mobile delivery from a shared web foundation.",
+        "The product brings wellness logging, cycle-aware reminders, health-context summaries, authentication, administrative workflows, and mobile delivery into a shared web foundation.",
         "The important engineering constraint is product safety: the platform can support tracking and wellness context without presenting itself as diagnosis, treatment, clinical approval, or a medical device.",
       ],
     },
@@ -213,7 +213,7 @@ export const caseStudies = [
       eyebrow: "Context",
       title: "Why it exists and who it serves",
       body: [
-        "Asele serves users who need a private way to record cycle and wellness context and receive reminders that respect sensitive personal data.",
+        "Asele serves users who need a private, respectful way to record cycle and wellness context and receive reminders around sensitive personal data.",
         "The product also needs administrative visibility and communication infrastructure so the platform can be operated responsibly after release.",
       ],
     },
@@ -245,13 +245,13 @@ export const caseStudies = [
       {
         label: "Integrated",
         items: [
-          "Push notification workflows, Resend email infrastructure, Corti-related assistive brief workflows, and Edge Function boundaries where supported by the project architecture.",
+          "Push notification workflows, Resend email infrastructure, Corti-related assistive brief integration, and Supabase Edge Function boundaries where supported by the project architecture.",
         ],
       },
       {
         label: "In progress",
         items: [
-          "Ongoing administrative and analytics refinement should remain status-labelled until production scope is confirmed.",
+          "Administrative and analytics refinement, status-labelled until production scope is confirmed.",
         ],
       },
     ],
@@ -266,7 +266,7 @@ export const caseStudies = [
     },
     constraints: [
       "Sensitive health and wellness information requires conservative public language.",
-      "Mobile delivery needed to share product velocity with the web application while still respecting native app release requirements.",
+      "Mobile delivery needed to preserve web product velocity while still respecting native app release requirements.",
       "AI-assisted briefs needed to be framed as assistive summaries, not clinical decisions.",
       "Public case-study content cannot include private user data or internal implementation secrets.",
     ],
@@ -281,7 +281,7 @@ export const caseStudies = [
         { id: "supabase", label: "Supabase", detail: "Auth, Postgres, RLS, realtime, and Edge Functions", group: "Backend" },
         { id: "notifications", label: "Notification services", detail: "Cycle-aware reminders and mobile notification flows", group: "Integration" },
         { id: "email", label: "Resend email infrastructure", detail: "Transactional communication support", group: "Integration" },
-        { id: "ai", label: "Assistive brief workflow", detail: "Corti-related AI health-context summaries where supported", group: "Integration" },
+        { id: "ai", label: "Assistive brief workflow", detail: "Corti-related health-context summaries where supported", group: "Integration" },
         { id: "admin", label: "Administrative tooling", detail: "Operational visibility and product management workflows", group: "Operations" },
       ],
       connections: [
@@ -310,7 +310,7 @@ export const caseStudies = [
         id: "mobile-delivery",
         title: "Mobile delivery architecture",
         body: [
-          "Capacitor allowed a shared React codebase to move through Android production delivery and an iOS deployment workflow while still requiring native-platform attention.",
+          "Capacitor carried the shared React codebase through Android production delivery and an iOS deployment workflow while still requiring native-platform attention.",
         ],
       },
       {
@@ -476,7 +476,7 @@ export const caseStudies = [
     seo: {
       title: "Asele Case Study | HealthTech Product Architecture",
       description:
-        "Asele case study covering a women wellness platform built with React, TypeScript, Supabase, Capacitor, reminders, multilingual support, and privacy-sensitive architecture.",
+        "Asele case study covering a women's wellness platform built with React, TypeScript, Supabase, Capacitor, reminders, multilingual support, and privacy-sensitive architecture.",
       canonicalUrl: "https://www.kenoye.site/projects/asele",
       ogTitle: "Asele HealthTech Case Study",
       ogDescription:
@@ -514,7 +514,7 @@ export const caseStudies = [
         "TeachEasy is a multi-tenant learning-management platform for academies, tutors, students, and parents.",
       body: [
         "The platform is built around academy operations: tenancy, scheduling, permissions, live instruction, learning materials, assessments, and communication.",
-        "The engineering story is less about a single feature and more about coordinating roles and tenant boundaries so each user sees the right work at the right time.",
+        "The engineering focus is less about a single feature and more about coordinating roles and tenant boundaries so each user sees the right work at the right time.",
       ],
     },
     productContext: {
@@ -549,13 +549,13 @@ export const caseStudies = [
         label: "Implemented",
         items: [
           "Supabase and Postgres RLS patterns for academy tenancy.",
-          "Collaborative classroom concepts including Jitsi, shared PDFs, notes, whiteboard, and quizzes where supported by current implementation.",
+          "Jitsi classroom integration patterns, shared PDFs, notes, whiteboard, and quizzes where supported by current implementation.",
         ],
       },
       {
         label: "Planned",
         items: [
-          "Stripe-related commercial workflows, recordings architecture, and deeper analytics should remain planned until production implementation is confirmed.",
+          "Stripe-related commercial workflows, recordings architecture, and deeper analytics, all status-labelled as planned until production implementation is confirmed.",
         ],
       },
     ],
@@ -584,7 +584,7 @@ export const caseStudies = [
         { id: "student", label: "Student portal", detail: "Class access, collaboration, quizzes", group: "Portal" },
         { id: "parent", label: "Parent portal", detail: "Learner context and permitted communication", group: "Portal" },
         { id: "supabase", label: "Supabase + Postgres RLS", detail: "Tenant-aware auth and data access", group: "Backend" },
-        { id: "jitsi", label: "Jitsi classroom", detail: "Live instruction integration", group: "Integration" },
+        { id: "jitsi", label: "Jitsi integration", detail: "Live instruction workflow boundary", group: "Integration" },
         { id: "collab", label: "Collaborative workspace", detail: "Shared PDFs, notes, whiteboard, quizzes", group: "Learning" },
         { id: "email", label: "Resend email infrastructure", detail: "Transactional communication support", group: "Integration" },
       ],
@@ -600,7 +600,7 @@ export const caseStudies = [
         { from: "supabase", to: "email", label: "sends communications" },
       ],
       notes: [
-        "Jitsi moderation and JWT-related enforcement should be described according to the actual production secret configuration.",
+        "Jitsi moderation and JWT-related enforcement remain status-labelled until production secret configuration and QA are confirmed.",
         "The diagram shows product boundaries without exposing tenant policies or private implementation details.",
       ],
     },
@@ -621,9 +621,9 @@ export const caseStudies = [
       },
       {
         id: "classroom",
-        title: "Jitsi classroom and collaboration",
+        title: "Live classroom and collaboration",
         body: [
-          "The platform introduces live instruction and collaborative lesson workspace concepts including shared PDFs, notes, whiteboard, and quizzes.",
+          "The platform introduces live instruction and collaborative lesson workspace concepts such as shared PDFs, notes, whiteboard, and quizzes.",
         ],
       },
       {
@@ -652,7 +652,7 @@ export const caseStudies = [
         context:
           "Live instruction needs more than a meeting URL; tutors and students need materials, notes, collaboration, and assessments around the class.",
         decision:
-          "Use Jitsi and collaborative workspace concepts alongside shared PDFs, notes, whiteboard, and quizzes.",
+          "Use Jitsi integration patterns and collaborative workspace concepts alongside shared PDFs, notes, whiteboard, and quizzes.",
         limitation:
           "Moderator enforcement and production behavior should be labelled according to configured secrets and confirmed QA.",
       },
@@ -814,7 +814,7 @@ export const caseStudies = [
       eyebrow: "Mobile Engineering Case Study",
       title: "Adapting a CMS-driven web product into a cross-platform mobile experience.",
       summary:
-        "Reframe is a CMS-driven news and community platform adapted for iOS and Android delivery with React, TypeScript, Next.js, Capacitor, shared APIs, native integration, and store-readiness work.",
+        "Reframe is a CMS-driven news and community platform adapted for iOS and Android delivery with React, TypeScript, Next.js, shared APIs, native integration through Capacitor, and store-readiness work.",
       primaryMediaNote:
         "The previous route used placeholder gallery tiles. They have been removed until verified Reframe screenshots are available.",
     },
@@ -850,14 +850,14 @@ export const caseStudies = [
         label: "Led",
         items: [
           "Capacitor mobile architecture for iOS and Android delivery.",
-          "Native configuration, release build preparation, and production deployment workflow.",
+          "Native configuration, release build preparation, and release workflow support.",
         ],
       },
       {
         label: "Implemented",
         items: [
           "Safe-area handling, status bar and splash behavior, lifecycle integration, deep-link support, and mobile responsiveness improvements.",
-          "Push-notification infrastructure and app-store preparation work.",
+          "Push-notification infrastructure and store-readiness preparation work.",
         ],
       },
       {
@@ -872,7 +872,7 @@ export const caseStudies = [
       title: "Mobile apps without fragmenting the product",
       body: [
         "The product needed native mobile distribution while keeping the CMS and shared APIs as the source of truth.",
-        "The mobile layer had to avoid feeling like a generic wrapped website, but it also should not be misrepresented as a fully native implementation.",
+        "The mobile layer had to avoid feeling like a generic wrapped website while remaining accurate about its Capacitor-based implementation.",
       ],
     },
     constraints: [
@@ -927,7 +927,7 @@ export const caseStudies = [
         id: "store-readiness",
         title: "Production deployment workflow",
         body: [
-          "The route preserves store-readiness language while avoiding claims that require external store records.",
+          "The case study preserves store-readiness language while avoiding claims that require external store records.",
         ],
       },
     ],

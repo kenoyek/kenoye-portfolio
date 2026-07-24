@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
@@ -9,8 +10,19 @@ import { HomeCapabilities } from "@/components/home/HomeCapabilities";
 import { HomeExperience } from "@/components/home/HomeExperience";
 import { EngineeringPrinciples } from "@/components/home/EngineeringPrinciples";
 import { ContactPanel } from "@/components/home/ContactPanel";
+import { siteConfig } from "@/content/site";
+import { setPageMetadata } from "@/lib/seo";
 
 const Index = () => {
+  useEffect(() => {
+    setPageMetadata({
+      title: siteConfig.title,
+      description: siteConfig.description,
+      canonicalUrl: `${siteConfig.canonicalOrigin}/`,
+      imageUrl: "/og-home.svg",
+    });
+  }, []);
+
   return (
     <main className="scroll-smooth overflow-x-clip">
       <Navbar />
