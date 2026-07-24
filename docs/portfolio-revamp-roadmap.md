@@ -203,6 +203,8 @@ Estimated complexity: large.
 
 Objective: harden the site for performance, accessibility, SEO, security, and reliability.
 
+Status: implemented on `chore/production-readiness`; pending review, merge, deployment, and production verification.
+
 Tasks:
 - Run Lighthouse and address Core Web Vitals issues.
 - Split admin/blog/editor chunks.
