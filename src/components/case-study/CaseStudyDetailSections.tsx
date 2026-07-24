@@ -313,7 +313,7 @@ export const ChallengeResponse = ({ caseStudy }: { caseStudy: CaseStudy }) => {
   );
 };
 
-const MediaFigure = ({ item }: { item: CaseStudyMediaItem }) => {
+const MediaFigure = ({ item, priority = false }: { item: CaseStudyMediaItem; priority?: boolean }) => {
   if (!item.src) return null;
 
   return (
@@ -323,7 +323,7 @@ const MediaFigure = ({ item }: { item: CaseStudyMediaItem }) => {
         alt={item.alt ?? item.label}
         width={item.width}
         height={item.height}
-        loading="lazy"
+        loading={priority ? "eager" : "lazy"}
         className="w-full rounded-md border border-border object-cover"
       />
       {item.caption && <figcaption className="mt-2 text-sm text-muted-foreground">{item.caption}</figcaption>}
@@ -351,8 +351,8 @@ export const ProjectGallery = ({ caseStudy }: { caseStudy: CaseStudy }) => {
         </div>
         {media.length ? (
           <div className="mt-8 grid gap-6 md:grid-cols-2">
-            {media.map((item) => (
-              <MediaFigure key={item.label} item={item} />
+            {media.map((item, index) => (
+              <MediaFigure key={item.label} item={item} priority={index === 0} />
             ))}
           </div>
         ) : null}
