@@ -6,11 +6,10 @@ import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const navLinks = [
-  { label: "Work", href: "#portfolio" },
-  { label: "Case Studies", href: "#case-studies" },
+  { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
-  { label: "Teaching", href: "#tutoring" },
-  { label: "Blog", href: "/blog" },
+  { label: "Approach", href: "#approach" },
+  { label: "Writing", href: "/blog" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -141,10 +140,10 @@ const Navbar = () => {
             <Button
               asChild
               size="sm"
-              className="hidden md:inline-flex bg-accent text-accent-foreground hover:bg-accent/90 font-semibold rounded-full"
+              className="hidden md:inline-flex bg-accent text-accent-foreground hover:bg-accent/90 font-semibold rounded-md"
             >
               <a href={getHref("#contact")} onClick={(e) => handleHashClick(e, "#contact")}>
-                Hire Me
+                Contact
               </a>
             </Button>
             {/* Mobile hamburger */}
@@ -212,7 +211,7 @@ const Navbar = () => {
                     href={getHref("#contact")}
                     onClick={(e) => handleHashClick(e, "#contact")}
                   >
-                    Hire Me
+                    Contact
                   </a>
                 </Button>
               </div>

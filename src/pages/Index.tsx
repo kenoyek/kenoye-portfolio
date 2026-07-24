@@ -1,29 +1,27 @@
 import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import PortfolioSection from "@/components/PortfolioSection";
-import FeaturedCaseStudy from "@/components/FeaturedCaseStudy";
-import SkillsSection from "@/components/SkillsSection";
-import ExperienceSection from "@/components/ExperienceSection";
-import TutoringSection from "@/components/TutoringSection";
-import ContactSection from "@/components/ContactSection";
-import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
+import { HomeHero } from "@/components/home/HomeHero";
+import { SelectedWork } from "@/components/home/SelectedWork";
+import { FeaturedAsele } from "@/components/home/FeaturedAsele";
+import { ProfessionalPositioning } from "@/components/home/ProfessionalPositioning";
+import { HomeCapabilities } from "@/components/home/HomeCapabilities";
+import { HomeExperience } from "@/components/home/HomeExperience";
+import { EngineeringPrinciples } from "@/components/home/EngineeringPrinciples";
+import { ContactPanel } from "@/components/home/ContactPanel";
 
 const Index = () => {
   return (
     <main className="scroll-smooth overflow-x-clip">
       <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <PortfolioSection />
-      <FeaturedCaseStudy />
-      <SkillsSection />
-      <ExperienceSection />
-      <TutoringSection />
-      <ContactSection />
-      <FinalCTA />
+      <HomeHero />
+      <SelectedWork />
+      <FeaturedAsele />
+      <ProfessionalPositioning />
+      <HomeCapabilities />
+      <HomeExperience />
+      <EngineeringPrinciples />
+      <ContactPanel />
       <Footer />
       <BackToTop />
     </main>
