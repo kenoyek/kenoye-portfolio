@@ -6,9 +6,9 @@ Repository: `https://github.com/kenoyek/kenoye-portfolio.git`
 
 ## Final Status
 
-Status: release candidate ready; production release is blocked by external access.
+Final release status: Release candidate only
 
-The release branch has been assembled, validated locally, and pushed for review. It has not been merged into `main`, deployed to Vercel production, or submitted to Google Search Console from this environment because the available GitHub and Vercel CLI credentials are not authenticated, and Supabase function deployment is blocked by project privileges.
+The release branch has been assembled, validated locally, pushed, and opened as a GitHub pull request. It has not been merged into `main`, deployed to Vercel production, or submitted to Google Search Console from this environment because the updated Supabase contact function still requires privileged deployment and one real production email-delivery test before the release can be called complete.
 
 ## Release Assembly
 
@@ -35,8 +35,15 @@ Release QA also added two small hardening fixes:
 - Release candidate SHA before final report documentation: `2224fedd629898f5aa454967299b85ac9055138b`
 - `origin/main` is an ancestor of `phase-9-release`.
 - `phase-9-release` is not an ancestor of `origin/main`; the release is not merged.
-- No GitHub pull request was found for `phase-9-release` during CLI inspection.
-- `gh auth status` reported an invalid token for `kenoyek`, so PR creation/CI inspection/merge could not be completed from this environment.
+- Pull request: `https://github.com/kenoyek/kenoye-portfolio/pull/1`
+- PR target: `main`
+- PR source: `phase-9-release`
+- PR merge state: clean
+- CI `validate` check: passed
+- Vercel preview check: passed
+- Vercel preview target: `https://vercel.com/okagua-kenneths-projects/kenoye-portfolio-xy5d/3FtmKdgnF8RzU5AwzH8WkEaLeA7W`
+- No merge was performed because the updated Supabase contact function still needs privileged deployment and one production delivery test.
+- A release-diff secret pattern scan did not find committed Resend, GitHub, Vercel, Supabase service-role, or private-key values.
 
 ## Validation
 
@@ -131,6 +138,7 @@ Observed blockers:
 
 - No `.vercel` project link exists in the repository.
 - `vercel whoami` reports no existing credentials.
+- The GitHub/Vercel integration created a successful pull-request preview, but the production deployment was not triggered because the PR was not merged.
 - Production deployment URL and deployment ID are therefore not available.
 
 Expected Vercel configuration for the existing production project:
@@ -194,8 +202,8 @@ After production deployment, submit:
 
 Complete these actions before calling the production release finished:
 
-1. Re-authenticate GitHub CLI or open a GitHub PR manually from `phase-9-release` into `main`.
-2. Wait for CI to pass on the PR.
+1. Review PR `https://github.com/kenoyek/kenoye-portfolio/pull/1`.
+2. Confirm CI and Vercel preview remain green immediately before merge.
 3. Deploy `send-contact-email` with an account that has Supabase Edge Function privileges.
 4. Confirm deployed invalid email returns `400`.
 5. Send one marked real contact-form test and confirm email delivery in the recipient inbox.
