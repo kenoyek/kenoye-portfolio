@@ -50,7 +50,7 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-primary px-4">
+    <main className="min-h-screen flex items-center justify-center bg-primary px-4">
       <div className="w-full max-w-md bg-card rounded-2xl p-8 shadow-2xl border border-border">
         <div className="text-center mb-8">
           <h1 className="font-heading text-2xl font-bold text-foreground">Admin Login</h1>
@@ -86,7 +86,7 @@ const AdminLogin = () => {
           </Button>
         </form>
       </div>
-    </div>
+    </main>
   );
 };
 

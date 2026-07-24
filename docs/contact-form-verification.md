@@ -37,13 +37,18 @@ Local source now includes:
 Using the deployed Supabase function with non-email-sending payloads:
 
 - Missing fields returned 400.
+- Honeypot payload returned 200 with success and should not send email.
 - Invalid email currently returned 500 from Resend with an invalid `reply_to` message.
 
 This indicates the deployed Edge Function is reachable, but the deployed code likely predates the local invalid-email validation change. Deploy `send-contact-email` before claiming this fix is live.
+
+Phase 8 deploy attempts:
+
+- `supabase functions deploy send-contact-email` failed because the CLI did not consider the project linked.
+- `supabase functions deploy send-contact-email --project-ref pciaegxpldyyvxllzexc` failed with a 403 privileges error.
 
 ## Not Fully Verified
 
 - Successful email delivery was not tested to avoid unnecessary real email sends.
 - Rate limiting is not implemented beyond the honeypot and client duplicate-submit guard.
 - Resend sender-domain verification must be confirmed in Resend/Supabase.
-

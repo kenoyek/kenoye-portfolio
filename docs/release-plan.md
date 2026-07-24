@@ -38,6 +38,8 @@ See `docs/production-environment.md`.
 
 No production deployment is performed by this milestone.
 
+Phase 8 note: before production release, deploy the fixed `send-contact-email` Supabase function with an account that has function deploy privileges. The local source is fixed, but the currently deployed invalid-email path still returns a Resend `reply_to` error.
+
 ## Post-Deployment Smoke Tests
 
 - `/`
@@ -49,6 +51,7 @@ No production deployment is performed by this milestone.
 - `/admin/login`
 - `/sitemap.xml`
 - `/robots.txt`
+- `/og-home.svg`
 - Unknown route.
 
 ## Domain Checks
@@ -56,6 +59,7 @@ No production deployment is performed by this milestone.
 - `https://www.kenoye.site` loads.
 - `https://kenoye.site` permanently redirects to `https://www.kenoye.site`.
 - Static assets are not rewritten to app HTML.
+- `/sitemap.xml` serves XML, not the SPA shell.
 
 ## Rollback Procedure
 
@@ -80,6 +84,7 @@ Monitor the first 24 hours after production deployment for:
 
 - Static route snapshots with Vercel rewrites.
 - Supabase contact function deployment drift.
+- Supabase function deploy privileges for `send-contact-email`.
 - Remote blog images.
 - Client-side blog post metadata.
 
@@ -88,5 +93,6 @@ Monitor the first 24 hours after production deployment for:
 - Product screenshots and app-store status.
 - Resend sender-domain status.
 - Successful contact email delivery.
+- Deployed invalid-email contact validation returns 400.
+- Vercel preview `/sitemap.xml` returns XML after the Phase 8 rewrite change.
 - Final production domain redirect after deploy.
-
