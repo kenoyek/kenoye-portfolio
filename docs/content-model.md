@@ -8,6 +8,7 @@ Structured content now lives in:
 
 - `src/content/site.ts`
 - `src/content/projects.ts`
+- `src/content/caseStudies.ts`
 - `src/content/capabilities.ts`
 - `src/content/experience.ts`
 
@@ -83,6 +84,29 @@ Project order:
 - If a section needs content, add a typed field rather than a one-off hardcoded paragraph.
 - Route-specific pages can add narrative detail, but facts should match the shared project entry.
 
+## Case Study Model
+
+Detailed project pages use `CaseStudy` in `src/content/caseStudies.ts`.
+
+The model supports:
+
+- route identity and canonical SEO metadata
+- hero copy and project metadata
+- overview, context, users, problem, and constraints
+- ownership groups for led, implemented, integrated, inherited, in-progress, and planned work
+- architecture nodes and connections
+- key systems
+- technical decisions and trade-offs
+- implementation phases
+- challenge-response entries
+- security, privacy, accessibility, performance, and deployment notes
+- outcomes and current status
+- lessons
+- media galleries or media requirements
+- related projects and adjacent navigation
+
+Only Asele, TeachEasy, and Reframe have public case-study routes as of Milestone 3.
+
 ## Verification Rules
 
 Do not publish numeric metrics unless verified through:
@@ -133,7 +157,6 @@ For Asele:
 
 ## Current Caveats
 
-- Asele and TeachEasy are structured for case-study expansion, but detailed routes are not yet implemented.
-- Reframe has an existing route that should be refactored into the shared case-study system during Milestone 3.
+- Product screenshots are still missing for Asele, TeachEasy, and Reframe.
+- Route-specific metadata is client-side because this is still a Vite SPA.
 - LearnEasy Academy is currently a supporting project and should be expanded only after public/private boundaries are confirmed.
-

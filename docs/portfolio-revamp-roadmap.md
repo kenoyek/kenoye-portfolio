@@ -154,6 +154,8 @@ Estimated complexity: large.
 
 Objective: make projects the strongest proof of technical credibility.
 
+Status: implemented on `feature/project-case-study-system`; pending review and approval before Milestone 4.
+
 Tasks:
 - Create reusable case-study data model.
 - Create reusable case-study components:
@@ -167,32 +169,31 @@ Tasks:
 - Refactor Reframe into the shared system.
 - Build Asele case study if facts/assets are confirmed.
 - Build TeachEasy case study if facts/assets are confirmed.
-- Add future-project template.
+- Add authoring guide for future case studies.
 - Clearly label personal ownership, inherited systems, team work, in-progress items, and production status.
-- Replace screenshot placeholders with real visual evidence.
+- Remove screenshot placeholders and document verified media requirements.
 
 Files likely affected:
-- `src/pages/projects/Reframe.tsx`
-- `src/pages/projects/Asele.tsx`
-- `src/pages/projects/TeachEasy.tsx`
+- `src/pages/projects/CaseStudyPage.tsx`
 - `src/components/case-study/*`
+- `src/content/caseStudies.ts`
 - `src/content/projects.ts`
 - `src/App.tsx`
-- `src/assets/*`
+- `docs/case-study-*.md`
 
 Dependencies:
-- Project facts.
-- Screenshots/product artifacts.
-- User approval on which projects become public case studies.
+- Project facts in the typed content layer and repository documentation.
+- Screenshots/product artifacts for later visual replacement.
+- User approval before moving into Milestone 4.
 
 Risks:
 - Case studies can become too long if not structured for scanning.
 - App/product screenshots may expose private data if not cleaned.
 
 Acceptance criteria:
-- At least one full reusable case-study route is live.
+- A reusable case-study route system exists.
+- Asele, TeachEasy, and Reframe have published pages.
 - Reframe no longer contains placeholder gallery.
-- Asele/TeachEasy have approved outlines or published pages.
 - Project summaries and detail pages share one content model.
 - Metadata is route-specific.
 
