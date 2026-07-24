@@ -79,6 +79,16 @@ Client-side code expects:
 
 The Edge Functions may also require Supabase project secrets such as `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` when deployed through Supabase.
 
+The contact form email function uses Resend. Configure these Supabase Edge Function secrets before deploying `send-contact-email`:
+
+```bash
+RESEND_API_KEY=your_resend_api_key
+CONTACT_TO_EMAIL=okagua.kenny@gmail.com
+RESEND_FROM_EMAIL="Kenoye Portfolio <onboarding@resend.dev>"
+```
+
+For production, replace `RESEND_FROM_EMAIL` with an address on a verified Resend domain.
+
 ## Deployment
 
 Build the app before deploying:
