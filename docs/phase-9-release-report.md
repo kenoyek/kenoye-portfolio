@@ -222,3 +222,7 @@ Complete these actions before calling the production release finished:
 - Consider build-time or server-side blog sitemap generation if dynamic blog SEO becomes important.
 - Add durable rate limiting to the contact function after email delivery is confirmed.
 - Replace any temporary public website screenshots with approved native screenshots when publication approval exists.
+
+## Post-Candidate Restoration
+
+On branch `fix/restore-portfolio-projects`, valid projects unintentionally removed from homepage visibility during the editorial refactor were restored as secondary work without changing the flagship case-study hierarchy. See `docs/portfolio-project-restoration-audit.md`.

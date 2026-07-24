@@ -105,6 +105,8 @@ Objective: rebuild the homepage into a senior-level portfolio experience using t
 
 Status: implemented on `feature/homepage-editorial-redesign`; pending review and approval before Milestone 3.
 
+Restoration note, 2026-07-24: the homepage keeps the flagship four-project hierarchy, then restores valid earlier portfolio work in a secondary "More engineering work" section. See `docs/portfolio-project-restoration-audit.md`.
+
 Tasks:
 - Redesign hero around precise senior positioning.
 - Add proof anchors: domains, platforms delivered, selected systems, availability.

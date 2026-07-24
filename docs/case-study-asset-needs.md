@@ -68,3 +68,11 @@ The Milestone 3 case-study system does not generate or simulate screenshots. Mis
 - Needed: project-specific Open Graph fallback or one high-quality portfolio-wide social image.
 - Recommended dimensions: 1200 x 630.
 - Guidance: use accurate project titles and role language; avoid logos or app screens unless usage rights and privacy are confirmed.
+
+## Restored Secondary Projects
+
+- Projects: TogaCode LMS, 1Vet Online Pet Store, Python Playground, CodeQuest Adventures, Block-to-Code Bridge, Queeneth Uti Portfolio, Agricultural Data Dashboard.
+- Priority: low to medium.
+- Current status: restored as text-first secondary work on 2026-07-24.
+- Assets found: none in `public/` or git history for these restored secondary entries.
+- Guidance: do not add generic stock imagery. Add screenshots only after confirming the page is public, unauthenticated, free of personal data, and approved for publication.

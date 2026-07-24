@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import { HomeHero } from "@/components/home/HomeHero";
 import { SelectedWork } from "@/components/home/SelectedWork";
+import { AdditionalProjects } from "@/components/home/AdditionalProjects";
 import { FeaturedAsele } from "@/components/home/FeaturedAsele";
 import { ProfessionalPositioning } from "@/components/home/ProfessionalPositioning";
 import { HomeCapabilities } from "@/components/home/HomeCapabilities";
@@ -28,6 +29,7 @@ const Index = () => {
       <Navbar />
       <HomeHero />
       <SelectedWork />
+      <AdditionalProjects />
       <FeaturedAsele />
       <ProfessionalPositioning />
       <HomeCapabilities />

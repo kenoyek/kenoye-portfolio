@@ -1,10 +1,10 @@
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { SectionHeader } from "@/components/layout/SectionHeader";
-import { projects } from "@/content/projects";
+import { primaryProjects } from "@/content/projects";
 import { ProjectPreview } from "@/components/home/ProjectPreview";
 
-const selected = projects.slice().sort((a, b) => a.priority - b.priority);
+const selected = primaryProjects;
 
 export const SelectedWork = () => (
   <Section id="work">
@@ -25,4 +25,3 @@ export const SelectedWork = () => (
     </Container>
   </Section>
 );
-

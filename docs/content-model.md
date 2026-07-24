@@ -62,6 +62,8 @@ Optional fields should be used when the detail is known and verified.
 - `in-progress`: active or incomplete work.
 - `case-study`: selected project intended for detailed case-study treatment.
 - `available-on-request`: details can be discussed but should not be fully published yet.
+- `experimental`: public experiment, prototype, or teaching tool that should not be framed as a production platform.
+- `archived`: no longer active, but retained for historical context.
 
 ## Initial Project Entries
 
@@ -70,12 +72,30 @@ Current structured entries:
 - TeachEasy LMS
 - Reframe Mobile App
 - LearnEasy Academy
+- TogaCode LMS
+- 1Vet Online Pet Store
+- Python Playground
+- CodeQuest Adventures
+- Block-to-Code Bridge
+- Queeneth Uti Portfolio
+- Agricultural Data Dashboard
 
 Project order:
 1. Asele
 2. TeachEasy
 3. Reframe
 4. LearnEasy Academy
+
+Secondary work order:
+1. TogaCode LMS
+2. 1Vet Online Pet Store
+3. Python Playground
+4. CodeQuest Adventures
+5. Block-to-Code Bridge
+6. Queeneth Uti Portfolio
+7. Agricultural Data Dashboard
+
+The homepage renders the first group through `primaryProjects` and the secondary group through `additionalProjects`. Secondary projects should remain visually subordinate to the flagship case studies unless a full case study is written and approved.
 
 ## Content Ownership Rules
 
@@ -157,6 +177,7 @@ For Asele:
 
 ## Current Caveats
 
-- Product screenshots are still missing for Asele, TeachEasy, and Reframe.
+- Approved native/authenticated product screenshots are still missing for Asele, TeachEasy, and Reframe; public temporary website captures are documented in `docs/case-study-asset-needs.md`.
+- Secondary restored projects do not currently have approved screenshots in the repository.
 - Route-specific metadata is client-side because this is still a Vite SPA.
 - LearnEasy Academy is currently a supporting project and should be expanded only after public/private boundaries are confirmed.

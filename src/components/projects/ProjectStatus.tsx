@@ -6,6 +6,8 @@ const labels: Record<ProjectStatusValue, string> = {
   "in-progress": "In progress",
   "case-study": "Case study",
   "available-on-request": "Available on request",
+  experimental: "Experimental",
+  archived: "Archived",
 };
 
 type ProjectStatusProps = {
@@ -15,4 +17,3 @@ type ProjectStatusProps = {
 export const ProjectStatus = ({ status }: ProjectStatusProps) => (
   <span className="text-xs uppercase tracking-wider text-muted-foreground">{labels[status]}</span>
 );
-

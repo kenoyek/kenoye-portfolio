@@ -1,4 +1,11 @@
-export type ProjectStatus = "live" | "private" | "in-progress" | "case-study" | "available-on-request";
+export type ProjectStatus =
+  | "live"
+  | "private"
+  | "in-progress"
+  | "case-study"
+  | "available-on-request"
+  | "experimental"
+  | "archived";
 
 export type ProjectLink = {
   label: string;
@@ -257,6 +264,7 @@ export const projects = [
       "Education company and tutoring platform showing product ownership, curriculum design, and operational leadership.",
     role: "Founder and product lead",
     projectStatus: "available-on-request",
+    featured: true,
     priority: 4,
     platforms: ["Operations", "Learning workflows"],
     technologies: ["Curriculum Design", "Education Technology", "Content Strategy", "Tutor Workflows"],
@@ -286,10 +294,241 @@ export const projects = [
         "LearnEasy Academy demonstrates education product ownership, K-12 tutoring, curriculum development, tutor workflows, and operational leadership.",
     },
   },
+  {
+    slug: "togacode-lms",
+    title: "TogaCode LMS",
+    shortTitle: "TogaCode",
+    category: ["EdTech", "SaaS", "Full-stack"],
+    summary:
+      "A coding-tutor LMS for managing classes, courses, live coding workflows, invite-code enrollment, and tenant-safe learning operations.",
+    shortSummary:
+      "Coding-tutor LMS with course management, invite-code enrollment, embedded code workflows, and tenant-aware structure.",
+    role: "Founder and lead engineer",
+    projectStatus: "live",
+    priority: 10,
+    platforms: ["Web"],
+    technologies: ["React", "TypeScript", "Supabase", "Postgres RLS", "Edge Functions"],
+    responsibilities: [
+      "Product concept and full-stack implementation",
+      "Tutor and learner workflow design",
+      "Tenant-aware enrollment patterns",
+      "Code-learning tooling and deployment",
+    ],
+    problem:
+      "Coding tutors needed a more unified way to manage classes, courses, enrollment, and live coding work.",
+    context:
+      "TogaCode sits in the education-product lane and overlaps with the LearnEasy teaching ecosystem, but remains a separate LMS product experiment.",
+    architecture:
+      "React and TypeScript power the web interface, with Supabase supporting authentication, data workflows, and tenant-aware persistence.",
+    outcomes: [
+      { label: "Live LMS demo remains publicly reachable", verified: true },
+      { label: "Tenant-aware course and enrollment concepts implemented", verified: true },
+    ],
+    links: [{ label: "View live", href: "https://code-buddy-lms.vercel.app/", kind: "live" }],
+    metadata: {
+      productCategory: "Coding education LMS",
+      ownership: "Founder-led product build",
+      visibility: "public",
+    },
+  },
+  {
+    slug: "onevet-online-pet-store",
+    title: "1Vet Online Pet Store",
+    shortTitle: "1Vet",
+    category: ["E-commerce", "Full-stack"],
+    summary:
+      "A focused pet-supplies storefront with catalog, cart, checkout, and inventory-oriented e-commerce workflows.",
+    shortSummary:
+      "Pet-supplies e-commerce storefront with catalog, cart, checkout, and operational store workflows.",
+    role: "Lead developer",
+    projectStatus: "live",
+    priority: 11,
+    platforms: ["Web"],
+    technologies: ["React", "Supabase", "Tailwind CSS"],
+    responsibilities: [
+      "Frontend implementation",
+      "Backend integration",
+      "Storefront workflow delivery",
+      "Deployment support",
+    ],
+    problem:
+      "Pet owners and vet shops needed a focused storefront for browsing and buying pet supplies.",
+    context:
+      "1Vet was part of the earlier portfolio as a full-stack e-commerce project and has a live public site.",
+    outcomes: [{ label: "Live storefront remains publicly reachable", verified: true }],
+    links: [{ label: "View live", href: "https://1vet.store", kind: "live" }],
+    metadata: {
+      productCategory: "E-commerce storefront",
+      ownership: "Lead development",
+      visibility: "public",
+    },
+  },
+  {
+    slug: "python-playground",
+    title: "Python Playground",
+    category: ["EdTech", "Learning Tool", "Frontend"],
+    summary:
+      "A browser-based Python learning environment for younger beginners, focused on approachable code practice and immediate feedback.",
+    shortSummary:
+      "Beginner-friendly Python practice tool with live output and a low-friction browser learning flow.",
+    role: "Sole engineer",
+    projectStatus: "experimental",
+    priority: 12,
+    platforms: ["Web"],
+    technologies: ["React", "TypeScript", "Tailwind CSS"],
+    responsibilities: [
+      "Product concept",
+      "Interface design",
+      "Frontend implementation",
+      "Deployment",
+    ],
+    problem:
+      "Young learners needed a friendlier entry point for writing Python and seeing output quickly.",
+    context:
+      "Python Playground is a teaching-support experiment from the education work, kept intentionally lighter than the flagship case studies.",
+    outcomes: [{ label: "Live learning experiment remains publicly reachable", verified: true }],
+    links: [{ label: "View live", href: "https://python-playground-pals.vercel.app/", kind: "live" }],
+    metadata: {
+      productCategory: "Coding education experiment",
+      ownership: "Solo product and engineering",
+      visibility: "public",
+    },
+  },
+  {
+    slug: "codequest-adventures",
+    title: "CodeQuest Adventures",
+    category: ["EdTech", "Learning Game", "Frontend"],
+    summary:
+      "A gamified coding-practice experience using quests, progress feedback, and structured challenges to support beginner consistency.",
+    shortSummary:
+      "Gamified coding-practice experiment with quests, levels, feedback loops, and structured challenges.",
+    role: "Sole engineer",
+    projectStatus: "experimental",
+    priority: 13,
+    platforms: ["Web"],
+    technologies: ["React", "TypeScript", "Tailwind CSS"],
+    responsibilities: [
+      "Product concept",
+      "Game-like learning flow",
+      "Frontend implementation",
+      "Deployment",
+    ],
+    problem:
+      "Beginner coders often need more motivation and visible progress than a plain practice environment provides.",
+    context:
+      "CodeQuest Adventures explores engagement loops for coding education without being presented as a production LMS.",
+    outcomes: [{ label: "Live learning experiment remains publicly reachable", verified: true }],
+    links: [{ label: "View live", href: "https://codequest-adventures.vercel.app/", kind: "live" }],
+    metadata: {
+      productCategory: "Coding education experiment",
+      ownership: "Solo product and engineering",
+      visibility: "public",
+    },
+  },
+  {
+    slug: "block-to-code-bridge",
+    title: "Block-to-Code Bridge",
+    category: ["EdTech", "Learning Tool", "Frontend"],
+    summary:
+      "A visual-to-text programming bridge that helps learners connect block-based logic with equivalent Python-style code.",
+    shortSummary:
+      "Visual programming bridge that maps block-based thinking into readable code for new learners.",
+    role: "Sole engineer",
+    projectStatus: "experimental",
+    priority: 14,
+    platforms: ["Web"],
+    technologies: ["React", "TypeScript", "Tailwind CSS"],
+    responsibilities: [
+      "Product concept",
+      "Learning interaction design",
+      "Frontend implementation",
+      "Deployment",
+    ],
+    problem:
+      "Moving from Scratch-style blocks to text programming can be a steep jump for younger beginners.",
+    context:
+      "Block-to-Code Bridge is a compact education experiment that supports the transition from visual logic to written code.",
+    outcomes: [{ label: "Live learning experiment remains publicly reachable", verified: true }],
+    links: [{ label: "View live", href: "https://block-to-code-bridge.vercel.app/", kind: "live" }],
+    metadata: {
+      productCategory: "Coding education experiment",
+      ownership: "Solo product and engineering",
+      visibility: "public",
+    },
+  },
+  {
+    slug: "queeneth-uti-portfolio",
+    title: "Queeneth Uti Portfolio",
+    shortTitle: "Queeneth Portfolio",
+    category: ["Portfolio", "Frontend"],
+    summary:
+      "A custom portfolio website for a community-management professional, designed to present events, milestones, and professional narrative clearly.",
+    shortSummary:
+      "Custom professional portfolio for a community manager, focused on clear narrative and event experience.",
+    role: "Designer and developer",
+    projectStatus: "live",
+    priority: 15,
+    platforms: ["Web"],
+    technologies: ["React", "TypeScript", "Tailwind CSS"],
+    responsibilities: [
+      "Visual design",
+      "Frontend implementation",
+      "Responsive polish",
+      "Deployment",
+    ],
+    problem:
+      "A community-management professional needed a polished portfolio that made event experience and career narrative easy to scan.",
+    context:
+      "This project represents client-style frontend delivery rather than a platform architecture case study.",
+    outcomes: [{ label: "Live portfolio remains publicly reachable", verified: true }],
+    links: [{ label: "View live", href: "https://queeneth-portfolio.vercel.app/", kind: "live" }],
+    metadata: {
+      productCategory: "Professional portfolio",
+      ownership: "End-to-end design and development",
+      visibility: "public",
+    },
+  },
+  {
+    slug: "agricultural-data-dashboard",
+    title: "Agricultural Data Dashboard",
+    shortTitle: "Agricultural Dashboard",
+    category: ["Data", "AI", "Full-stack"],
+    summary:
+      "A data-dashboard project exploring crop-yield and market-pricing insight workflows with backend ingestion and chart-based reporting.",
+    shortSummary:
+      "Private data-dashboard project for crop-yield and market-pricing insight workflows.",
+    role: "Engineer",
+    projectStatus: "private",
+    priority: 16,
+    platforms: ["Web"],
+    technologies: ["Python", "Flask", "Chart.js"],
+    responsibilities: [
+      "Backend implementation",
+      "Data workflow exploration",
+      "Dashboard interface",
+      "Visualization",
+    ],
+    problem:
+      "Agricultural stakeholders needed clearer ways to inspect crop-yield and market-pricing trends.",
+    context:
+      "The earlier portfolio listed this as a data-dashboard project, but no public route, repository, or asset exists in the current repository history.",
+    outcomes: [{ label: "Private project details available on request", verified: true }],
+    metadata: {
+      productCategory: "Private data dashboard",
+      ownership: "Engineering implementation",
+      visibility: "private",
+    },
+  },
 ] satisfies PortfolioProject[];
 
-export const featuredProjects = projects
+export const primaryProjects = projects
   .filter((project) => project.featured)
+  .sort((a, b) => a.priority - b.priority);
+
+export const featuredProjects = primaryProjects;
+
+export const additionalProjects = projects
+  .filter((project) => !project.featured)
   .sort((a, b) => a.priority - b.priority);
 
 export const getProjectBySlug = (slug: string) => projects.find((project) => project.slug === slug);
