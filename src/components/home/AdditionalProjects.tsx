@@ -17,7 +17,7 @@ export const AdditionalProjects = () => (
         <SectionHeader
           eyebrow="More engineering work"
           title="Smaller builds, teaching tools, and client delivery."
-          description="A secondary layer of legitimate work from the earlier portfolio, restored without changing the priority of the flagship case studies."
+          description="A selection of products, internal tools, educational platforms, and client work spanning e-commerce, coding education, and developer tooling."
           className="lg:self-start"
         />
 
