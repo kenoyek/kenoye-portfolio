@@ -32,6 +32,17 @@ Local source now includes:
 - Header newline cleanup for subject.
 - Resend integration using `RESEND_API_KEY`.
 
+Safe source assertions on 2026-07-24 confirmed all of the above behaviours are present in the local function source.
+
+## Local Runtime Status
+
+Full local Edge Function runtime testing was not available from this environment:
+
+- Deno is not installed.
+- `supabase status` cannot inspect local containers because Docker is not running.
+
+Do not treat the source assertions as a replacement for one deployed contact-form delivery test.
+
 ## Deployed Function Checks
 
 Using the deployed Supabase function with non-email-sending payloads:
