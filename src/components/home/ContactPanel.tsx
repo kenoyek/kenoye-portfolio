@@ -11,11 +11,12 @@ import { supabase } from "@/integrations/supabase/client";
 import { siteConfig } from "@/content/site";
 
 export const ContactPanel = () => {
-  const [form, setForm] = useState({ name: "", email: "", type: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", type: "", message: "", website: "" });
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (loading) return;
     setLoading(true);
     try {
       const { error } = await supabase.functions.invoke("send-contact-email", {
@@ -23,7 +24,7 @@ export const ContactPanel = () => {
       });
       if (error) throw error;
       toast.success("Message sent. I'll get back to you soon.");
-      setForm({ name: "", email: "", type: "", message: "" });
+      setForm({ name: "", email: "", type: "", message: "", website: "" });
     } catch (err: unknown) {
       console.error("Contact form error:", err);
       toast.error("Message could not be sent. You can email me directly instead.");
@@ -55,7 +56,18 @@ export const ContactPanel = () => {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="border border-border bg-card p-5 shadow-subtle sm:p-6">
+          <form onSubmit={handleSubmit} className="border border-border bg-card p-5 shadow-subtle sm:p-6" aria-busy={loading}>
+            <div className="hidden" aria-hidden="true">
+              <label htmlFor="contact-website">Website</label>
+              <input
+                id="contact-website"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={form.website}
+                onChange={(e) => setForm({ ...form, website: e.target.value })}
+              />
+            </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label className="mb-2 block text-sm font-medium text-foreground" htmlFor="contact-name">Name</label>
@@ -67,6 +79,7 @@ export const ContactPanel = () => {
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     placeholder="Your name"
                     required
+                    maxLength={120}
                     className="pl-9"
                   />
                 </div>
@@ -82,6 +95,7 @@ export const ContactPanel = () => {
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                     placeholder="you@example.com"
                     required
+                    maxLength={160}
                     className="pl-9"
                   />
                 </div>
@@ -114,6 +128,7 @@ export const ContactPanel = () => {
                 placeholder="Tell me about the product, platform, or technical problem..."
                 rows={5}
                 required
+                maxLength={5000}
               />
             </div>
 

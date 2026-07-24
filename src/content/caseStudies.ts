@@ -431,7 +431,7 @@ export const caseStudies = [
       ogDescription:
         "A senior engineering case study on Asele's wellness, mobile delivery, Supabase, and privacy-sensitive product architecture.",
       ogUrl: "https://www.kenoye.site/projects/asele",
-      socialImage: "/favicon.png",
+      socialImage: "https://www.kenoye.site/og-asele.svg",
     },
     lastReviewed: "2026-07-24",
   },
@@ -684,7 +684,7 @@ export const caseStudies = [
       ogDescription:
         "A senior engineering case study on TeachEasy's multi-tenant platform, permissions, portals, scheduling, and classroom architecture.",
       ogUrl: "https://www.kenoye.site/projects/teacheasy",
-      socialImage: "/favicon.png",
+      socialImage: "https://www.kenoye.site/og-teacheasy.svg",
     },
     lastReviewed: "2026-07-24",
   },
@@ -923,7 +923,7 @@ export const caseStudies = [
       ogDescription:
         "A senior engineering case study on adapting Reframe's CMS-driven web platform into cross-platform mobile apps.",
       ogUrl: "https://www.kenoye.site/projects/reframe",
-      socialImage: "/favicon.png",
+      socialImage: "https://www.kenoye.site/og-reframe.svg",
     },
     lastReviewed: "2026-07-24",
   },

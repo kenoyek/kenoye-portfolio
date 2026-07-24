@@ -8,7 +8,7 @@ export const HomeHero = () => (
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
         <div>
           <p className="mb-5 text-metadata uppercase text-accent">Software architect / Product engineer</p>
-          <h1 className="max-w-5xl text-display font-semibold text-foreground">
+          <h1 className="max-w-5xl text-[2.15rem] font-semibold leading-[1.08] text-foreground sm:text-5xl sm:leading-tight lg:text-6xl xl:text-7xl">
             I architect and ship production software across web, mobile, health, and education.
           </h1>
           <p className="mt-7 max-w-2xl text-body-large text-muted-foreground">

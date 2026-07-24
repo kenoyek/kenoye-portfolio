@@ -8,6 +8,7 @@ import BlogLikeButton from "@/components/BlogLikeButton";
 import { format } from "date-fns";
 import { ArrowLeft, Calendar, User } from "lucide-react";
 import { siteConfig } from "@/content/site";
+import { getOptimizedImageUrl } from "@/lib/images";
 
 interface Post {
   id: string;
@@ -53,6 +54,29 @@ const BlogPost = () => {
       });
   }, [slug]);
 
+  useEffect(() => {
+    if (loading || post) return;
+
+    document.title = "Post Not Found | Okagua Kenoye";
+    let robots = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
+    const previousRobots = robots?.content;
+    if (!robots) {
+      robots = document.createElement("meta");
+      robots.name = "robots";
+      document.head.appendChild(robots);
+    }
+    robots.content = "noindex, nofollow";
+
+    return () => {
+      if (!robots) return;
+      if (previousRobots) {
+        robots.content = previousRobots;
+      } else {
+        robots.remove();
+      }
+    };
+  }, [loading, post]);
+
   // Dynamic meta tags & JSON-LD
   useEffect(() => {
     if (!post) return;
@@ -67,6 +91,8 @@ const BlogPost = () => {
     setMetaTag("property", "og:url", url);
     setMetaTag("property", "og:type", "article");
     if (post.cover_image_url) setMetaTag("property", "og:image", post.cover_image_url);
+    setMetaTag("property", "og:image:width", "1200");
+    setMetaTag("property", "og:image:height", "630");
     setMetaTag("name", "twitter:card", "summary_large_image");
     setMetaTag("name", "twitter:title", post.title);
     setMetaTag("name", "twitter:description", description);
@@ -147,10 +173,15 @@ const BlogPost = () => {
           {post.cover_image_url && (
             <div className="mb-6 overflow-hidden rounded-xl sm:mb-8 sm:rounded-2xl">
               <img
-                src={post.cover_image_url}
+                src={getOptimizedImageUrl(post.cover_image_url, 900)}
                 alt={post.title}
+                width={1200}
+                height={630}
+                sizes="(min-width: 1024px) 768px, calc(100vw - 40px)"
                 className="h-48 w-full object-cover sm:h-56 md:h-72 lg:h-80"
-                loading="lazy"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
               />
             </div>
           )}

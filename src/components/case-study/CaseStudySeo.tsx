@@ -42,6 +42,14 @@ export const CaseStudySeo = ({ caseStudy }: { caseStudy: CaseStudy }) => {
       property: "og:image",
       content: caseStudy.seo.socialImage ?? "/favicon.png",
     });
+    setMeta('meta[property="og:image:width"]', {
+      property: "og:image:width",
+      content: "1200",
+    });
+    setMeta('meta[property="og:image:height"]', {
+      property: "og:image:height",
+      content: "630",
+    });
     setMeta('meta[name="twitter:title"]', {
       name: "twitter:title",
       content: caseStudy.seo.ogTitle,
@@ -49,6 +57,10 @@ export const CaseStudySeo = ({ caseStudy }: { caseStudy: CaseStudy }) => {
     setMeta('meta[name="twitter:description"]', {
       name: "twitter:description",
       content: caseStudy.seo.ogDescription,
+    });
+    setMeta('meta[name="twitter:image"]', {
+      name: "twitter:image",
+      content: caseStudy.seo.socialImage ?? "/favicon.png",
     });
 
     let canonical = document.head.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;

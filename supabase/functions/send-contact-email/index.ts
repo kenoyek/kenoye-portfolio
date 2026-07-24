@@ -35,6 +35,13 @@ serve(async (req) => {
     const email = String(body.email || '').trim();
     const type = String(body.type || 'General').trim();
     const message = String(body.message || '').trim();
+    const website = String(body.website || '').trim();
+
+    if (website) {
+      return new Response(JSON.stringify({ success: true }), {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
 
     if (!name || !email || !message) {
       return new Response(JSON.stringify({ error: 'Missing required fields' }), {
@@ -45,6 +52,13 @@ serve(async (req) => {
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return new Response(JSON.stringify({ error: 'Invalid email address' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
+    if (name.length > 120 || email.length > 160 || type.length > 80 || message.length > 5000) {
+      return new Response(JSON.stringify({ error: 'Submitted content is too long' }), {
         status: 400,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
