@@ -152,6 +152,7 @@ export type CaseStudy = {
   currentStatus?: CaseStudyStatusItem[];
   lessons?: CaseStudyTextSection;
   gallery?: CaseStudyMediaItem[];
+  mediaNote?: string;
   mediaRequirements?: string[];
   relatedProjects?: RelatedProjectLink[];
   links?: ProjectLink[];
@@ -420,7 +421,7 @@ export const caseStudies = [
         label: "Asele public homepage desktop",
         src: "/images/projects/asele/asele-public-home-desktop.webp",
         alt: "Asele public website showing the cycle and wellness product overview.",
-        caption: "Asele public product website, captured from the public homepage.",
+        caption: "Public website introducing Asele's women's health platform.",
         kind: "screenshot",
         width: 1440,
         height: 900,
@@ -429,7 +430,7 @@ export const caseStudies = [
         label: "Asele public homepage mobile",
         src: "/images/projects/asele/asele-public-home-mobile.webp",
         alt: "Mobile viewport of the Asele public website hero for cycle and wellness tracking.",
-        caption: "Responsive public product experience from the Asele homepage.",
+        caption: "Responsive public experience across desktop and mobile web.",
         kind: "screenshot",
         width: 390,
         height: 844,
@@ -438,7 +439,7 @@ export const caseStudies = [
         label: "Asele public feature section",
         src: "/images/projects/asele/asele-public-features.webp",
         alt: "Asele public website feature section listing cycle tracking, reminders, mood logging, and wellness tips.",
-        caption: "Public overview of Asele's cycle, wellness, reminder, and productivity features.",
+        caption: "Public product experience supporting the platform discussed in this case study.",
         kind: "screenshot",
         width: 1440,
         height: 900,
@@ -447,7 +448,7 @@ export const caseStudies = [
         label: "Asele public health brief overview",
         src: "/images/projects/asele/asele-public-health-brief.webp",
         alt: "Asele public app page describing cycle logging, private guidance, and the Asele Health Brief.",
-        caption: "Public Asele app page describing health-brief and cycle-context capabilities.",
+        caption: "Public overview of Asele's AI-assisted health brief feature.",
         kind: "screenshot",
         width: 1440,
         height: 900,
@@ -456,12 +457,14 @@ export const caseStudies = [
         label: "Asele public privacy and wellness section",
         src: "/images/projects/asele/asele-public-wellness.webp",
         alt: "Asele public website section describing period logging, mood tracking, reminders, and private encrypted data.",
-        caption: "Public wellness and privacy-oriented product description from Asele's website.",
+        caption: "Public privacy and wellness messaging aligned with the product boundaries in this case study.",
         kind: "screenshot",
         width: 1440,
         height: 560,
       },
     ],
+    mediaNote:
+      "These images are from Asele's public website. Native mobile screenshots will replace them once approved for publication.",
     mediaRequirements: [
       "Approved native mobile cycle or wellness workflow screenshot with private data removed.",
       "Approved health-brief or reminder workflow screenshot using synthetic or redacted data.",

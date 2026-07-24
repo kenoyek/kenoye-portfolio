@@ -348,6 +348,11 @@ export const ProjectGallery = ({ caseStudy }: { caseStudy: CaseStudy }) => {
               screenshots. The required assets are documented below for later insertion.
             </p>
           )}
+          {media.length && caseStudy.mediaNote ? (
+            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              <strong className="font-semibold text-foreground">Note:</strong> {caseStudy.mediaNote}
+            </p>
+          ) : null}
         </div>
         {media.length ? (
           <div className="mt-8 grid gap-6 md:grid-cols-2">
