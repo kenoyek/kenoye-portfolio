@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://kenoye.lovable.app/functions/v1/sitemap
+Sitemap: https://www.kenoye.site/functions/v1/sitemap

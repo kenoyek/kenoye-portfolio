@@ -1,20 +1,28 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import AdminLogin from "./pages/admin/AdminLogin";
-import AdminBlog from "./pages/admin/AdminBlog";
-import AdminBlogEditor from "./pages/admin/AdminBlogEditor";
 import AdminRoute from "./components/AdminRoute";
-import NotFound from "./pages/NotFound";
-import Reframe from "./pages/projects/Reframe";
 import { ThemeProvider } from "./hooks/use-theme";
 
 const queryClient = new QueryClient();
+
+const Index = lazy(() => import("./pages/Index"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const AdminLogin = lazy(() => import("./pages/admin/AdminLogin"));
+const AdminBlog = lazy(() => import("./pages/admin/AdminBlog"));
+const AdminBlogEditor = lazy(() => import("./pages/admin/AdminBlogEditor"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Reframe = lazy(() => import("./pages/projects/Reframe"));
+
+const RouteFallback = () => (
+  <div className="min-h-screen bg-background flex items-center justify-center text-sm text-muted-foreground">
+    Loading...
+  </div>
+);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -23,17 +31,22 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin/blog" element={<AdminRoute><AdminBlog /></AdminRoute>} />
-          <Route path="/admin/blog/new" element={<AdminRoute><AdminBlogEditor /></AdminRoute>} />
-          <Route path="/admin/blog/edit/:id" element={<AdminRoute><AdminBlogEditor /></AdminRoute>} />
-          <Route path="/projects/reframe" element={<Reframe />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <a href="#main-content" className="skip-link">Skip to content</a>
+        <div id="main-content" tabIndex={-1}>
+          <Suspense fallback={<RouteFallback />}>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/admin/login" element={<AdminLogin />} />
+              <Route path="/admin/blog" element={<AdminRoute><AdminBlog /></AdminRoute>} />
+              <Route path="/admin/blog/new" element={<AdminRoute><AdminBlogEditor /></AdminRoute>} />
+              <Route path="/admin/blog/edit/:id" element={<AdminRoute><AdminBlogEditor /></AdminRoute>} />
+              <Route path="/projects/reframe" element={<Reframe />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </div>
       </BrowserRouter>
     </TooltipProvider>
     </ThemeProvider>

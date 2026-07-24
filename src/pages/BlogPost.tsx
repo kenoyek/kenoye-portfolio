@@ -7,6 +7,7 @@ import BlogComments from "@/components/BlogComments";
 import BlogLikeButton from "@/components/BlogLikeButton";
 import { format } from "date-fns";
 import { ArrowLeft, Calendar, User } from "lucide-react";
+import { siteConfig } from "@/content/site";
 
 interface Post {
   id: string;
@@ -20,7 +21,7 @@ interface Post {
   updated_at: string;
 }
 
-const SITE_URL = "https://kenoye.lovable.app";
+const SITE_URL = siteConfig.canonicalOrigin;
 
 const setMetaTag = (attr: string, key: string, content: string) => {
   let el = document.querySelector(`meta[${attr}="${key}"]`) as HTMLMetaElement | null;
