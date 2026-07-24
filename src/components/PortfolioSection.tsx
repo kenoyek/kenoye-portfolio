@@ -135,7 +135,7 @@ const PortfolioSection = () => {
   const [filter, setFilter] = useState<Category>("All");
   const [active, setActive] = useState<Project | null>(null);
 
-  const filtered = filter === "All" ? projects : projects.filter((p) => p.category.includes(filter as any));
+  const filtered = filter === "All" ? projects : projects.filter((p) => p.category.includes(filter));
 
   return (
     <section id="portfolio" className="section-padding bg-background">
@@ -208,13 +208,12 @@ const PortfolioSection = () => {
                 <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{p.problem}</p>
 
                 <div className="flex flex-wrap gap-1.5 mb-3 sm:mb-4">
-                  {p.stack.map((t) => (
-                    <span key={t} className="text-[11px] font-mono text-foreground/60">{t}</span>
-                  )).reduce((acc: any[], el, idx) => {
-                    if (idx > 0) acc.push(<span key={`sep-${idx}`} className="text-foreground/20 text-[11px]">·</span>);
-                    acc.push(el);
-                    return acc;
-                  }, [])}
+                  {p.stack.map((t, idx) => (
+                    <span key={t} className="contents">
+                      {idx > 0 && <span className="text-foreground/20 text-[11px]">·</span>}
+                      <span className="text-[11px] font-mono text-foreground/60">{t}</span>
+                    </span>
+                  ))}
                 </div>
 
                 <p className="text-xs text-accent font-medium">{p.impact}</p>

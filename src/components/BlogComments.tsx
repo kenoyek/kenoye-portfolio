@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,14 +20,14 @@ const BlogComments = ({ postId }: { postId: string }) => {
   const [content, setContent] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
-  const fetchComments = async () => {
+  const fetchComments = useCallback(async () => {
     const { data } = await supabase
       .from("blog_comments")
       .select("id, author_name, content, created_at")
       .eq("post_id", postId)
       .order("created_at", { ascending: true });
     setComments(data || []);
-  };
+  }, [postId]);
 
   useEffect(() => {
     fetchComments();
@@ -40,7 +40,7 @@ const BlogComments = ({ postId }: { postId: string }) => {
       .subscribe();
 
     return () => { supabase.removeChannel(channel); };
-  }, [postId]);
+  }, [fetchComments, postId]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

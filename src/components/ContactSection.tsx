@@ -15,13 +15,13 @@ const ContactSection = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+      const { error } = await supabase.functions.invoke('send-contact-email', {
         body: form,
       });
       if (error) throw error;
       toast.success("Message sent! I'll get back to you soon.");
       setForm({ name: "", email: "", type: "", message: "" });
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Contact form error:', err);
       toast.error("Failed to send message. Please try again.");
     } finally {

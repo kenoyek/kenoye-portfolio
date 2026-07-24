@@ -1,6 +1,6 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
-const SITE_URL = "https://kenoye.lovable.app";
+const SITE_URL = "https://www.kenoye.site";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -23,7 +23,14 @@ Deno.serve(async (req) => {
     .lte("published_at", new Date().toISOString())
     .order("published_at", { ascending: false });
 
-  const urls = [
+  type SitemapUrl = {
+    loc: string;
+    priority: string;
+    changefreq: string;
+    lastmod?: string;
+  };
+
+  const urls: SitemapUrl[] = [
     { loc: SITE_URL + "/", priority: "1.0", changefreq: "weekly" },
     { loc: SITE_URL + "/blog", priority: "0.8", changefreq: "daily" },
     ...(posts || []).map((p) => ({
@@ -40,7 +47,7 @@ ${urls
   .map(
     (u) => `  <url>
     <loc>${u.loc}</loc>
-    ${(u as any).lastmod ? `<lastmod>${(u as any).lastmod}</lastmod>` : ""}
+    ${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ""}
     <changefreq>${u.changefreq}</changefreq>
     <priority>${u.priority}</priority>
   </url>`

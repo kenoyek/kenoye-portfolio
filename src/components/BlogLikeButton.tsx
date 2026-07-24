@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -16,29 +16,29 @@ const BlogLikeButton = ({ postId }: { postId: string }) => {
   const [count, setCount] = useState(0);
   const [liked, setLiked] = useState(false);
   const [loading, setLoading] = useState(false);
-  const sessionId = getSessionId();
+  const sessionId = useMemo(() => getSessionId(), []);
 
-  const fetch = async () => {
+  const fetchLikes = useCallback(async () => {
     const [{ count: total }, { data: mine }] = await Promise.all([
       supabase.from("blog_likes").select("*", { count: "exact", head: true }).eq("post_id", postId),
       supabase.from("blog_likes").select("id").eq("post_id", postId).eq("session_id", sessionId).maybeSingle(),
     ]);
     setCount(total || 0);
     setLiked(!!mine);
-  };
+  }, [postId, sessionId]);
 
   useEffect(() => {
-    fetch();
+    fetchLikes();
 
     const channel = supabase
       .channel(`likes-${postId}`)
       .on("postgres_changes", { event: "*", schema: "public", table: "blog_likes", filter: `post_id=eq.${postId}` }, () => {
-        fetch();
+        fetchLikes();
       })
       .subscribe();
 
     return () => { supabase.removeChannel(channel); };
-  }, [postId]);
+  }, [fetchLikes, postId]);
 
   const toggle = async () => {
     if (loading) return;
@@ -48,7 +48,7 @@ const BlogLikeButton = ({ postId }: { postId: string }) => {
     } else {
       await supabase.from("blog_likes").insert({ post_id: postId, session_id: sessionId });
     }
-    await fetch();
+    await fetchLikes();
     setLoading(false);
   };
 

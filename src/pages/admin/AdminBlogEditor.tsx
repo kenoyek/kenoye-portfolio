@@ -77,7 +77,7 @@ const AdminBlogEditor = () => {
         editor?.commands.setContent(data.content || "");
       });
     }
-  }, [id, editor]);
+  }, [id, editor, isEditing, navigate, toast]);
 
   useEffect(() => {
     if (!slugManuallyEdited) {
@@ -96,7 +96,10 @@ const AdminBlogEditor = () => {
     setHtmlMode(!htmlMode);
   };
 
-  const getContent = () => (htmlMode ? rawHtml : editor?.getHTML() || "");
+  const getContent = useCallback(
+    () => (htmlMode ? rawHtml : editor?.getHTML() || ""),
+    [editor, htmlMode, rawHtml],
+  );
 
   const savePost = useCallback(async (status: "draft" | "scheduled" | "published") => {
     if (!title.trim()) {
@@ -131,7 +134,7 @@ const AdminBlogEditor = () => {
       navigate("/admin/blog");
     }
     setSaving(false);
-  }, [title, slug, excerpt, coverImageUrl, editor, rawHtml, htmlMode, scheduledDate, isEditing, id, navigate, toast]);
+  }, [title, slug, excerpt, coverImageUrl, getContent, scheduledDate, isEditing, id, navigate, toast]);
 
   const addLink = () => {
     const url = prompt("Enter URL:");
