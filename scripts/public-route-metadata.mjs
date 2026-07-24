@@ -1,4 +1,6 @@
 export const canonicalOrigin = "https://www.kenoye.site";
+export const siteName = "Okagua Kenoye";
+export const routeLastmod = "2026-07-24";
 
 export const publicRoutes = [
   {
@@ -10,16 +12,18 @@ export const publicRoutes = [
     type: "website",
     priority: "1.0",
     changefreq: "weekly",
+    lastmod: routeLastmod,
   },
   {
     path: "/projects/asele",
     title: "Asele Case Study | HealthTech Product Architecture",
     description:
-      "Asele case study covering a women wellness platform built with React, TypeScript, Supabase, Capacitor, reminders, multilingual support, and privacy-sensitive architecture.",
+      "Asele case study covering a women's wellness platform built with React, TypeScript, Supabase, Capacitor, reminders, multilingual support, and privacy-sensitive architecture.",
     image: "/og-asele.svg",
     type: "article",
     priority: "0.8",
     changefreq: "monthly",
+    lastmod: routeLastmod,
   },
   {
     path: "/projects/teacheasy",
@@ -30,6 +34,7 @@ export const publicRoutes = [
     type: "article",
     priority: "0.8",
     changefreq: "monthly",
+    lastmod: routeLastmod,
   },
   {
     path: "/projects/reframe",
@@ -40,6 +45,7 @@ export const publicRoutes = [
     type: "article",
     priority: "0.8",
     changefreq: "monthly",
+    lastmod: routeLastmod,
   },
   {
     path: "/blog",
@@ -50,6 +56,7 @@ export const publicRoutes = [
     type: "website",
     priority: "0.7",
     changefreq: "weekly",
+    lastmod: routeLastmod,
   },
 ];
 
