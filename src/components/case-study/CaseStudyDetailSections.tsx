@@ -313,7 +313,7 @@ export const ChallengeResponse = ({ caseStudy }: { caseStudy: CaseStudy }) => {
   );
 };
 
-const MediaFigure = ({ item }: { item: CaseStudyMediaItem }) => {
+const MediaFigure = ({ item, priority = false }: { item: CaseStudyMediaItem; priority?: boolean }) => {
   if (!item.src) return null;
 
   return (
@@ -323,7 +323,7 @@ const MediaFigure = ({ item }: { item: CaseStudyMediaItem }) => {
         alt={item.alt ?? item.label}
         width={item.width}
         height={item.height}
-        loading="lazy"
+        loading={priority ? "eager" : "lazy"}
         className="w-full rounded-md border border-border object-cover"
       />
       {item.caption && <figcaption className="mt-2 text-sm text-muted-foreground">{item.caption}</figcaption>}
@@ -348,11 +348,16 @@ export const ProjectGallery = ({ caseStudy }: { caseStudy: CaseStudy }) => {
               screenshots. The required assets are documented below for later insertion.
             </p>
           )}
+          {media.length && caseStudy.mediaNote ? (
+            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              <strong className="font-semibold text-foreground">Note:</strong> {caseStudy.mediaNote}
+            </p>
+          ) : null}
         </div>
         {media.length ? (
           <div className="mt-8 grid gap-6 md:grid-cols-2">
-            {media.map((item) => (
-              <MediaFigure key={item.label} item={item} />
+            {media.map((item, index) => (
+              <MediaFigure key={item.label} item={item} priority={index === 0} />
             ))}
           </div>
         ) : null}

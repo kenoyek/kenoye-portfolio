@@ -152,6 +152,7 @@ export type CaseStudy = {
   currentStatus?: CaseStudyStatusItem[];
   lessons?: CaseStudyTextSection;
   gallery?: CaseStudyMediaItem[];
+  mediaNote?: string;
   mediaRequirements?: string[];
   relatedProjects?: RelatedProjectLink[];
   links?: ProjectLink[];
@@ -194,7 +195,7 @@ export const caseStudies = [
       summary:
         "Asele combines cycle tracking, wellness logging, cycle-aware reminders, multilingual product support, and assistive health briefs across a React, TypeScript, Supabase, and Capacitor architecture.",
       primaryMediaNote:
-        "Verified Asele product screenshots are not stored in this repository, so the case study uses narrative and architecture diagrams rather than simulated product screens.",
+        "Temporary public website screenshots are included below while approved native application screenshots remain pending.",
     },
     overview: {
       id: "overview",
@@ -415,10 +416,60 @@ export const caseStudies = [
         "Privacy-sensitive features are easier to maintain when they are modelled as first-class product constraints.",
       ],
     },
+    gallery: [
+      {
+        label: "Asele public homepage desktop",
+        src: "/images/projects/asele/asele-public-home-desktop.webp",
+        alt: "Asele public website showing the cycle and wellness product overview.",
+        caption: "Public website introducing Asele's women's health platform.",
+        kind: "screenshot",
+        width: 1440,
+        height: 900,
+      },
+      {
+        label: "Asele public homepage mobile",
+        src: "/images/projects/asele/asele-public-home-mobile.webp",
+        alt: "Mobile viewport of the Asele public website hero for cycle and wellness tracking.",
+        caption: "Responsive public experience across desktop and mobile web.",
+        kind: "screenshot",
+        width: 390,
+        height: 844,
+      },
+      {
+        label: "Asele public feature section",
+        src: "/images/projects/asele/asele-public-features.webp",
+        alt: "Asele public website feature section listing cycle tracking, reminders, mood logging, and wellness tips.",
+        caption: "Public product experience supporting the platform discussed in this case study.",
+        kind: "screenshot",
+        width: 1440,
+        height: 900,
+      },
+      {
+        label: "Asele public health brief overview",
+        src: "/images/projects/asele/asele-public-health-brief.webp",
+        alt: "Asele public app page describing cycle logging, private guidance, and the Asele Health Brief.",
+        caption: "Public overview of Asele's AI-assisted health brief feature.",
+        kind: "screenshot",
+        width: 1440,
+        height: 900,
+      },
+      {
+        label: "Asele public privacy and wellness section",
+        src: "/images/projects/asele/asele-public-wellness.webp",
+        alt: "Asele public website section describing period logging, mood tracking, reminders, and private encrypted data.",
+        caption: "Public privacy and wellness messaging aligned with the product boundaries in this case study.",
+        kind: "screenshot",
+        width: 1440,
+        height: 560,
+      },
+    ],
+    mediaNote:
+      "These images are from Asele's public website. Native mobile screenshots will replace them once approved for publication.",
     mediaRequirements: [
-      "Sanitized wellness dashboard screenshot.",
-      "Mobile reminder or notification workflow screenshot.",
+      "Approved native mobile cycle or wellness workflow screenshot with private data removed.",
+      "Approved health-brief or reminder workflow screenshot using synthetic or redacted data.",
       "Administrative workflow screenshot with private data removed.",
+      "Replace temporary public website captures when approved native application screenshots are available.",
     ],
     relatedProjects: [{ slug: "teacheasy", reason: "Another Supabase-backed platform with permissions and product operations as core architecture." }],
     links: asele.links,
