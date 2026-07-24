@@ -6,11 +6,10 @@ import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const navLinks = [
-  { label: "Work", href: "#portfolio" },
-  { label: "Case Studies", href: "#case-studies" },
+  { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
-  { label: "Teaching", href: "#tutoring" },
-  { label: "Blog", href: "/blog" },
+  { label: "Approach", href: "#approach" },
+  { label: "Writing", href: "/blog" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -116,6 +115,7 @@ const Navbar = () => {
   return (
     <>
       <nav
+        aria-label="Primary navigation"
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navShellClass}`}
       >
         <div className="max-w-[1120px] mx-auto flex items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
@@ -140,16 +140,18 @@ const Navbar = () => {
             <Button
               asChild
               size="sm"
-              className="hidden md:inline-flex bg-accent text-accent-foreground hover:bg-accent/90 font-semibold rounded-full"
+              className="hidden md:inline-flex bg-accent text-accent-foreground hover:bg-accent/90 font-semibold rounded-md"
             >
               <a href={getHref("#contact")} onClick={(e) => handleHashClick(e, "#contact")}>
-                Hire Me
+                Contact
               </a>
             </Button>
             {/* Mobile hamburger */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-navigation"
               className={`md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg transition-colors ${
                 isOverlayNav
                   ? "text-primary-foreground hover:bg-primary-foreground/10"
@@ -173,8 +175,13 @@ const Navbar = () => {
               transition={{ duration: 0.2 }}
               className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm md:hidden"
               onClick={() => setMobileOpen(false)}
+              aria-hidden="true"
             />
             <motion.div
+              id="mobile-navigation"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile navigation"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -204,7 +211,7 @@ const Navbar = () => {
                     href={getHref("#contact")}
                     onClick={(e) => handleHashClick(e, "#contact")}
                   >
-                    Hire Me
+                    Contact
                   </a>
                 </Button>
               </div>

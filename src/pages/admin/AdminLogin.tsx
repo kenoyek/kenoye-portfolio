@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,27 @@ const AdminLogin = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
+
+  useEffect(() => {
+    document.title = "Admin Login | Okagua Kenoye";
+    let robots = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
+    const previousRobots = robots?.content;
+    if (!robots) {
+      robots = document.createElement("meta");
+      robots.name = "robots";
+      document.head.appendChild(robots);
+    }
+    robots.content = "noindex, nofollow";
+
+    return () => {
+      if (!robots) return;
+      if (previousRobots) {
+        robots.content = previousRobots;
+      } else {
+        robots.remove();
+      }
+    };
+  }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,7 +50,7 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-primary px-4">
+    <main className="min-h-screen flex items-center justify-center bg-primary px-4">
       <div className="w-full max-w-md bg-card rounded-2xl p-8 shadow-2xl border border-border">
         <div className="text-center mb-8">
           <h1 className="font-heading text-2xl font-bold text-foreground">Admin Login</h1>
@@ -65,7 +86,7 @@ const AdminLogin = () => {
           </Button>
         </form>
       </div>
-    </div>
+    </main>
   );
 };
 

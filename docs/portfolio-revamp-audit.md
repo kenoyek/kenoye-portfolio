@@ -427,7 +427,7 @@ Project-specific notes:
 - Asele should become a flagship HealthTech/mobile case study if the React/TypeScript/Supabase/Capacitor facts are confirmed.
 - TeachEasy should become the flagship multi-tenant EdTech/SaaS architecture story.
 - Reframe can remain a mobile delivery case study but needs real screenshots and exact status.
-- LearnEasy Academy can show product ownership and education leadership; distinguish company/platform/curriculum from software implementation.
+- LearnEasy Academy can show coding tutoring and education support; distinguish tutoring/curriculum support from founder, product ownership, or software implementation claims.
 - TogaCode can remain only if it is a distinct project and its metrics are verified.
 
 ## 17. Content Recommendations
@@ -544,3 +544,17 @@ Executed on 2026-07-24:
 - `npx tsc -b`: passed.
 - `npm run build`: passed. Warning: large bundle, JS about 1.2 MB uncompressed / 368 kB gzip.
 
+## Milestone 1 Update
+
+Implemented on branch `refactor/portfolio-foundation`:
+
+- Lint baseline fixed to zero errors.
+- Typed content layer introduced under `src/content`.
+- Asele, TeachEasy, Reframe, and LearnEasy Academy entries created.
+- Layout and project primitives introduced.
+- Canonical domain updated to `https://www.kenoye.site`.
+- `lovable-tagger` removed from Vite and dependencies.
+- Route-level lazy loading added; admin editor code is now isolated into a separate chunk.
+- Non-forced dependency security fixes reduced audit findings from 19 to 4.
+
+See `docs/design-system-foundation.md`, `docs/content-model.md`, and `docs/milestone-1-foundation-report.md`.

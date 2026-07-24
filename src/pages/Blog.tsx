@@ -6,6 +6,9 @@ import Footer from "@/components/Footer";
 import { format } from "date-fns";
 import { ArrowRight, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
+import { siteConfig } from "@/content/site";
+import { getOptimizedImageUrl } from "@/lib/images";
+import { buildBlogIndexJsonLd, setPageMetadata } from "@/lib/seo";
 
 interface BlogPost {
   id: string;
@@ -22,22 +25,19 @@ const Blog = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const prevTitle = document.title;
-    document.title = "Blog | Okagua — Insights, Tutorials & Updates";
+    const title = "Blog | Okagua Kenoye";
+    const description =
+      "Read software architecture, product engineering, education technology, health technology, and full-stack development notes from Okagua Kenoye.";
+    const url = `${siteConfig.canonicalOrigin}/blog`;
 
-    let desc = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
-    const prevDesc = desc?.content;
-    if (!desc) {
-      desc = document.createElement("meta");
-      desc.name = "description";
-      document.head.appendChild(desc);
-    }
-    desc.content = "Read the latest insights, tutorials, and updates from Okagua on software development, EdTech, and design.";
-
-    return () => {
-      document.title = prevTitle;
-      if (desc && prevDesc !== undefined) desc.content = prevDesc;
-    };
+    setPageMetadata({
+      title,
+      description,
+      canonicalUrl: url,
+      imageUrl: "/og-blog.svg",
+      type: "website",
+      jsonLd: buildBlogIndexJsonLd(),
+    });
   }, []);
 
   useEffect(() => {
@@ -85,10 +85,15 @@ const Blog = () => {
                   {post.cover_image_url && (
                     <div className="h-44 sm:h-48 md:h-56 overflow-hidden">
                       <img
-                        src={post.cover_image_url}
+                        src={getOptimizedImageUrl(post.cover_image_url, 900)}
                         alt={post.title}
+                        width={1200}
+                        height={630}
+                        sizes="(min-width: 768px) 896px, calc(100vw - 40px)"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
+                        loading={i === 0 ? "eager" : "lazy"}
+                        fetchPriority={i === 0 ? "high" : "auto"}
+                        decoding="async"
                       />
                     </div>
                   )}
@@ -116,7 +121,7 @@ const Blog = () => {
         )}
       </section>
 
-      <Footer />
+      {!loading && <Footer />}
     </div>
   );
 };

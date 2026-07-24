@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -29,7 +29,7 @@ const AdminBlog = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  const fetchPosts = async () => {
+  const fetchPosts = useCallback(async () => {
     const { data, error } = await supabase
       .from("blog_posts")
       .select("id, title, slug, status, published_at, created_at, updated_at")
@@ -41,9 +41,9 @@ const AdminBlog = () => {
       setPosts(data || []);
     }
     setLoading(false);
-  };
+  }, [toast]);
 
-  useEffect(() => { fetchPosts(); }, []);
+  useEffect(() => { fetchPosts(); }, [fetchPosts]);
 
   const handleDelete = async (id: string, title: string) => {
     if (!confirm(`Delete "${title}"?`)) return;

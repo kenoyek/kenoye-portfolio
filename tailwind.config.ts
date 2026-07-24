@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -18,6 +19,17 @@ export default {
         body: ['Inter', 'sans-serif'],
         mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
+      fontSize: {
+        display: ["clamp(2.75rem, 7vw, 5.75rem)", { lineHeight: "0.98", letterSpacing: "0" }],
+        "page-title": ["clamp(2.25rem, 5vw, 4.5rem)", { lineHeight: "1.02", letterSpacing: "0" }],
+        "section-title": ["clamp(1.75rem, 3vw, 3rem)", { lineHeight: "1.08", letterSpacing: "0" }],
+        subheading: ["1.25rem", { lineHeight: "1.45", letterSpacing: "0" }],
+        "body-large": ["1.125rem", { lineHeight: "1.75", letterSpacing: "0" }],
+        body: ["1rem", { lineHeight: "1.7", letterSpacing: "0" }],
+        "body-small": ["0.875rem", { lineHeight: "1.6", letterSpacing: "0" }],
+        caption: ["0.75rem", { lineHeight: "1.45", letterSpacing: "0.04em" }],
+        metadata: ["0.6875rem", { lineHeight: "1.4", letterSpacing: "0.08em" }],
+      },
       maxWidth: {
         content: '1120px',
       },
@@ -27,6 +39,18 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        surface: "hsl(var(--surface))",
+        "surface-elevated": "hsl(var(--surface-elevated))",
+        "border-subtle": "hsl(var(--border-subtle))",
+        "border-strong": "hsl(var(--border-strong))",
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -67,9 +91,15 @@ export default {
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        xl: "var(--radius-xl)",
+        lg: "var(--radius-lg)",
+        md: "var(--radius-md)",
+        sm: "var(--radius-sm)",
+      },
+      boxShadow: {
+        subtle: "var(--shadow-subtle)",
+        overlay: "var(--shadow-overlay)",
+        media: "var(--shadow-media)",
       },
       keyframes: {
         "accordion-down": {
@@ -102,5 +132,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 } satisfies Config;
