@@ -4,7 +4,7 @@ import { Section } from "@/components/layout/Section";
 export const ProfessionalPositioning = () => (
   <Section id="about">
     <Container>
-      <div className="grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)]">
+      <div className="grid gap-8 lg:grid-cols-[380px_minmax(0,1fr)]">
         <div>
           <p className="text-metadata uppercase text-accent">About the work</p>
           <h2 className="mt-3 text-section-title font-semibold text-foreground">Architecture, implementation, and product judgment in one loop.</h2>
@@ -24,4 +24,3 @@ export const ProfessionalPositioning = () => (
     </Container>
   </Section>
 );
-
