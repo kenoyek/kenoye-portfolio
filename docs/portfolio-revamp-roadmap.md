@@ -103,6 +103,8 @@ Estimated complexity: medium-large.
 
 Objective: rebuild the homepage into a senior-level portfolio experience using the approved design direction.
 
+Status: implemented on `feature/homepage-editorial-redesign`; pending review and approval before Milestone 3.
+
 Tasks:
 - Redesign hero around precise senior positioning.
 - Add proof anchors: domains, platforms delivered, selected systems, availability.
