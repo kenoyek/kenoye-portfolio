@@ -26,7 +26,9 @@ Publication statuses:
 | Reframe mobile work is fully native | Reframe | Not supported by current content | not published | Native codebase evidence | Capacitor-based cross-platform mobile implementation |
 | Reframe uses React, TypeScript, Next.js, and Capacitor | Reframe | Existing Reframe route, `src/content/projects.ts` | published | None | React/TypeScript/Next.js product adapted with Capacitor |
 | Reframe app-store readiness work was completed | Reframe | Existing Reframe route, `src/content/projects.ts` | softened | External store records | Store-readiness and release workflow work |
-| Reframe has verified screenshots | Reframe | No assets in repository | not published | Sanitized screenshots | Media requirements documented |
+| Reframe has public web screenshots | Reframe | `https://reframe.network/`, `https://reframe.network/reframevoices.php`, `https://reframe.network/repository.php`, `https://reframe.network/discover` | published | Periodic public-page review | Public web screenshots only |
+| Reframe has verified native mobile screenshots | Reframe | No approved native assets in repository | not published | Public mobile release and screenshot approval | Public web screenshots with native replacement note |
+| TeachEasy has public website screenshots | TeachEasy | `https://teacheasylms.com/`, `https://teacheasylms.com/find-my-academy` | published | Periodic public-page review | Public website screenshots only |
+| TeachEasy has authenticated dashboard screenshots | TeachEasy | No synthetic demo account used | not published | Synthetic demo account or publication approval | Public website screenshots with dashboard requirements documented |
 
 No API keys, environment variables, internal URLs, user data, database credentials, private client information, private health information, or support credentials were added.
-
