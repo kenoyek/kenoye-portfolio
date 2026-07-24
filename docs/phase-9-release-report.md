@@ -41,7 +41,7 @@ Release QA also added two small hardening fixes:
 - PR merge state: clean
 - CI `validate` check: passed
 - Vercel preview check: passed
-- Vercel preview target: `https://vercel.com/okagua-kenneths-projects/kenoye-portfolio-xy5d/3FtmKdgnF8RzU5AwzH8WkEaLeA7W`
+- Vercel preview target: available from the latest PR checks; it changes per commit.
 - No merge was performed because the updated Supabase contact function still needs privileged deployment and one production delivery test.
 - A release-diff secret pattern scan did not find committed Resend, GitHub, Vercel, Supabase service-role, or private-key values.
 
