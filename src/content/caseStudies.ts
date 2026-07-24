@@ -816,7 +816,7 @@ export const caseStudies = [
       summary:
         "Reframe is a CMS-driven news and community platform adapted for iOS and Android delivery with React, TypeScript, Next.js, shared APIs, native integration through Capacitor, and store-readiness work.",
       primaryMediaNote:
-        "The previous route used placeholder gallery tiles. They have been removed until verified Reframe screenshots are available.",
+        "Public web screenshots are included below while native mobile screenshots remain withheld until the mobile application is approved for public release.",
     },
     overview: {
       id: "overview",
@@ -879,7 +879,7 @@ export const caseStudies = [
       "The existing Next.js web product and shared APIs were the foundation.",
       "Mobile platform behavior needed targeted native integration.",
       "Store-readiness work must be separated from final public store status unless verified by store records.",
-      "Screenshots are not available in the repository and should not be fabricated.",
+      "Native mobile screenshots are not available in the repository and should not be fabricated.",
     ],
     architecture: {
       title: "Reframe web-to-mobile architecture",
@@ -1005,7 +1005,7 @@ export const caseStudies = [
       { label: "Capacitor mobile architecture", state: "implemented" },
       { label: "Deep links and push-notification infrastructure", state: "implemented" },
       { label: "Store-readiness work", state: "implemented", detail: "Final store status should be confirmed from external records." },
-      { label: "Verified public screenshots", state: "planned", detail: "No screenshots are stored in this repository." },
+      { label: "Public web screenshots", state: "implemented", detail: "Native mobile screenshots remain withheld pending approval." },
     ],
     lessons: {
       id: "lessons",
