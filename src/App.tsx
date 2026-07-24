@@ -16,7 +16,7 @@ const AdminLogin = lazy(() => import("./pages/admin/AdminLogin"));
 const AdminBlog = lazy(() => import("./pages/admin/AdminBlog"));
 const AdminBlogEditor = lazy(() => import("./pages/admin/AdminBlogEditor"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-const Reframe = lazy(() => import("./pages/projects/Reframe"));
+const CaseStudyPage = lazy(() => import("./pages/projects/CaseStudyPage"));
 
 const RouteFallback = () => (
   <div className="min-h-screen bg-background flex items-center justify-center text-sm text-muted-foreground">
@@ -42,7 +42,7 @@ const App = () => (
               <Route path="/admin/blog" element={<AdminRoute><AdminBlog /></AdminRoute>} />
               <Route path="/admin/blog/new" element={<AdminRoute><AdminBlogEditor /></AdminRoute>} />
               <Route path="/admin/blog/edit/:id" element={<AdminRoute><AdminBlogEditor /></AdminRoute>} />
-              <Route path="/projects/reframe" element={<Reframe />} />
+              <Route path="/projects/:slug" element={<CaseStudyPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

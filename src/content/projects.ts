@@ -112,7 +112,10 @@ export const projects = [
       { label: "Cycle-aware notifications implemented", verified: true },
       { label: "Multilingual support implemented", verified: true },
     ],
-    links: [{ label: "Visit Asele", href: "https://www.asele.health", kind: "live" }],
+    links: [
+      { label: "Read case study", href: "/projects/asele", kind: "case-study" },
+      { label: "Visit Asele", href: "https://www.asele.health", kind: "live" },
+    ],
     metadata: {
       productCategory: "Women’s wellness platform",
       ownership: "Lead product and engineering ownership",
@@ -170,7 +173,10 @@ export const projects = [
       { label: "Row-level security implemented", verified: true },
       { label: "Realtime collaboration introduced", verified: true },
     ],
-    links: [{ label: "Visit TeachEasy", href: "https://teacheasylms.com/", kind: "live" }],
+    links: [
+      { label: "Read case study", href: "/projects/teacheasy", kind: "case-study" },
+      { label: "Visit TeachEasy", href: "https://teacheasylms.com/", kind: "live" },
+    ],
     metadata: {
       productCategory: "Learning-management platform",
       ownership: "Lead engineering ownership",
@@ -287,4 +293,3 @@ export const featuredProjects = projects
   .sort((a, b) => a.priority - b.priority);
 
 export const getProjectBySlug = (slug: string) => projects.find((project) => project.slug === slug);
-

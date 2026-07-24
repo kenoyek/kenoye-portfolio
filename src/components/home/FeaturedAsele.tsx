@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { ProjectEvidence } from "@/components/home/ProjectEvidence";
@@ -39,7 +40,7 @@ export const FeaturedAsele = () => {
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              {asele.links?.map((link) => (
+              {asele.links?.filter((link) => link.kind !== "case-study").map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
@@ -50,9 +51,12 @@ export const FeaturedAsele = () => {
                   {link.label} <ArrowRight className="ml-2" size={16} />
                 </a>
               ))}
-              <span className="inline-flex min-h-11 items-center rounded-md border border-border px-5 text-sm font-medium text-muted-foreground">
-                Full case study in progress
-              </span>
+              <Link
+                to="/projects/asele"
+                className="inline-flex min-h-11 items-center rounded-md border border-border px-5 text-sm font-medium text-foreground transition-colors hover:border-accent/60 hover:text-accent"
+              >
+                Read case study <ArrowRight className="ml-2" size={16} />
+              </Link>
             </div>
           </div>
 
@@ -66,4 +70,3 @@ export const FeaturedAsele = () => {
     </Section>
   );
 };
-
