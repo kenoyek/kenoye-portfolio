@@ -264,7 +264,7 @@ export const projects = [
       "Coding tutoring work showing curriculum support, learner guidance, and education technology workflows.",
     role: "Coding tutor",
     projectStatus: "available-on-request",
-    featured: true,
+    featured: false,
     priority: 4,
     platforms: ["Operations", "Learning workflows"],
     technologies: ["Curriculum Design", "Education Technology", "Content Strategy", "Tutor Workflows"],

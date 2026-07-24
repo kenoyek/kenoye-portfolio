@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/ThemeToggle";
-import { Menu, X } from "lucide-react";
+import { Menu, X, FileText } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { siteConfig } from "@/content/site";
 
 const navLinks = [
   { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
-  { label: "Approach", href: "#approach" },
   { label: "Writing", href: "/blog" },
   { label: "Contact", href: "#contact" },
 ];
@@ -122,6 +122,7 @@ const Navbar = () => {
           <Link
             to="/"
             className={`font-semibold tracking-tight text-base shrink-0 ${textClass}`}
+            aria-label="Okagua Kenoye home"
           >
             Okagua<span className="text-accent">.</span>
           </Link>
@@ -137,6 +138,21 @@ const Navbar = () => {
             <ThemeToggle
               className={isOverlayNav ? "border-primary-foreground/20 text-primary-foreground/70 hover:text-accent" : ""}
             />
+            {/* Résumé link (desktop) */}
+            <a
+              href={siteConfig.social.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`hidden md:inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-sm font-medium transition-colors ${
+                isOverlayNav
+                  ? "border-primary-foreground/20 text-primary-foreground/70 hover:border-accent/60 hover:text-accent"
+                  : "border-border text-muted-foreground hover:border-accent/60 hover:text-accent"
+              }`}
+              aria-label="View résumé (opens in new tab)"
+            >
+              <FileText size={14} aria-hidden="true" />
+              Résumé
+            </a>
             <Button
               asChild
               size="sm"
@@ -200,6 +216,16 @@ const Navbar = () => {
               </div>
               <div className="flex-1 overflow-y-auto py-4 px-2 space-y-1">
                 {navLinks.map((link) => renderLink(link, true))}
+                <a
+                  href={siteConfig.social.resume}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex w-full items-center gap-2 px-4 py-3 text-base font-medium rounded-lg text-foreground hover:text-accent hover:bg-accent/5 transition-colors"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <FileText size={16} aria-hidden="true" />
+                  Résumé
+                </a>
               </div>
               <div className="px-4 py-4 border-t border-border">
                 <Button

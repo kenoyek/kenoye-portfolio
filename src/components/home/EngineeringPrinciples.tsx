@@ -1,6 +1,8 @@
+import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { SectionHeader } from "@/components/layout/SectionHeader";
+import { fadeUp, inViewProps, staggerContainer } from "@/lib/animations";
 
 const principles = [
   {
@@ -13,15 +15,15 @@ const principles = [
   },
   {
     title: "Make permissions structural",
-    body: "Authentication, authorization, tenancy, and privacy are not afterthoughts. They belong in the data model, policies, and product workflows.",
+    body: "Authentication, authorisation, tenancy, and privacy belong in the data model, policies, and product workflows. Not layered on afterwards.",
   },
   {
     title: "Treat mobile as a platform",
-    body: "Capacitor delivery still requires native platform thinking: safe areas, app lifecycle, notifications, deep links, builds, and release workflows.",
+    body: "Capacitor delivery requires native platform thinking: safe areas, app lifecycle, notifications, deep links, builds, and release workflows.",
   },
   {
     title: "Use AI as product infrastructure",
-    body: "AI features should clarify or accelerate a workflow, not sit on top as decoration. The product still needs boundaries, trust, and operational fallback.",
+    body: "AI features should clarify or accelerate a workflow. The product still needs boundaries, trust, and an operational fallback when the model is wrong.",
   },
 ];
 
@@ -34,16 +36,23 @@ export const EngineeringPrinciples = () => (
         description="A few working principles that show up repeatedly in the projects I take on."
         className="[&_h2]:text-primary-foreground [&_p]:text-primary-foreground/65 [&_div]:bg-primary-foreground/20"
       />
-      <div className="grid gap-6 md:grid-cols-5">
+      <motion.div
+        variants={staggerContainer}
+        {...inViewProps}
+        className="grid gap-6 md:grid-cols-5"
+      >
         {principles.map((principle, index) => (
-          <article key={principle.title} className="border-t border-primary-foreground/20 pt-5 md:col-span-1">
+          <motion.article
+            key={principle.title}
+            variants={fadeUp}
+            className="border-t border-primary-foreground/20 pt-5 md:col-span-1"
+          >
             <p className="mb-4 font-mono text-xs text-accent">{String(index + 1).padStart(2, "0")}</p>
             <h3 className="text-base font-semibold text-primary-foreground">{principle.title}</h3>
             <p className="mt-3 text-sm leading-relaxed text-primary-foreground/60">{principle.body}</p>
-          </article>
+          </motion.article>
         ))}
-      </div>
+      </motion.div>
     </Container>
   </Section>
 );
-

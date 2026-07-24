@@ -3,12 +3,19 @@ export const siteConfig = {
   shortName: "Kenoye",
   canonicalOrigin: "https://www.kenoye.site",
   apexOrigin: "https://kenoye.site",
-  title: "Okagua Kenoye - Software Architect and Product Engineer",
+  title: "Okagua Kenoye | Senior Full-Stack and Product Engineer",
   titleTemplate: "%s | Okagua Kenoye",
   description:
-    "Okagua Kenoye designs and ships full-stack, mobile, and product systems across health technology, education technology, CMS-driven platforms, and technical consulting.",
+    "Okagua Kenoye is a senior full-stack and product engineer building production web and mobile systems across HealthTech, EdTech, SaaS, and CMS platforms with ownership from architecture to App Store delivery.",
   email: "okagua.kenny@gmail.com",
   location: "Nigeria",
+  /**
+   * Set to true when actively open to new opportunities.
+   * Controls the availability badge in the hero and contact sections.
+   */
+  openToWork: true,
+  availabilityNote: "Open to full-time and consulting opportunities",
+  workPreference: "Remote",
   social: {
     github: "https://github.com/kenoyek",
     linkedin: "https://www.linkedin.com/in/okagua/",
@@ -18,4 +25,3 @@ export const siteConfig = {
 
 export const absoluteUrl = (path = "/") =>
   new URL(path, siteConfig.canonicalOrigin).toString();
-

@@ -7,23 +7,76 @@ export type Capability = {
 export const capabilities = [
   {
     title: "Product architecture",
-    summary: "Translating ambiguous product needs into durable full-stack systems.",
-    evidence: ["Multi-tenant LMS architecture", "HealthTech product workflows", "CMS-driven mobile apps"],
+    summary: "Translating ambiguous product requirements into durable, maintainable full-stack systems that can grow without constant rewrites.",
+    evidence: [
+      "Multi-tenant LMS with four role-based portals",
+      "HealthTech wellness platform architecture",
+      "CMS-driven mobile product systems",
+      "Data model and permission design from the start",
+    ],
   },
   {
     title: "Cross-platform mobile delivery",
-    summary: "Shipping React and TypeScript products into native mobile release workflows.",
-    evidence: ["Capacitor", "Android production delivery", "iOS deployment workflow", "Deep linking"],
+    summary: "Shipping React and TypeScript products into native mobile release workflows to engineer platform-aware applications.",
+    evidence: [
+      "Capacitor Android production release",
+      "iOS deployment workflow implementation",
+      "Deep linking and push notification infrastructure",
+      "Safe-area, lifecycle, and WebView optimisation",
+      "App Store and Google Play preparation",
+    ],
   },
   {
-    title: "Supabase and data security",
-    summary: "Building tenant-aware systems with authentication, Postgres, RLS, realtime, and Edge Functions.",
-    evidence: ["Row-level security", "Realtime collaboration", "Admin tooling", "Email infrastructure"],
+    title: "Backend and data engineering",
+    summary: "Building secure, tenant-aware backends with authentication, relational data design, real-time workflows, and server-side logic.",
+    evidence: [
+      "Supabase Postgres with row-level security",
+      "Authentication and session management",
+      "Edge Functions and server-side logic",
+      "Realtime collaboration infrastructure",
+      "Email and notification infrastructure via Resend",
+    ],
+  },
+  {
+    title: "Frontend engineering",
+    summary: "Building performant, accessible React and TypeScript interfaces, from component libraries to complex multi-state UI flows.",
+    evidence: [
+      "React and TypeScript across every project",
+      "Component architecture and reusable design systems",
+      "Accessibility and keyboard navigation",
+      "Responsive layouts from mobile to large desktop",
+      "Next.js for CMS-driven web platforms",
+    ],
+  },
+  {
+    title: "Multi-tenant SaaS design",
+    summary: "Designing platforms where tenant isolation, role separation, and permission boundaries are structural rather than applied at the application layer.",
+    evidence: [
+      "Academy-based tenancy with Postgres RLS",
+      "Admin, tutor, student, and parent portals",
+      "Tenant branding and configuration",
+      "Invite-code enrollment patterns",
+    ],
   },
   {
     title: "Education and health technology",
-    summary: "Designing products for sensitive, workflow-heavy domains where trust and clarity matter.",
-    evidence: ["Asele", "TeachEasy", "LearnEasy Academy"],
+    summary: "Designing products for sensitive, workflow-heavy domains where trust, privacy, and user clarity are non-negotiable.",
+    evidence: [
+      "Privacy-sensitive health data boundaries in Asele",
+      "Multi-role LMS workflows in TeachEasy",
+      "K-12 learner and curriculum-aware product design",
+      "AI-assisted health briefs with appropriate scope limits",
+    ],
+  },
+  {
+    title: "Cloud delivery and operations",
+    summary: "Deploying production systems with confidence: environment configuration, CI/CD workflows, and post-release operations.",
+    evidence: [
+      "Vercel production deployment",
+      "GitHub-based CI/CD workflows",
+      "Environment variable management",
+      "Supabase Edge Functions and managed infrastructure",
+      "Pre-render and SPA routing configuration",
+    ],
   },
 ] satisfies Capability[];
-

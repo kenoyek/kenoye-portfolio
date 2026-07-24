@@ -1,11 +1,11 @@
-import { Linkedin, Github, Mail } from "lucide-react";
+import { Linkedin, Github, Mail, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 import { siteConfig } from "@/content/site";
 
 const footerLinks = [
   { label: "Work", href: "/#work" },
   { label: "About", href: "/#about" },
-  { label: "Approach", href: "/#approach" },
+  { label: "Writing", href: "/blog" },
   { label: "Contact", href: "/#contact" },
 ];
 
@@ -19,8 +19,14 @@ const Footer = () => {
               Okagua<span className="text-accent">.</span>
             </p>
             <p className="text-sm text-primary-foreground/50 leading-relaxed">
-              Software architect and product engineer building production systems across web, mobile, health, and education.
+              Senior full-stack and product engineer building production systems across web, mobile, health, and education.
             </p>
+            {siteConfig.openToWork && (
+              <div className="mt-4 inline-flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+                <span className="text-xs text-accent">{siteConfig.availabilityNote}</span>
+              </div>
+            )}
           </div>
 
           <div>
@@ -36,9 +42,15 @@ const Footer = () => {
                 </li>
               ))}
               <li>
-                <Link to="/blog" className="text-sm text-primary-foreground/50 hover:text-accent transition-colors">
-                  Blog
-                </Link>
+                <a
+                  href={siteConfig.social.resume}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-primary-foreground/50 hover:text-accent transition-colors"
+                >
+                  <FileText size={13} aria-hidden="true" />
+                  Résumé
+                </a>
               </li>
             </ul>
           </div>
@@ -48,13 +60,29 @@ const Footer = () => {
               Connect
             </p>
             <div className="flex items-center gap-3">
-              <a href={`mailto:${siteConfig.email}`} aria-label="Email" className="w-10 h-10 rounded-md border border-primary-foreground/15 flex items-center justify-center text-primary-foreground/60 hover:text-accent hover:border-accent/40 transition-all">
+              <a
+                href={`mailto:${siteConfig.email}`}
+                aria-label={`Email ${siteConfig.email}`}
+                className="w-10 h-10 rounded-md border border-primary-foreground/15 flex items-center justify-center text-primary-foreground/60 hover:text-accent hover:border-accent/40 transition-all"
+              >
                 <Mail size={16} />
               </a>
-              <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-10 h-10 rounded-md border border-primary-foreground/15 flex items-center justify-center text-primary-foreground/60 hover:text-accent hover:border-accent/40 transition-all">
+              <a
+                href={siteConfig.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn profile (opens in new tab)"
+                className="w-10 h-10 rounded-md border border-primary-foreground/15 flex items-center justify-center text-primary-foreground/60 hover:text-accent hover:border-accent/40 transition-all"
+              >
                 <Linkedin size={16} />
               </a>
-              <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="w-10 h-10 rounded-md border border-primary-foreground/15 flex items-center justify-center text-primary-foreground/60 hover:text-accent hover:border-accent/40 transition-all">
+              <a
+                href={siteConfig.social.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub profile (opens in new tab)"
+                className="w-10 h-10 rounded-md border border-primary-foreground/15 flex items-center justify-center text-primary-foreground/60 hover:text-accent hover:border-accent/40 transition-all"
+              >
                 <Github size={16} />
               </a>
             </div>

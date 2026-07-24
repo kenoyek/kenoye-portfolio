@@ -5,7 +5,12 @@ import { AdditionalProjects } from "@/components/home/AdditionalProjects";
 import { additionalProjects, getProjectBySlug, primaryProjects, projects } from "@/content/projects";
 import type { ProjectLink } from "@/content/projects";
 
-const restoredSlugs = [
+/**
+ * These slugs appear in additionalProjects after moving learneasy-academy
+ * out of primaryProjects (it is a tutoring role, not an engineering case study).
+ */
+const additionalSlugs = [
+  "learneasy-academy",
   "togacode-lms",
   "onevet-online-pet-store",
   "python-playground",
@@ -16,19 +21,29 @@ const restoredSlugs = [
 ];
 
 describe("portfolio project content", () => {
-  it("keeps the flagship project order unchanged", () => {
+  it("keeps the flagship engineering case studies in primaryProjects", () => {
+    // LearnEasy Academy is a tutoring role and should NOT appear here.
+    // Only engineering case studies with real architecture depth should be featured.
     expect(primaryProjects.map((project) => project.slug)).toEqual([
       "asele",
       "teacheasy",
       "reframe",
-      "learneasy-academy",
     ]);
   });
 
-  it("restores all valid legacy projects into typed content", () => {
-    expect(additionalProjects.map((project) => project.slug)).toEqual(restoredSlugs);
+  it("moves learneasy-academy to additionalProjects", () => {
+    const learnEasyInPrimary = primaryProjects.find((p) => p.slug === "learneasy-academy");
+    expect(learnEasyInPrimary).toBeUndefined();
 
-    restoredSlugs.forEach((slug) => {
+    const learnEasyInAdditional = additionalProjects.find((p) => p.slug === "learneasy-academy");
+    expect(learnEasyInAdditional).toBeDefined();
+  });
+
+  it("includes all expected projects in additionalProjects", () => {
+    const actualSlugs = additionalProjects.map((project) => project.slug);
+    expect(actualSlugs).toEqual(additionalSlugs);
+
+    additionalSlugs.forEach((slug) => {
       const project = getProjectBySlug(slug);
 
       expect(project).toBeDefined();
@@ -39,7 +54,7 @@ describe("portfolio project content", () => {
     });
   });
 
-  it("does not fabricate case-study or repository links for restored projects", () => {
+  it("does not fabricate case-study or repository links for additional projects", () => {
     additionalProjects.forEach((project) => {
       const links: ProjectLink[] = project.links ?? [];
 
