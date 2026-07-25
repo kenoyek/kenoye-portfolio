@@ -21,7 +21,7 @@ export const FeaturedAsele = () => {
           <motion.div variants={slideFromLeft} {...inViewProps}>
             <p className="mb-3 text-metadata uppercase text-accent">Flagship project</p>
             <h2 className="text-page-title font-semibold text-foreground">{asele.title}</h2>
-            <p className="mt-5 max-w-2xl text-body-large text-muted-foreground">{asele.summary}</p>
+            <p className="mt-5 max-w-2xl text-body-large leading-relaxed text-muted-foreground">{asele.summary}</p>
 
             <div className="mt-8 border-y border-border py-6">
               <ProjectEvidence project={asele} variant="featured" />
@@ -37,16 +37,17 @@ export const FeaturedAsele = () => {
               <motion.div variants={fadeUp}>
                 <h3 className="text-sm font-semibold text-foreground">Engineering challenge</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  Build a wellness platform around sensitive personal health context, supporting mobile delivery,
-                  notifications, multilingual flows, AI-assisted briefs, and administrative operations while keeping
-                  clear product scope boundaries.
+                  Build a wellness platform around sensitive personal health context with PostgreSQL RLS,
+                  mobile-native authentication flows, Firebase push notifications, 24-language localisation,
+                  AI-assisted briefs, and administrative operations.
                 </p>
               </motion.div>
               <motion.div variants={fadeUp}>
                 <h3 className="text-sm font-semibold text-foreground">Product boundary</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  Asele supports wellness tracking and cycle-aware briefs. It is deliberately not positioned as
-                  medical diagnosis, a product decision that shapes every data model and feature boundary.
+                  Asele supports cycle tracking, wellness trends, reminders, and assistive briefs. It is deliberately
+                  not positioned as medical diagnosis, a product decision that shapes every data model and feature
+                  boundary.
                 </p>
               </motion.div>
             </motion.div>
@@ -92,7 +93,7 @@ export const FeaturedAsele = () => {
                   Women's cycle and wellness platform
                 </p>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  React · TypeScript · Supabase · Capacitor · Push Notifications · AI health briefs
+                  React · TypeScript · Supabase · PostgreSQL RLS · Capacitor · Firebase push · AI briefs
                 </p>
                 <ul className="mt-6 space-y-2" role="list">
                   {(asele.outcomes ?? []).slice(0, 4).map((outcome) => (

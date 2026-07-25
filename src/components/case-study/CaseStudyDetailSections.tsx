@@ -497,7 +497,20 @@ export const TechnologySummary = ({ caseStudy }: { caseStudy: CaseStudy }) => (
         </div>
         <div className="space-y-4">
           <PillList items={caseStudy.platforms} label="Platforms" />
-          <PillList items={caseStudy.technologies} label="Technologies" />
+          {caseStudy.skillGroups?.length ? (
+            <div className="grid gap-4 md:grid-cols-2">
+              {caseStudy.skillGroups.map((group) => (
+                <section key={group.title} className="border-t border-border pt-4">
+                  <h3 className="text-sm font-semibold text-foreground">{group.title}</h3>
+                  <div className="mt-3">
+                    <PillList items={group.items} label={`${caseStudy.title} ${group.title}`} />
+                  </div>
+                </section>
+              ))}
+            </div>
+          ) : (
+            <PillList items={caseStudy.technologies} label="Technologies" />
+          )}
           <ProjectLinks caseStudy={caseStudy} />
         </div>
       </div>

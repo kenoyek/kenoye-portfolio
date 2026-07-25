@@ -9,7 +9,7 @@ export const capabilities = [
     title: "Product architecture",
     summary: "Translating ambiguous product requirements into durable, maintainable full-stack systems that can grow without constant rewrites.",
     evidence: [
-      "Multi-tenant LMS with four role-based portals",
+      "Multi-tenant LMS with academy-scoped portals",
       "HealthTech wellness platform architecture",
       "CMS-driven mobile product systems",
       "Data model and permission design from the start",
@@ -19,22 +19,22 @@ export const capabilities = [
     title: "Cross-platform mobile delivery",
     summary: "Shipping React and TypeScript products into native mobile release workflows to engineer platform-aware applications.",
     evidence: [
-      "Capacitor Android production release",
-      "iOS deployment workflow implementation",
-      "Deep linking and push notification infrastructure",
+      "Asele Android production release",
+      "Apple App Store release",
+      "Firebase push notification workflows",
       "Safe-area, lifecycle, and WebView optimisation",
-      "App Store and Google Play preparation",
+      "App Store and Google Play delivery",
     ],
   },
   {
     title: "Backend and data engineering",
     summary: "Building secure, tenant-aware backends with authentication, relational data design, real-time workflows, and server-side logic.",
     evidence: [
-      "Supabase Postgres with row-level security",
+      "Supabase PostgreSQL with row-level security",
       "Authentication and session management",
       "Edge Functions and server-side logic",
       "Realtime collaboration infrastructure",
-      "Email and notification infrastructure via Resend",
+      "Email observability via Resend webhooks",
     ],
   },
   {
@@ -52,10 +52,11 @@ export const capabilities = [
     title: "Multi-tenant SaaS design",
     summary: "Designing platforms where tenant isolation, role separation, and permission boundaries are structural rather than applied at the application layer.",
     evidence: [
-      "Academy-based tenancy with Postgres RLS",
+      "Academy-based tenancy with PostgreSQL RLS",
       "Admin, tutor, student, and parent portals",
+      "Recurring class series management",
       "Tenant branding and configuration",
-      "Invite-code enrollment patterns",
+      "Tenant-aware storage and document policies",
     ],
   },
   {

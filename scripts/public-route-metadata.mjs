@@ -1,6 +1,6 @@
 export const canonicalOrigin = "https://www.kenoye.site";
 export const siteName = "Okagua Kenoye";
-export const routeLastmod = "2026-07-24";
+export const routeLastmod = "2026-07-25";
 
 export const publicRoutes = [
   {
@@ -16,9 +16,9 @@ export const publicRoutes = [
   },
   {
     path: "/projects/asele",
-    title: "Asele Case Study | HealthTech Product Architecture",
+    title: "Asele Case Study | HealthTech, Supabase and Capacitor Engineering",
     description:
-      "Asele case study covering a women's wellness platform built with React, TypeScript, Supabase, Capacitor, reminders, multilingual support, and privacy-sensitive architecture.",
+      "Asele case study covering a women's wellness platform built with React, TypeScript, Supabase, PostgreSQL Row Level Security, Capacitor, Firebase push notifications, AI integration, Google Play deployment, and Apple App Store release.",
     image: "/og-asele.svg",
     type: "article",
     priority: "0.8",
@@ -27,9 +27,9 @@ export const publicRoutes = [
   },
   {
     path: "/projects/teacheasy",
-    title: "TeachEasy Case Study | Multi-tenant EdTech Platform",
+    title: "TeachEasy LMS Case Study | Multi-Tenant SaaS and Supabase Engineering",
     description:
-      "TeachEasy case study covering a multi-tenant education platform with React, TypeScript, Supabase, RLS, role-based portals, scheduling, and classroom workflows.",
+      "TeachEasy LMS case study covering a multi-tenant education platform with React, TypeScript, Supabase, PostgreSQL Row Level Security, recurring scheduling, Jitsi classrooms, Yjs collaboration, assessments, and Resend email tracking.",
     image: "/og-teacheasy.svg",
     type: "article",
     priority: "0.8",

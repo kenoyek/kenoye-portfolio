@@ -29,6 +29,8 @@ export const ProjectPreview = ({ project, emphasis = "standard" }: ProjectPrevie
   const caseStudy = getCaseStudyLink(project);
   const live = getLiveLink(project);
   const isFeatured = emphasis === "featured";
+  const outcomeLimit = isFeatured ? 4 : 3;
+  const visibleOutcomes = project.outcomes?.slice(0, outcomeLimit) ?? [];
 
   return (
     <motion.article
@@ -56,16 +58,16 @@ export const ProjectPreview = ({ project, emphasis = "standard" }: ProjectPrevie
 
           <h3 className={titleClass[emphasis]}>{project.title}</h3>
 
-          <p className="mt-3 max-w-2xl text-body-small text-muted-foreground">
+          <p className="mt-3 max-w-2xl text-body-small leading-relaxed text-muted-foreground">
             {project.summary}
           </p>
 
-          {isFeatured && project.outcomes && project.outcomes.length > 0 && (
-            <ul className="mt-5 flex flex-wrap gap-2" role="list">
-              {project.outcomes.slice(0, 3).map((outcome) => (
+          {visibleOutcomes.length > 0 && (
+            <ul className="mt-5 flex flex-wrap gap-2" role="list" aria-label={`${project.title} engineering outcomes`}>
+              {visibleOutcomes.map((outcome) => (
                 <li
                   key={outcome.label}
-                  className="rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium text-foreground"
+                  className="max-w-full rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium leading-relaxed text-foreground"
                 >
                   {outcome.label}
                 </li>
@@ -85,7 +87,7 @@ export const ProjectPreview = ({ project, emphasis = "standard" }: ProjectPrevie
             {caseStudy ? (
               <Link
                 to={caseStudy.href}
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-accent underline-offset-4 transition-all hover:gap-2.5 hover:underline"
+                className="inline-flex items-center gap-1.5 rounded-sm text-sm font-medium text-accent underline-offset-4 transition-all hover:gap-2.5 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
               >
                 <BookOpen size={15} aria-hidden="true" /> {caseStudy.label}
               </Link>
@@ -95,7 +97,7 @@ export const ProjectPreview = ({ project, emphasis = "standard" }: ProjectPrevie
                 href={live.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-accent underline-offset-4 transition-all hover:gap-2.5 hover:underline"
+                className="inline-flex items-center gap-1.5 rounded-sm text-sm font-medium text-accent underline-offset-4 transition-all hover:gap-2.5 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
               >
                 <ExternalLink size={15} aria-hidden="true" /> {live.label}
               </a>
