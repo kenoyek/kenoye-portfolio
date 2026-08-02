@@ -28,6 +28,7 @@ No full redesign should begin until the design direction, case-study priority or
 The project is suitable for continued development, but the architecture should be tightened before a major visual revamp.
 
 Strengths:
+
 - Simple Vite app structure is easy to deploy and reason about.
 - Routes are centralized in `src/App.tsx`.
 - Supabase integration is isolated in `src/integrations/supabase`.
@@ -35,6 +36,7 @@ Strengths:
 - UI primitives are locally owned, which allows controlled styling.
 
 Weaknesses:
+
 - Homepage content is hardcoded inside section components rather than modeled as typed portfolio data.
 - `PortfolioSection.tsx` is oversized and mixes project data, filtering, modal behavior, and rendering.
 - `Reframe.tsx` is a 530-line route component with data, layout, metadata, animation, and presentation in one file.
@@ -45,6 +47,7 @@ Weaknesses:
 - Many shadcn UI components appear unused and add maintenance surface.
 
 Recommended architecture:
+
 - Keep Vite/React for now.
 - Add a typed content layer under `src/content` or `src/data`.
 - Split project data from rendering.
@@ -55,12 +58,14 @@ Recommended architecture:
 ## 4. Current UX Assessment
 
 First five seconds:
+
 - A visitor understands that Kenoye builds systems, teaches, and works with React/TypeScript/Python.
 - Seniority is implied but not proven quickly enough.
 - The hero communicates broad value, but it does not immediately name the highest-value positioning: full-stack/product architecture, mobile delivery, Supabase systems, EdTech/HealthTech, and leadership.
 - The terminal visual is distinctive enough to avoid pure marketing-site feel, but the copy still resembles portfolio-template language.
 
 Information architecture:
+
 - Current order: hero, about, portfolio, featured case study, skills, experience, tutoring, contact, final CTA, footer.
 - For senior audiences, selected work should come earlier and go deeper.
 - Skills should not be a generic matrix; they should support the project stories.
@@ -69,6 +74,7 @@ Information architecture:
 - Blog exists but is not yet positioned as thought leadership on the homepage.
 
 Recommended IA:
+
 1. Hero: name, positioning, proof anchors, CTA.
 2. Selected Work: Asele, TeachEasy, Reframe, LearnEasy/TogaCode as applicable.
 3. Case-study preview: one deep story, with technical decisions and ownership.
@@ -81,12 +87,14 @@ Recommended IA:
 ## 5. Visual-Design Assessment
 
 What works:
+
 - The palette is restrained: dark primary, green accent, neutral backgrounds.
 - Typography is readable and mostly consistent.
 - Section spacing is decent on mobile and desktop.
 - The site avoids extreme gradients and heavy 3D.
 
 What weakens credibility:
+
 - Too many rounded cards and repeated two-column/card-grid layouts.
 - Excessive small badges/pills make important metadata feel decorative.
 - Framer Motion is applied nearly everywhere; motion stops feeling intentional.
@@ -98,12 +106,14 @@ What weakens credibility:
 ## 6. Content Assessment
 
 Strong content:
+
 - Reframe has concrete platform/architecture details.
 - TogaCode has real technical decisions: RLS, Edge Functions, invite codes, code execution.
 - The portfolio names project problems, roles, solutions, and impact.
 - The teaching narrative gives personality and differentiation.
 
 Content risks:
+
 - Some claims need verification or softer phrasing: `500+ students`, `92% capstone completion`, `course creation time dropped ~70%`, `thousands of end users`, `3 countries`, `60%+ manual workflow reduction`.
 - "Products that matter", "measurable impact", "turn vague problems into shipped software" are usable but generic unless grounded by examples.
 - Asele and TeachEasy are underrepresented compared with their real importance from the brief.
@@ -113,12 +123,14 @@ Content risks:
 ## 7. Accessibility Assessment
 
 Good:
+
 - Forms have visible labels.
 - Icon-only footer and nav buttons generally have `aria-label`.
 - Mobile menu locks body scroll.
 - Color tokens support light/dark themes.
 
 Issues:
+
 - No skip link.
 - No explicit reduced-motion strategy despite heavy Framer Motion usage.
 - Mobile drawer lacks `aria-expanded`, `aria-controls`, dialog semantics, and focus management.
@@ -133,11 +145,13 @@ Target: WCAG 2.2 AA where practical.
 ## 8. Performance Assessment
 
 Observed build:
+
 - Production build passes.
 - Generated JS bundle is about 1.2 MB uncompressed and 368 kB gzip.
 - Vite warns that chunks exceed 500 kB.
 
 Risks:
+
 - Admin/editor dependencies such as Tiptap likely contribute to the main bundle if not route-split.
 - Framer Motion is imported across many sections.
 - Google Fonts are loaded via CSS `@import`, which is less controllable than `<link rel="preconnect">` and stylesheet links in `index.html`.
@@ -148,12 +162,14 @@ Risks:
 ## 9. SEO Assessment
 
 Good:
+
 - `index.html` has baseline title/description/OG/Twitter tags.
 - Blog post route sets dynamic metadata and JSON-LD client-side.
 - Sitemap Edge Function exists.
 - `public/robots.txt` exists.
 
 Issues:
+
 - Homepage metadata still includes generated-platform social image URL from `gpt-engineer-file-uploads`.
 - `SITE_URL` in `BlogPost.tsx` and `supabase/functions/sitemap/index.ts` is still `https://kenoye.lovable.app`.
 - SPA metadata is client-side, so crawlers may not always see route-specific metadata.
@@ -165,6 +181,7 @@ Issues:
 ## 10. Maintainability Assessment
 
 Critical maintainability issues:
+
 - Hardcoded content spread across components.
 - Weak TypeScript compiler settings.
 - Lint currently fails.
@@ -173,6 +190,7 @@ Critical maintainability issues:
 - Two lockfile ecosystems are present.
 
 Recommended content architecture:
+
 - Start with typed TypeScript objects, not MDX or CMS, because the portfolio needs strong structure and the content volume is modest.
 - Use `src/content/projects.ts`, `src/content/capabilities.ts`, `src/content/experience.ts`.
 - Consider MDX later only for long-form case studies if the writing cadence increases.
@@ -181,6 +199,7 @@ Recommended content architecture:
 ## 11. Problems Ranked by Severity
 
 Critical:
+
 - Lint fails with 8 errors and 13 warnings.
 - `npm audit` reports 19 vulnerabilities, including one critical.
 - Supabase/contact function deployment depends on project privileges and secrets outside the repo.
@@ -188,6 +207,7 @@ Critical:
 - Project claims and technologies have factual conflicts or unsupported metrics.
 
 High value:
+
 - Bundle is too large for a portfolio due to non-split editor/admin dependencies.
 - Case-study system is not reusable.
 - Homepage overuses repeated cards/pills/scroll animations.
@@ -195,6 +215,7 @@ High value:
 - Accessibility gaps in motion, mobile navigation, and skip/focus behavior.
 
 Refinement:
+
 - Upgrade typography from one-size Inter to a more editorial hierarchy.
 - Replace placeholder gallery with real screenshots or diagrams.
 - Improve footer/header labels and CTA language.
@@ -203,6 +224,7 @@ Refinement:
 ## 12. Quick Wins
 
 Safe in isolation:
+
 - Add `*.tsbuildinfo` to `.gitignore`.
 - Remove or isolate `lovable-tagger` once confirmed unnecessary.
 - Fix lint errors in app-owned files.
@@ -213,6 +235,7 @@ Safe in isolation:
 - Add `npm run typecheck`.
 
 Needs approval/content:
+
 - New hero positioning.
 - Visual direction.
 - Case-study prioritization.
@@ -310,56 +333,66 @@ Preferred direction: Direction A, Editorial Engineering Portfolio, with selected
 ## 14. Recommended Information Architecture
 
 1. Hero
+
 - Purpose: establish identity, senior positioning, domains, and next action.
 - Content: Okagua Kenoye; software architect/product engineer; full-stack, mobile, Supabase, EdTech/HealthTech.
 - Layout: editorial text block plus one real artifact or concise systems panel.
 - Reuse: some current hero copy, but rewrite.
 
 2. Selected Work
+
 - Purpose: make projects the proof.
 - Content: Asele, TeachEasy, Reframe, LearnEasy/TogaCode.
 - Layout: one featured project plus two or three editorial summaries.
 - Reuse: project data, but reorganize and correct.
 
 3. Case Study Preview
+
 - Purpose: show depth without requiring a click.
 - Content: architecture, constraints, decisions, results from strongest project.
 - Layout: narrative plus metadata rail.
 - Reuse: Reframe/TogaCode sections.
 
 4. Professional Positioning
+
 - Purpose: explain the combination of engineering, product, leadership, education.
 - Layout: short prose plus capability principles.
 - Reuse: About section, rewritten.
 
 5. Capabilities
+
 - Purpose: replace generic skills grid with contextual strengths.
 - Content: product architecture, mobile delivery, Supabase/RLS, SaaS/multi-tenant, AI integrations, technical leadership.
 - Layout: grouped capability list with evidence links.
 - Reuse: Skills data, rewritten.
 
 6. Experience and Leadership
+
 - Purpose: provide career credibility.
 - Layout: timeline/list with verifiable scope.
 - Reuse: Experience section with fact checks.
 
 7. Writing or Insights
+
 - Purpose: show thinking if blog content is active.
 - Layout: latest posts or featured essay.
 - Reuse: Blog route if content exists.
 
 8. Contact
+
 - Purpose: clear next step.
 - Layout: concise form plus direct email and fit statements.
 - Reuse: ContactSection, with better errors/spam handling.
 
 Remove or merge:
+
 - Current `StatsSection` and `TestimonialsSection` unless real, verified content is supplied.
 - Current generic `ServicesSection` unless reframed into capabilities/engagement types.
 
 ## 15. Recommended Component Architecture
 
 Shared components:
+
 - `SiteHeader`
 - `MobileNavigation`
 - `SiteFooter`
@@ -380,17 +413,21 @@ Shared components:
 - `ContactPanel`
 
 Data-driven:
+
 - Projects, capabilities, experience, navigation links, social links.
 
 Route-specific:
+
 - Admin dashboard/editor, blog listing, blog post, each case-study route.
 
 Lazy-loaded:
+
 - Blog pages, admin pages, Tiptap editor, heavy case-study galleries.
 
 ## 16. Case-Study Strategy
 
 Reusable project summary fields:
+
 - Project name
 - Product category
 - Problem
@@ -411,6 +448,7 @@ Reusable project summary fields:
 - Technologies
 
 Detailed case-study sections:
+
 1. Overview
 2. Challenge
 3. Context and constraints
@@ -424,6 +462,7 @@ Detailed case-study sections:
 11. Gallery
 
 Project-specific notes:
+
 - Asele should become a flagship HealthTech/mobile case study if the React/TypeScript/Supabase/Capacitor facts are confirmed.
 - TeachEasy should become the flagship multi-tenant EdTech/SaaS architecture story.
 - Reframe can remain a mobile delivery case study but needs real screenshots and exact status.
@@ -433,32 +472,40 @@ Project-specific notes:
 ## 17. Content Recommendations
 
 Hero:
+
 - Replace generic "I build scalable systems..." with a more specific positioning line.
 - Example direction: "I design and ship full-stack and mobile products for education, health, and content-driven platforms."
 
 Supporting statement:
+
 - Add stack/domain specificity: React, TypeScript, Supabase, Capacitor, multi-tenant systems, mobile release workflows.
 
 Primary CTA:
+
 - "View selected work" should lead to projects.
 - Secondary CTA: "Discuss a project" or "Download resume".
 
 About:
+
 - Keep teaching as differentiator, but connect it to leadership, clarity, and systems thinking.
 
 Experience:
+
 - Use verifiable scope and avoid unsupported metrics until confirmed.
 
 Skills:
+
 - Reframe as capabilities with evidence, not proficiency labels.
 
 Contact:
+
 - State the types of work Kenoye is best suited for.
 - Improve error messages and fallback direct email.
 
 ## 18. Technical Recommendations
 
 Performance:
+
 - Route-split admin/blog editor.
 - Lazy-load Framer Motion-heavy case-study modules or reduce motion use.
 - Move fonts to `index.html` with preconnect and stylesheet links.
@@ -466,6 +513,7 @@ Performance:
 - Remove unused UI components/dependencies once usage is audited.
 
 SEO:
+
 - Confirm production domain.
 - Replace `kenoye.lovable.app` constants.
 - Add homepage Person schema.
@@ -474,6 +522,7 @@ SEO:
 - Ensure sitemap function is deployed or replace with static generated sitemap.
 
 Accessibility:
+
 - Add skip link.
 - Add reduced-motion CSS and animation guards.
 - Improve mobile drawer semantics/focus.
@@ -481,6 +530,7 @@ Accessibility:
 - Sanitize blog HTML or restrict trusted admin-only paths.
 
 Security:
+
 - Run `npm audit fix` in a controlled dependency-update branch.
 - Review exposed publishable key strategy; anon key is expected public, service keys must never enter client code.
 - Add contact spam protection: Turnstile/hCaptcha, honeypot, rate limiting, or Supabase function throttling.
@@ -488,6 +538,7 @@ Security:
 - Add security headers in `vercel.json`.
 
 Reliability:
+
 - Add ErrorBoundary.
 - Add route-level loading/error states.
 - Add real tests for navigation, contact form, project rendering, and blog fallbacks.
@@ -500,6 +551,7 @@ See `docs/portfolio-revamp-roadmap.md`.
 ## 20. Risks and Dependencies
 
 Dependencies:
+
 - Production domain confirmation.
 - Real screenshots/product artifacts for Asele, TeachEasy, Reframe.
 - Verified role/scope/outcome facts.
@@ -507,6 +559,7 @@ Dependencies:
 - Resend verified sender domain.
 
 Risks:
+
 - A full redesign before content modeling will produce another polished but shallow template.
 - Upgrading dependencies may cause routing/admin/editor regressions.
 - Embedding project-specific metrics without evidence will harm credibility.
@@ -525,6 +578,7 @@ Risks:
 ## Research Notes
 
 Patterns referenced during audit:
+
 - Nielsen Norman Group guidance on first impressions and credibility: https://www.nngroup.com/articles/first-impressions-human-automaticity/
 - Nielsen Norman Group guidance on scanning and content hierarchy: https://www.nngroup.com/articles/how-users-read-on-the-web/
 - Google web.dev Core Web Vitals and performance guidance: https://web.dev/vitals/

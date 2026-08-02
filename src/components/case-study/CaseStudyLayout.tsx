@@ -4,7 +4,11 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import { CaseStudySeo } from "@/components/case-study/CaseStudySeo";
-import { CaseStudyHero, CaseStudySection, CaseStudyTableOfContents } from "@/components/case-study/CaseStudyPrimitives";
+import {
+  CaseStudyHero,
+  CaseStudySection,
+  CaseStudyTableOfContents,
+} from "@/components/case-study/CaseStudyPrimitives";
 import {
   ArchitectureDiagram,
   CaseStudyFooterNavigation,

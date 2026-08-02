@@ -7,6 +7,7 @@ type PageMetadata = {
   description: string;
   canonicalUrl: string;
   imageUrl?: string;
+  imageAlt?: string;
   type?: "website" | "article";
   ogTitle?: string;
   ogDescription?: string;
@@ -16,11 +17,12 @@ type PageMetadata = {
 
 const routeJsonLdId = "route-jsonld";
 
-const absoluteSeoUrl = (url: string) =>
-  new URL(url, siteConfig.canonicalOrigin).toString();
+const absoluteSeoUrl = (url: string) => new URL(url, siteConfig.canonicalOrigin).toString();
 
 const upsertMeta = (attribute: "name" | "property", key: string, content: string) => {
-  let element = document.head.querySelector(`meta[${attribute}="${key}"]`) as HTMLMetaElement | null;
+  let element = document.head.querySelector(
+    `meta[${attribute}="${key}"]`,
+  ) as HTMLMetaElement | null;
 
   if (!element) {
     element = document.createElement("meta");
@@ -66,6 +68,7 @@ export const setPageMetadata = ({
   description,
   canonicalUrl,
   imageUrl = "/og-home.svg",
+  imageAlt,
   type = "website",
   ogTitle = title,
   ogDescription = description,
@@ -75,6 +78,7 @@ export const setPageMetadata = ({
   if (typeof document === "undefined") return;
 
   const image = absoluteSeoUrl(imageUrl);
+  const socialImageAlt = imageAlt || `${ogTitle} social preview image`;
 
   document.title = title;
   upsertMeta("name", "description", description);
@@ -89,11 +93,13 @@ export const setPageMetadata = ({
   upsertMeta("property", "og:image", image);
   upsertMeta("property", "og:image:width", "1200");
   upsertMeta("property", "og:image:height", "630");
+  upsertMeta("property", "og:image:alt", socialImageAlt);
 
   upsertMeta("name", "twitter:card", "summary_large_image");
   upsertMeta("name", "twitter:title", ogTitle);
   upsertMeta("name", "twitter:description", ogDescription);
   upsertMeta("name", "twitter:image", image);
+  upsertMeta("name", "twitter:image:alt", socialImageAlt);
 
   setRouteJsonLd(jsonLd);
 };

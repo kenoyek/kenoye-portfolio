@@ -6,8 +6,7 @@ type ProjectTechnologyListProps = {
 };
 
 export const ProjectTechnologyList = ({ technologies, className }: ProjectTechnologyListProps) => (
-  <p className={cn("text-xs font-mono leading-relaxed text-muted-foreground", className)}>
+  <p className={cn("font-mono text-xs leading-relaxed text-muted-foreground", className)}>
     {technologies.join(" / ")}
   </p>
 );
-

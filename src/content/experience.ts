@@ -11,7 +11,7 @@ export type ExperienceEntry = {
 export const experience = [
   {
     title: "Founder and Lead Engineer",
-    organization: "Kasel Consults",
+    organization: "Kasel Digital Solutions Limited",
     period: "2022 to Present",
     type: "Consulting",
     summary:

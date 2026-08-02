@@ -27,51 +27,51 @@ The gap is not the stack. The gap is **curation and seniority signal**. The site
 
 ### Critical Priority
 
-| ID | Finding | Component |
-|----|---------|-----------|
-| C1 | "View credentials" is a weak, ambiguous résumé CTA | `HomeHero.tsx` |
-| C2 | No credibility strip between hero and projects — seniority not visible in 5 seconds | `Index.tsx` (missing component) |
-| C3 | "replace with verified Asele product screenshots" exposed in `aria-label` in production | `FeaturedAsele.tsx` |
-| C4 | LearnEasy Academy (tutoring role) is `featured: true` alongside engineering case studies | `projects.ts` |
-| C5 | No résumé link in primary desktop navbar | `Navbar.tsx` |
-| C6 | `og:image` is an SVG — will not render in LinkedIn, Twitter, WhatsApp, iMessage previews | `index.html` |
+| ID  | Finding                                                                                  | Component                       |
+| --- | ---------------------------------------------------------------------------------------- | ------------------------------- |
+| C1  | "View credentials" is a weak, ambiguous résumé CTA                                       | `HomeHero.tsx`                  |
+| C2  | No credibility strip between hero and projects — seniority not visible in 5 seconds      | `Index.tsx` (missing component) |
+| C3  | "replace with verified Asele product screenshots" exposed in `aria-label` in production  | `FeaturedAsele.tsx`             |
+| C4  | LearnEasy Academy (tutoring role) is `featured: true` alongside engineering case studies | `projects.ts`                   |
+| C5  | No résumé link in primary desktop navbar                                                 | `Navbar.tsx`                    |
+| C6  | `og:image` is an SVG — will not render in LinkedIn, Twitter, WhatsApp, iMessage previews | `index.html`                    |
 
 ### High Priority
 
-| ID | Finding | Component |
-|----|---------|-----------|
-| H1 | All featured projects at equal visual weight — first project should dominate | `SelectedWork.tsx`, `ProjectPreview.tsx` |
-| H2 | AdditionalProjects shows 7 items including 3 experimental tools — dilutes senior signal | `AdditionalProjects.tsx` |
-| H3 | About section: only 3 short paragraphs, no philosophy, no preferred roles | `ProfessionalPositioning.tsx` |
-| H4 | HomeCapabilities: 4 items, 2 columns — missing Backend, Cloud, Frontend, Leadership | `HomeCapabilities.tsx`, `capabilities.ts` |
-| H5 | Experience: only 2 entries, no highlights, no type label | `HomeExperience.tsx`, `experience.ts` |
-| H6 | No seniority evidence section — no architecture decisions, ownership scope | Missing component |
-| H7 | EngineeringPrinciples buried after capabilities and experience | `Index.tsx` |
-| H8 | Contact form missing "Full-time opportunity" and "Recruitment enquiry" options | `ContactPanel.tsx` |
-| H9 | No availability signal anywhere on site | Multiple |
-| H10 | No résumé button in hero CTAs | `HomeHero.tsx` |
+| ID  | Finding                                                                                 | Component                                 |
+| --- | --------------------------------------------------------------------------------------- | ----------------------------------------- |
+| H1  | All featured projects at equal visual weight — first project should dominate            | `SelectedWork.tsx`, `ProjectPreview.tsx`  |
+| H2  | AdditionalProjects shows 7 items including 3 experimental tools — dilutes senior signal | `AdditionalProjects.tsx`                  |
+| H3  | About section: only 3 short paragraphs, no philosophy, no preferred roles               | `ProfessionalPositioning.tsx`             |
+| H4  | HomeCapabilities: 4 items, 2 columns — missing Backend, Cloud, Frontend, Leadership     | `HomeCapabilities.tsx`, `capabilities.ts` |
+| H5  | Experience: only 2 entries, no highlights, no type label                                | `HomeExperience.tsx`, `experience.ts`     |
+| H6  | No seniority evidence section — no architecture decisions, ownership scope              | Missing component                         |
+| H7  | EngineeringPrinciples buried after capabilities and experience                          | `Index.tsx`                               |
+| H8  | Contact form missing "Full-time opportunity" and "Recruitment enquiry" options          | `ContactPanel.tsx`                        |
+| H9  | No availability signal anywhere on site                                                 | Multiple                                  |
+| H10 | No résumé button in hero CTAs                                                           | `HomeHero.tsx`                            |
 
 ### Medium Priority
 
-| ID | Finding | Component |
-|----|---------|-----------|
-| M1 | Both `bun.lock` and `package-lock.json` exist | Root |
-| M2 | Footer missing "Writing" link that exists in the navbar | `Footer.tsx` |
-| M3 | Footer missing résumé link | `Footer.tsx` |
-| M4 | `siteConfig` title outdated for the redesigned positioning | `site.ts` |
-| M5 | Contact form success message does not include response time estimate | `ContactPanel.tsx` |
-| M6 | No `<meta name="theme-color">` for mobile browser chrome | `index.html` |
-| M7 | JSON-LD missing `hasOccupation` and `worksFor` fields | `index.html` |
-| M8 | Hero aria-label on logo link unhelpful ("Okagua.") | `Navbar.tsx` |
+| ID  | Finding                                                              | Component          |
+| --- | -------------------------------------------------------------------- | ------------------ |
+| M1  | Both `bun.lock` and `package-lock.json` exist                        | Root               |
+| M2  | Footer missing "Writing" link that exists in the navbar              | `Footer.tsx`       |
+| M3  | Footer missing résumé link                                           | `Footer.tsx`       |
+| M4  | `siteConfig` title outdated for the redesigned positioning           | `site.ts`          |
+| M5  | Contact form success message does not include response time estimate | `ContactPanel.tsx` |
+| M6  | No `<meta name="theme-color">` for mobile browser chrome             | `index.html`       |
+| M7  | JSON-LD missing `hasOccupation` and `worksFor` fields                | `index.html`       |
+| M8  | Hero aria-label on logo link unhelpful ("Okagua.")                   | `Navbar.tsx`       |
 
 ### Low Priority
 
-| ID | Finding | Component |
-|----|---------|-----------|
-| L1 | `src/App.css` is effectively empty (30 bytes) | Root |
-| L2 | `tsconfig.app.json` does not enable `strictNullChecks` | `tsconfig.app.json` |
-| L3 | No `theme-color` meta for mobile browser chrome | `index.html` |
-| L4 | Many unused Radix UI components add bundle weight | `package.json` |
+| ID  | Finding                                                | Component           |
+| --- | ------------------------------------------------------ | ------------------- |
+| L1  | `src/App.css` is effectively empty (30 bytes)          | Root                |
+| L2  | `tsconfig.app.json` does not enable `strictNullChecks` | `tsconfig.app.json` |
+| L3  | No `theme-color` meta for mobile browser chrome        | `index.html`        |
+| L4  | Many unused Radix UI components add bundle weight      | `package.json`      |
 
 ---
 

@@ -21,7 +21,12 @@ const BlogLikeButton = ({ postId }: { postId: string }) => {
   const fetchLikes = useCallback(async () => {
     const [{ count: total }, { data: mine }] = await Promise.all([
       supabase.from("blog_likes").select("*", { count: "exact", head: true }).eq("post_id", postId),
-      supabase.from("blog_likes").select("id").eq("post_id", postId).eq("session_id", sessionId).maybeSingle(),
+      supabase
+        .from("blog_likes")
+        .select("id")
+        .eq("post_id", postId)
+        .eq("session_id", sessionId)
+        .maybeSingle(),
     ]);
     setCount(total || 0);
     setLiked(!!mine);
@@ -32,12 +37,18 @@ const BlogLikeButton = ({ postId }: { postId: string }) => {
 
     const channel = supabase
       .channel(`likes-${postId}`)
-      .on("postgres_changes", { event: "*", schema: "public", table: "blog_likes", filter: `post_id=eq.${postId}` }, () => {
-        fetchLikes();
-      })
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "blog_likes", filter: `post_id=eq.${postId}` },
+        () => {
+          fetchLikes();
+        },
+      )
       .subscribe();
 
-    return () => { supabase.removeChannel(channel); };
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, [fetchLikes, postId]);
 
   const toggle = async () => {
@@ -57,10 +68,10 @@ const BlogLikeButton = ({ postId }: { postId: string }) => {
       onClick={toggle}
       disabled={loading}
       className={cn(
-        "inline-flex items-center gap-1.5 px-4 py-2 rounded-full border transition-all text-sm font-medium",
+        "inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-medium transition-all",
         liked
-          ? "bg-destructive/10 border-destructive/30 text-destructive"
-          : "bg-muted/50 border-border text-muted-foreground hover:bg-muted hover:text-foreground"
+          ? "border-destructive/30 bg-destructive/10 text-destructive"
+          : "border-border bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground",
       )}
     >
       <Heart size={16} className={cn(liked && "fill-current")} />

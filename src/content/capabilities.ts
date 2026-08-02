@@ -7,7 +7,8 @@ export type Capability = {
 export const capabilities = [
   {
     title: "Product architecture",
-    summary: "Translating ambiguous product requirements into durable, maintainable full-stack systems that can grow without constant rewrites.",
+    summary:
+      "Translating ambiguous product requirements into durable, maintainable full-stack systems that can grow without constant rewrites.",
     evidence: [
       "Multi-tenant LMS with academy-scoped portals",
       "HealthTech wellness platform architecture",
@@ -17,7 +18,8 @@ export const capabilities = [
   },
   {
     title: "Cross-platform mobile delivery",
-    summary: "Shipping React and TypeScript products into native mobile release workflows to engineer platform-aware applications.",
+    summary:
+      "Shipping React and TypeScript products into native mobile release workflows to engineer platform-aware applications.",
     evidence: [
       "Asele Android production release",
       "Apple App Store release",
@@ -28,7 +30,8 @@ export const capabilities = [
   },
   {
     title: "Backend and data engineering",
-    summary: "Building secure, tenant-aware backends with authentication, relational data design, real-time workflows, and server-side logic.",
+    summary:
+      "Building secure, tenant-aware backends with authentication, relational data design, real-time workflows, and server-side logic.",
     evidence: [
       "Supabase PostgreSQL with row-level security",
       "Authentication and session management",
@@ -39,7 +42,8 @@ export const capabilities = [
   },
   {
     title: "Frontend engineering",
-    summary: "Building performant, accessible React and TypeScript interfaces, from component libraries to complex multi-state UI flows.",
+    summary:
+      "Building performant, accessible React and TypeScript interfaces, from component libraries to complex multi-state UI flows.",
     evidence: [
       "React and TypeScript across every project",
       "Component architecture and reusable design systems",
@@ -50,7 +54,8 @@ export const capabilities = [
   },
   {
     title: "Multi-tenant SaaS design",
-    summary: "Designing platforms where tenant isolation, role separation, and permission boundaries are structural rather than applied at the application layer.",
+    summary:
+      "Designing platforms where tenant isolation, role separation, and permission boundaries are structural rather than applied at the application layer.",
     evidence: [
       "Academy-based tenancy with PostgreSQL RLS",
       "Admin, tutor, student, and parent portals",
@@ -61,7 +66,8 @@ export const capabilities = [
   },
   {
     title: "Education and health technology",
-    summary: "Designing products for sensitive, workflow-heavy domains where trust, privacy, and user clarity are non-negotiable.",
+    summary:
+      "Designing products for sensitive, workflow-heavy domains where trust, privacy, and user clarity are non-negotiable.",
     evidence: [
       "Privacy-sensitive health data boundaries in Asele",
       "Multi-role LMS workflows in TeachEasy",
@@ -71,7 +77,8 @@ export const capabilities = [
   },
   {
     title: "Cloud delivery and operations",
-    summary: "Deploying production systems with confidence: environment configuration, CI/CD workflows, and post-release operations.",
+    summary:
+      "Deploying production systems with confidence: environment configuration, CI/CD workflows, and post-release operations.",
     evidence: [
       "Vercel production deployment",
       "GitHub-based CI/CD workflows",

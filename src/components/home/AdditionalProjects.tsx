@@ -8,7 +8,9 @@ import { additionalProjects } from "@/content/projects";
 import type { ProjectLink } from "@/content/projects";
 
 const getPrimaryExternalLink = (links: ProjectLink[] | undefined) =>
-  links?.find((link) => link.kind === "live" || link.kind === "repository" || link.kind === "external");
+  links?.find(
+    (link) => link.kind === "live" || link.kind === "repository" || link.kind === "external",
+  );
 
 export const AdditionalProjects = () => (
   <Section id="additional-work" className="pt-0">
@@ -31,7 +33,9 @@ export const AdditionalProjects = () => (
                   <div>
                     <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1.5">
                       <ProjectStatus status={project.projectStatus} />
-                      <span className="text-muted-foreground" aria-hidden="true">/</span>
+                      <span className="text-muted-foreground" aria-hidden="true">
+                        /
+                      </span>
                       <p className="text-metadata uppercase text-muted-foreground">
                         {project.metadata?.productCategory || project.category.join(" / ")}
                       </p>
@@ -40,7 +44,10 @@ export const AdditionalProjects = () => (
                     <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
                       {project.shortSummary}
                     </p>
-                    <ProjectTechnologyList technologies={project.technologies.slice(0, 4)} className="mt-3" />
+                    <ProjectTechnologyList
+                      technologies={project.technologies.slice(0, 4)}
+                      className="mt-3"
+                    />
                   </div>
 
                   <div className="space-y-3 md:text-right">

@@ -15,6 +15,7 @@ Date: 2026-07-24
 Defined in `src/index.css` and exposed through `tailwind.config.ts`.
 
 Core semantic tokens:
+
 - `background`
 - `surface`
 - `surface-elevated`
@@ -35,6 +36,7 @@ Core semantic tokens:
 - `ring`
 
 Rules:
+
 - Use semantic tokens rather than hardcoded hues in new components.
 - Use `accent` for action, status emphasis, and technical highlights only.
 - Avoid additional accent colors unless they are project-specific and documented.
@@ -55,6 +57,7 @@ Defined in `tailwind.config.ts`.
 - `text-metadata`: uppercase metadata labels.
 
 Rules:
+
 - Letter spacing is set to `0` for headings to avoid compressed generated-site styling.
 - Use metadata text sparingly.
 - Prefer readable line lengths and stronger hierarchy over decorative font changes.
@@ -63,12 +66,14 @@ Rules:
 ## Spacing Scale
 
 Current shared spacing:
+
 - `.section-padding`: standard responsive vertical rhythm.
 - `Container`: standard horizontal gutters and max widths.
 - `Section`: consistent section shell.
 - `SectionHeader`: consistent section title, eyebrow, divider, and summary treatment.
 
 Rules:
+
 - Prefer shared layout primitives before adding one-off `max-w-[1120px] mx-auto px-5` strings.
 - Use tighter spacing in metadata rails and larger spacing in narrative sections.
 - Avoid wrapping every section in a card.
@@ -76,6 +81,7 @@ Rules:
 ## Radius Scale
 
 Defined in `src/index.css`:
+
 - `--radius-sm`: small controls.
 - `--radius-md`: compact UI.
 - `--radius-lg`: standard contained surfaces.
@@ -83,6 +89,7 @@ Defined in `src/index.css`:
 - `--radius`: compatibility alias for existing shadcn primitives.
 
 Rules:
+
 - Buttons and inputs should remain compact.
 - Repeated project cards should use restrained radius.
 - Large rounded containers are reserved for major visual surfaces, not every section.
@@ -90,11 +97,13 @@ Rules:
 ## Shadow Usage
 
 Defined in `src/index.css`:
+
 - `shadow-subtle`: restrained elevation.
 - `shadow-overlay`: drawers, dialogs, popovers.
 - `shadow-media`: product screenshots or featured media.
 
 Rules:
+
 - Do not use glow as a default emphasis mechanism.
 - Prefer visible borders and spatial hierarchy.
 - Use overlay shadow only for actual overlays.
@@ -102,12 +111,14 @@ Rules:
 ## Motion Rules
 
 Foundation:
+
 - Global `prefers-reduced-motion: reduce` support exists.
 - Motion should not delay reading.
 - No continuous decorative motion by default.
 - Prefer short transitions for state changes and navigation feedback.
 
 Rules:
+
 - Keep Framer Motion where it adds meaningful route/section polish.
 - Remove repeated entrance animations during homepage redesign if they make sections feel identical.
 - Avoid cursor effects, heavy parallax, and animated background blobs.
@@ -115,6 +126,7 @@ Rules:
 ## Component Rules
 
 New primitives:
+
 - `Container`
 - `Section`
 - `SectionHeader`
@@ -123,6 +135,7 @@ New primitives:
 - `ProjectStatus`
 
 Rules:
+
 - Components should consume structured content where practical.
 - Do not duplicate project facts inside JSX.
 - Technology lists should be typographic or restrained, not dominant colorful pills.
@@ -131,12 +144,14 @@ Rules:
 ## Accessibility Rules
 
 Implemented foundation:
+
 - Skip-to-content link.
 - Global visible `:focus-visible` outline.
 - Mobile nav now exposes `aria-expanded`, `aria-controls`, dialog role, and modal state.
 - Reduced-motion CSS support.
 
 Rules:
+
 - Use native HTML semantics before ARIA.
 - Every icon-only button needs an accessible name.
 - Project screenshots need meaningful alt text or should be marked decorative.
@@ -160,4 +175,3 @@ Rules:
 - `PortfolioSection` now consumes typed project content from `src/content/projects.ts`.
 - Existing shadcn primitives remain, but new revamp components should use the smaller layout/project primitives first.
 - Existing `glass-card` remains for compatibility but now maps to a restrained border/radius treatment.
-

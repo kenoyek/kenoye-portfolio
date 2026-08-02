@@ -23,5 +23,4 @@ export const siteConfig = {
   },
 } as const;
 
-export const absoluteUrl = (path = "/") =>
-  new URL(path, siteConfig.canonicalOrigin).toString();
+export const absoluteUrl = (path = "/") => new URL(path, siteConfig.canonicalOrigin).toString();

@@ -59,16 +59,20 @@ const Blog = () => {
 
       <section className="px-5 pb-14 pt-24 sm:px-6 md:pb-16 md:pt-28">
         <div className="mx-auto mb-8 max-w-4xl text-center sm:mb-10 md:mb-12">
-          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">Blog</h1>
-          <p className="mx-auto max-w-2xl text-base text-muted-foreground">Insights, tutorials, and updates from Okagua</p>
+          <h1 className="mb-4 font-heading text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
+            Blog
+          </h1>
+          <p className="mx-auto max-w-2xl text-base text-muted-foreground">
+            Insights, tutorials, and updates from Okagua
+          </p>
         </div>
 
         {loading ? (
           <div className="flex justify-center py-12">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent" />
+            <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-accent" />
           </div>
         ) : posts.length === 0 ? (
-          <p className="text-center text-muted-foreground py-16">No posts yet. Check back soon!</p>
+          <p className="py-16 text-center text-muted-foreground">No posts yet. Check back soon!</p>
         ) : (
           <div className="mx-auto grid max-w-4xl gap-5 sm:gap-6 md:gap-8">
             {posts.map((post, i) => (
@@ -83,16 +87,15 @@ const Blog = () => {
                   className="group block overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                 >
                   {post.cover_image_url && (
-                    <div className="h-44 sm:h-48 md:h-56 overflow-hidden">
+                    <div className="h-44 overflow-hidden sm:h-48 md:h-56">
                       <img
                         src={getOptimizedImageUrl(post.cover_image_url, 900)}
                         alt={post.title}
                         width={1200}
                         height={630}
                         sizes="(min-width: 768px) 896px, calc(100vw - 40px)"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                         loading={i === 0 ? "eager" : "lazy"}
-                        fetchPriority={i === 0 ? "high" : "auto"}
                         decoding="async"
                       />
                     </div>
@@ -104,13 +107,15 @@ const Blog = () => {
                       <span>·</span>
                       <span>{post.author_name}</span>
                     </div>
-                    <h2 className="mb-2 font-heading text-xl sm:text-2xl font-bold leading-tight text-foreground transition-colors group-hover:text-accent">
+                    <h2 className="mb-2 font-heading text-xl font-bold leading-tight text-foreground transition-colors group-hover:text-accent sm:text-2xl">
                       {post.title}
                     </h2>
                     {post.excerpt && (
-                      <p className="mb-4 text-sm sm:text-base leading-relaxed text-muted-foreground line-clamp-3">{post.excerpt}</p>
+                      <p className="mb-4 line-clamp-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                        {post.excerpt}
+                      </p>
                     )}
-                    <span className="inline-flex items-center gap-1 text-sm font-medium text-accent group-hover:gap-2 transition-all">
+                    <span className="inline-flex items-center gap-1 text-sm font-medium text-accent transition-all group-hover:gap-2">
                       Read more <ArrowRight size={14} />
                     </span>
                   </div>

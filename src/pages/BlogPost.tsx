@@ -34,7 +34,9 @@ const BlogPost = () => {
     if (!slug) return;
     supabase
       .from("blog_posts")
-      .select("id, title, content, excerpt, cover_image_url, published_at, author_name, slug, updated_at")
+      .select(
+        "id, title, content, excerpt, cover_image_url, published_at, author_name, slug, updated_at",
+      )
       .eq("slug", slug)
       .eq("status", "published")
       .lte("published_at", new Date().toISOString())
@@ -88,7 +90,7 @@ const BlogPost = () => {
       <div className="min-h-screen bg-background">
         <Navbar />
         <div className="flex justify-center py-32">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent" />
+          <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-accent" />
         </div>
       </div>
     );
@@ -98,9 +100,9 @@ const BlogPost = () => {
     return (
       <div className="min-h-screen bg-background">
         <Navbar />
-        <main className="text-center py-32 px-5">
-          <h1 className="font-heading text-3xl font-bold text-foreground mb-4">Post not found</h1>
-          <Link to="/blog" className="text-accent hover:underline inline-flex items-center gap-1">
+        <main className="px-5 py-32 text-center">
+          <h1 className="mb-4 font-heading text-3xl font-bold text-foreground">Post not found</h1>
+          <Link to="/blog" className="inline-flex items-center gap-1 text-accent hover:underline">
             <ArrowLeft size={14} /> Back to blog
           </Link>
         </main>
@@ -115,7 +117,10 @@ const BlogPost = () => {
 
       <article className="px-5 pb-14 pt-24 sm:px-6 md:pb-16 md:pt-28">
         <div className="mx-auto max-w-3xl">
-          <Link to="/blog" className="mb-6 inline-flex items-center gap-1 text-sm text-accent hover:underline md:mb-8">
+          <Link
+            to="/blog"
+            className="mb-6 inline-flex items-center gap-1 text-sm text-accent hover:underline md:mb-8"
+          >
             <ArrowLeft size={14} /> Back to blog
           </Link>
 
@@ -129,23 +134,27 @@ const BlogPost = () => {
                 sizes="(min-width: 1024px) 768px, calc(100vw - 40px)"
                 className="h-48 w-full object-cover sm:h-56 md:h-72 lg:h-80"
                 loading="eager"
-                fetchPriority="high"
                 decoding="async"
               />
             </div>
           )}
 
           <div className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
-            <span className="inline-flex items-center gap-1"><Calendar size={14} />{format(new Date(post.published_at), "MMMM d, yyyy")}</span>
-            <span className="inline-flex items-center gap-1"><User size={14} />{post.author_name}</span>
+            <span className="inline-flex items-center gap-1">
+              <Calendar size={14} />
+              {format(new Date(post.published_at), "MMMM d, yyyy")}
+            </span>
+            <span className="inline-flex items-center gap-1">
+              <User size={14} />
+              {post.author_name}
+            </span>
           </div>
 
-          <h1 className="mb-8 font-heading text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-foreground">{post.title}</h1>
+          <h1 className="mb-8 font-heading text-2xl font-bold leading-tight text-foreground sm:text-3xl md:text-4xl">
+            {post.title}
+          </h1>
 
-          <div
-            className="blog-content"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
+          <div className="blog-content" dangerouslySetInnerHTML={{ __html: post.content }} />
 
           {/* Like button */}
           <div className="mt-8 flex items-center">

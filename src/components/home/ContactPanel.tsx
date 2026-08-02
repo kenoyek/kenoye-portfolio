@@ -49,7 +49,6 @@ export const ContactPanel = () => {
     <Section id="contact" className="border-t border-border">
       <Container>
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(360px,1.1fr)] lg:items-start">
-
           {/* Left column */}
           <motion.div variants={slideFromLeft} {...inViewProps}>
             <p className="text-metadata uppercase text-accent">Contact</p>
@@ -57,33 +56,49 @@ export const ContactPanel = () => {
               Let's work on something that deserves careful engineering.
             </h2>
             <p className="mt-5 max-w-xl text-body-large text-muted-foreground">
-              I work with teams building ambitious web and mobile products in health, education, SaaS,
-              and CMS platforms that need careful architecture and reliable delivery.
+              I work with teams building ambitious web and mobile products in health, education,
+              SaaS, and CMS platforms that need careful architecture and reliable delivery.
             </p>
 
             {siteConfig.openToWork && (
-              <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/8 px-3.5 py-1.5">
+              <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3.5 py-1.5">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
                 </span>
-                <span className="text-xs font-medium text-accent">{siteConfig.availabilityNote}</span>
+                <span className="text-xs font-medium text-accent">
+                  {siteConfig.availabilityNote}
+                </span>
               </div>
             )}
 
             <p className="mt-8 max-w-md text-sm leading-relaxed text-muted-foreground">
-              I'm open to senior full-stack roles, technical lead and founding engineer positions, and product architecture engagements.
-              Prefer to start with a direct email? Use the address below.
+              I'm open to senior full-stack roles, technical lead and founding engineer positions,
+              and product architecture engagements. Prefer to start with a direct email? Use the
+              address below.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4 text-sm">
-              <a href={`mailto:${siteConfig.email}`} className="inline-flex items-center gap-2 font-medium text-accent underline-offset-4 hover:underline">
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="inline-flex items-center gap-2 font-medium text-accent underline-offset-4 hover:underline"
+              >
                 <Mail size={16} aria-hidden="true" /> {siteConfig.email}
               </a>
-              <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 font-medium text-accent underline-offset-4 hover:underline">
+              <a
+                href={siteConfig.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-medium text-accent underline-offset-4 hover:underline"
+              >
                 <Linkedin size={16} aria-hidden="true" /> LinkedIn
               </a>
-              <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 font-medium text-accent underline-offset-4 hover:underline">
+              <a
+                href={siteConfig.social.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-medium text-accent underline-offset-4 hover:underline"
+              >
                 <Github size={16} aria-hidden="true" /> GitHub
               </a>
             </div>
@@ -112,11 +127,21 @@ export const ContactPanel = () => {
 
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
-                <label className="mb-2 block text-sm font-medium text-foreground" htmlFor="contact-name">
-                  Name <span aria-hidden="true" className="text-muted-foreground">*</span>
+                <label
+                  className="mb-2 block text-sm font-medium text-foreground"
+                  htmlFor="contact-name"
+                >
+                  Name{" "}
+                  <span aria-hidden="true" className="text-muted-foreground">
+                    *
+                  </span>
                 </label>
                 <div className="relative">
-                  <User size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" aria-hidden="true" />
+                  <User
+                    size={16}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+                    aria-hidden="true"
+                  />
                   <Input
                     id="contact-name"
                     value={form.name}
@@ -130,11 +155,21 @@ export const ContactPanel = () => {
                 </div>
               </div>
               <div>
-                <label className="mb-2 block text-sm font-medium text-foreground" htmlFor="contact-email">
-                  Email <span aria-hidden="true" className="text-muted-foreground">*</span>
+                <label
+                  className="mb-2 block text-sm font-medium text-foreground"
+                  htmlFor="contact-email"
+                >
+                  Email{" "}
+                  <span aria-hidden="true" className="text-muted-foreground">
+                    *
+                  </span>
                 </label>
                 <div className="relative">
-                  <AtSign size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" aria-hidden="true" />
+                  <AtSign
+                    size={16}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+                    aria-hidden="true"
+                  />
                   <Input
                     id="contact-email"
                     type="email"
@@ -151,8 +186,14 @@ export const ContactPanel = () => {
             </div>
 
             <div className="mt-4">
-              <label className="mb-2 block text-sm font-medium text-foreground" htmlFor="contact-type">
-                Enquiry type <span aria-hidden="true" className="text-muted-foreground">*</span>
+              <label
+                className="mb-2 block text-sm font-medium text-foreground"
+                htmlFor="contact-type"
+              >
+                Enquiry type{" "}
+                <span aria-hidden="true" className="text-muted-foreground">
+                  *
+                </span>
               </label>
               <select
                 id="contact-type"
@@ -171,8 +212,14 @@ export const ContactPanel = () => {
             </div>
 
             <div className="mt-4">
-              <label className="mb-2 block text-sm font-medium text-foreground" htmlFor="contact-message">
-                Message <span aria-hidden="true" className="text-muted-foreground">*</span>
+              <label
+                className="mb-2 block text-sm font-medium text-foreground"
+                htmlFor="contact-message"
+              >
+                Message{" "}
+                <span aria-hidden="true" className="text-muted-foreground">
+                  *
+                </span>
               </label>
               <Textarea
                 id="contact-message"
@@ -191,17 +238,23 @@ export const ContactPanel = () => {
               disabled={loading}
               className="mt-5 min-h-11 w-full bg-accent text-accent-foreground hover:bg-accent/90 sm:w-auto"
             >
-              {loading ? <Loader2 size={16} className="mr-2 animate-spin" aria-hidden="true" /> : <Send size={16} className="mr-2" aria-hidden="true" />}
+              {loading ? (
+                <Loader2 size={16} className="mr-2 animate-spin" aria-hidden="true" />
+              ) : (
+                <Send size={16} className="mr-2" aria-hidden="true" />
+              )}
               {loading ? "Sending..." : "Send message"}
             </Button>
             <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
               Prefer direct email?{" "}
-              <a className="text-accent underline-offset-4 hover:underline" href={`mailto:${siteConfig.email}`}>
+              <a
+                className="text-accent underline-offset-4 hover:underline"
+                href={`mailto:${siteConfig.email}`}
+              >
                 {siteConfig.email}
               </a>
             </p>
           </motion.form>
-
         </div>
       </Container>
     </Section>

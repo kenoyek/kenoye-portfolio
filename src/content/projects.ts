@@ -120,17 +120,21 @@ export const projects = [
       {
         title: "Privacy-sensitive health data",
         problem: "Wellness data requires careful product boundaries and thoughtful handling.",
-        solution: "Used authenticated Supabase access and PostgreSQL Row Level Security patterns while positioning features around tracking, support, and briefs rather than medical diagnosis.",
+        solution:
+          "Used authenticated Supabase access and PostgreSQL Row Level Security patterns while positioning features around tracking, support, and briefs rather than medical diagnosis.",
       },
       {
         title: "Cross-platform mobile delivery",
         problem: "The product needed web velocity with native mobile distribution paths.",
-        solution: "Used Capacitor to support Android and iOS production delivery from a shared React codebase.",
+        solution:
+          "Used Capacitor to support Android and iOS production delivery from a shared React codebase.",
       },
       {
         title: "Notification orchestration",
-        problem: "Reminder workflows needed to account for user preferences, device permissions, cycle state, and recurring schedules.",
-        solution: "Built cycle-aware notification and reminder workflows around Firebase Cloud Messaging, device-token handling, and preference controls.",
+        problem:
+          "Reminder workflows needed to account for user preferences, device permissions, cycle state, and recurring schedules.",
+        solution:
+          "Built cycle-aware notification and reminder workflows around Firebase Cloud Messaging, device-token handling, and preference controls.",
       },
     ],
     outcomes: [
@@ -206,13 +210,17 @@ export const projects = [
       },
       {
         title: "Recurring scheduling",
-        problem: "Academies need series-level class planning without losing control over individual lessons or completed history.",
-        solution: "Implemented recurring lesson workflows with occurrence-level, future-series, and full-series management patterns.",
+        problem:
+          "Academies need series-level class planning without losing control over individual lessons or completed history.",
+        solution:
+          "Implemented recurring lesson workflows with occurrence-level, future-series, and full-series management patterns.",
       },
       {
         title: "Classroom collaboration",
-        problem: "Tutors and students need shared learning spaces, materials, notes, live sessions, and assessment context.",
-        solution: "Integrated Jitsi classroom workflows with shared PDFs, notes, whiteboard, quizzes, Yjs, and Supabase Realtime.",
+        problem:
+          "Tutors and students need shared learning spaces, materials, notes, live sessions, and assessment context.",
+        solution:
+          "Integrated Jitsi classroom workflows with shared PDFs, notes, whiteboard, quizzes, Yjs, and Supabase Realtime.",
       },
     ],
     outcomes: [
@@ -253,7 +261,14 @@ export const projects = [
     featured: true,
     priority: 3,
     platforms: ["Web", "iOS", "Android"],
-    technologies: ["React", "TypeScript", "Next.js", "Capacitor", "Push Notifications", "Deep Linking"],
+    technologies: [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "Capacitor",
+      "Push Notifications",
+      "Deep Linking",
+    ],
     responsibilities: [
       "Capacitor mobile architecture",
       "Native safe-area and lifecycle integration",
@@ -270,13 +285,15 @@ export const projects = [
     challenges: [
       {
         title: "Live CMS and mobile sync",
-        problem: "Editorial updates needed to appear across web and mobile without native app releases.",
+        problem:
+          "Editorial updates needed to appear across web and mobile without native app releases.",
         solution: "Kept CMS APIs as the shared source of truth for web, iOS, and Android surfaces.",
       },
       {
         title: "Native feel from a web core",
         problem: "The mobile apps needed to avoid feeling like a generic wrapped website.",
-        solution: "Implemented safe-area handling, lifecycle support, status bar/splash behavior, deep links, and native configuration.",
+        solution:
+          "Implemented safe-area handling, lifecycle support, status bar/splash behavior, deep links, and native configuration.",
       },
     ],
     outcomes: [
@@ -311,7 +328,12 @@ export const projects = [
     featured: false,
     priority: 4,
     platforms: ["Operations", "Learning workflows"],
-    technologies: ["Curriculum Design", "Education Technology", "Content Strategy", "Tutor Workflows"],
+    technologies: [
+      "Curriculum Design",
+      "Education Technology",
+      "Content Strategy",
+      "Tutor Workflows",
+    ],
     responsibilities: [
       "Coding instruction",
       "Curriculum support",
@@ -431,7 +453,9 @@ export const projects = [
     context:
       "Python Playground is a teaching-support experiment from the education work, kept intentionally lighter than the flagship case studies.",
     outcomes: [{ label: "Live learning experiment remains publicly reachable", verified: true }],
-    links: [{ label: "View live", href: "https://python-playground-pals.vercel.app/", kind: "live" }],
+    links: [
+      { label: "View live", href: "https://python-playground-pals.vercel.app/", kind: "live" },
+    ],
     metadata: {
       productCategory: "Coding education experiment",
       ownership: "Solo product and engineering",

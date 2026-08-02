@@ -21,4 +21,3 @@ export const ProjectOutcomeList = ({ outcomes }: ProjectOutcomeListProps) => {
     </ul>
   );
 };
-

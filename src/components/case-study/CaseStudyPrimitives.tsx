@@ -91,11 +91,16 @@ export const CaseStudyMeta = ({ caseStudy }: { caseStudy: CaseStudy }) => {
   ].filter(([, value]) => Boolean(value));
 
   return (
-    <aside className="border-y border-border py-5 lg:border-l lg:border-y-0 lg:py-0 lg:pl-6" aria-label="Project metadata">
+    <aside
+      className="border-y border-border py-5 lg:border-y-0 lg:border-l lg:py-0 lg:pl-6"
+      aria-label="Project metadata"
+    >
       <dl className="space-y-4">
         {rows.map(([label, value]) => (
           <div key={label}>
-            <dt className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">{label}</dt>
+            <dt className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+              {label}
+            </dt>
             <dd className="mt-1 text-sm leading-relaxed text-foreground">{value}</dd>
           </div>
         ))}
@@ -116,7 +121,12 @@ type CaseStudySectionProps = {
   className?: string;
 };
 
-export const CaseStudySection = ({ section, children, tone = "default", className }: CaseStudySectionProps) => {
+export const CaseStudySection = ({
+  section,
+  children,
+  tone = "default",
+  className,
+}: CaseStudySectionProps) => {
   if (!section && !children) return null;
 
   return (
@@ -125,10 +135,16 @@ export const CaseStudySection = ({ section, children, tone = "default", classNam
         {section && (
           <div className="max-w-3xl">
             {section.eyebrow && (
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent">{section.eyebrow}</p>
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+                {section.eyebrow}
+              </p>
             )}
-            <h2 className="text-2xl font-bold tracking-normal text-foreground sm:text-3xl">{section.title}</h2>
-            {section.lead && <p className="mt-4 text-lg leading-relaxed text-foreground/85">{section.lead}</p>}
+            <h2 className="text-2xl font-bold tracking-normal text-foreground sm:text-3xl">
+              {section.title}
+            </h2>
+            {section.lead && (
+              <p className="mt-4 text-lg leading-relaxed text-foreground/85">{section.lead}</p>
+            )}
             {section.body?.map((paragraph) => (
               <p key={paragraph} className="mt-4 leading-relaxed text-muted-foreground">
                 {paragraph}
@@ -138,7 +154,10 @@ export const CaseStudySection = ({ section, children, tone = "default", classNam
               <ul className="mt-5 space-y-2 text-muted-foreground">
                 {section.bullets.map((item) => (
                   <li key={item} className="flex gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+                    <span
+                      className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                      aria-hidden="true"
+                    />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -152,17 +171,32 @@ export const CaseStudySection = ({ section, children, tone = "default", classNam
   );
 };
 
-export const CaseStudyLead = ({ children, className }: { children: ReactNode; className?: string }) => (
-  <p className={cn("max-w-3xl text-lg leading-relaxed text-foreground/85", className)}>{children}</p>
+export const CaseStudyLead = ({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) => (
+  <p className={cn("max-w-3xl text-lg leading-relaxed text-foreground/85", className)}>
+    {children}
+  </p>
 );
 
-export const CaseStudyTableOfContents = ({ links }: { links: Array<{ id: string; title: string }> }) => {
+export const CaseStudyTableOfContents = ({
+  links,
+}: {
+  links: Array<{ id: string; title: string }>;
+}) => {
   if (!links.length) return null;
 
   return (
     <Section className="py-8 sm:py-10" tone="muted">
       <Container>
-        <nav aria-label="Case study sections" className="flex flex-col gap-3 sm:flex-row sm:items-start">
+        <nav
+          aria-label="Case study sections"
+          className="flex flex-col gap-3 sm:flex-row sm:items-start"
+        >
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground sm:w-40">
             Contents
           </p>
@@ -190,7 +224,10 @@ export const PillList = ({ items, label }: { items?: string[]; label: string }) 
   return (
     <div aria-label={label} className="flex flex-wrap gap-2">
       {items.map((item) => (
-        <span key={item} className="rounded-md border border-border bg-background px-2.5 py-1 text-xs text-muted-foreground">
+        <span
+          key={item}
+          className="rounded-md border border-border bg-background px-2.5 py-1 text-xs text-muted-foreground"
+        >
           {item}
         </span>
       ))}

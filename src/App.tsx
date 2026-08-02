@@ -20,7 +20,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const CaseStudyPage = lazy(() => import("./pages/projects/CaseStudyPage"));
 
 const RouteFallback = () => (
-  <div className="min-h-screen bg-background flex items-center justify-center text-sm text-muted-foreground">
+  <div className="flex min-h-screen items-center justify-center bg-background text-sm text-muted-foreground">
     Loading...
   </div>
 );
@@ -28,30 +28,53 @@ const RouteFallback = () => (
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <a href="#main-content" className="skip-link">Skip to content</a>
-        <div id="main-content" tabIndex={-1}>
-          <ErrorBoundary>
-            <Suspense fallback={<RouteFallback />}>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/blog" element={<Blog />} />
-                <Route path="/blog/:slug" element={<BlogPost />} />
-                <Route path="/admin/login" element={<AdminLogin />} />
-                <Route path="/admin/blog" element={<AdminRoute><AdminBlog /></AdminRoute>} />
-                <Route path="/admin/blog/new" element={<AdminRoute><AdminBlogEditor /></AdminRoute>} />
-                <Route path="/admin/blog/edit/:id" element={<AdminRoute><AdminBlogEditor /></AdminRoute>} />
-                <Route path="/projects/:slug" element={<CaseStudyPage />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-          </ErrorBoundary>
-        </div>
-      </BrowserRouter>
-    </TooltipProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <a href="#main-content" className="skip-link">
+            Skip to content
+          </a>
+          <div id="main-content" tabIndex={-1}>
+            <ErrorBoundary>
+              <Suspense fallback={<RouteFallback />}>
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/blog" element={<Blog />} />
+                  <Route path="/blog/:slug" element={<BlogPost />} />
+                  <Route path="/admin/login" element={<AdminLogin />} />
+                  <Route
+                    path="/admin/blog"
+                    element={
+                      <AdminRoute>
+                        <AdminBlog />
+                      </AdminRoute>
+                    }
+                  />
+                  <Route
+                    path="/admin/blog/new"
+                    element={
+                      <AdminRoute>
+                        <AdminBlogEditor />
+                      </AdminRoute>
+                    }
+                  />
+                  <Route
+                    path="/admin/blog/edit/:id"
+                    element={
+                      <AdminRoute>
+                        <AdminBlogEditor />
+                      </AdminRoute>
+                    }
+                  />
+                  <Route path="/projects/:slug" element={<CaseStudyPage />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </Suspense>
+            </ErrorBoundary>
+          </div>
+        </BrowserRouter>
+      </TooltipProvider>
     </ThemeProvider>
   </QueryClientProvider>
 );

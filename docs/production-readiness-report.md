@@ -78,4 +78,3 @@ See `docs/lighthouse-report.md`.
 - Confirm successful email delivery with one marked test submission.
 - Verify apex-to-www redirect on deployed Vercel production.
 - Provide real product screenshots and confirmed app-store status.
-

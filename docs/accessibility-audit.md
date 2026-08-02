@@ -21,13 +21,13 @@ Date: 2026-07-24
 
 ## Lighthouse Accessibility Scores
 
-| Route | Score |
-| --- | ---: |
-| Home | 93 |
-| Asele | 96 |
-| TeachEasy | 96 |
-| Reframe | 96 |
-| Blog | 94 |
+| Route     | Score |
+| --------- | ----: |
+| Home      |    93 |
+| Asele     |    96 |
+| TeachEasy |    96 |
+| Reframe   |    96 |
+| Blog      |    94 |
 
 ## Issues Found and Fixed
 
@@ -51,4 +51,3 @@ Date: 2026-07-24
 - No axe-core automated audit was added in this milestone.
 - Keyboard traversal was reviewed structurally and by component semantics, but not recorded as a full tab-order video.
 - Blog HTML still renders trusted stored content through `dangerouslySetInnerHTML`; sanitization policy remains a recommended follow-up.
-

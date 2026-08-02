@@ -13,6 +13,7 @@ import { Section } from "@/components/layout/Section";
 import { CaseStudyStatus } from "@/components/case-study/CaseStudyStatus";
 import { PillList } from "@/components/case-study/CaseStudyPrimitives";
 import { caseStudyStatusLabel } from "@/lib/caseStudyStatus";
+import { cn } from "@/lib/utils";
 
 export const ResponsibilityMatrix = ({ caseStudy }: { caseStudy: CaseStudy }) => {
   if (!caseStudy.responsibilities?.length) return null;
@@ -21,17 +22,24 @@ export const ResponsibilityMatrix = ({ caseStudy }: { caseStudy: CaseStudy }) =>
     <Section id="ownership">
       <Container>
         <div className="max-w-3xl">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent">Scope</p>
-          <h2 className="text-2xl font-bold tracking-normal text-foreground sm:text-3xl">Role and ownership</h2>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+            Scope
+          </p>
+          <h2 className="text-2xl font-bold tracking-normal text-foreground sm:text-3xl">
+            Role and ownership
+          </h2>
           <p className="mt-4 leading-relaxed text-muted-foreground">
-            This section separates personal ownership from inherited systems, team context, integrations, planned work,
-            and in-progress work.
+            This section separates personal ownership from inherited systems, team context,
+            integrations, planned work, and in-progress work.
           </p>
         </div>
         <div className="mt-8 grid gap-6 lg:grid-cols-2">
           {caseStudy.responsibilities.map((group) => (
             <section key={group.label} aria-labelledby={`${caseStudy.slug}-${group.label}`}>
-              <h3 id={`${caseStudy.slug}-${group.label}`} className="text-sm font-semibold uppercase tracking-[0.16em] text-foreground">
+              <h3
+                id={`${caseStudy.slug}-${group.label}`}
+                className="text-sm font-semibold uppercase tracking-[0.16em] text-foreground"
+              >
                 {group.label}
               </h3>
               <ul className="mt-4 space-y-3 border-l border-border pl-4 text-sm leading-relaxed text-muted-foreground">
@@ -54,12 +62,19 @@ export const ProjectStatusSummary = ({ caseStudy }: { caseStudy: CaseStudy }) =>
     <Section id="current-status" tone="muted">
       <Container>
         <div className="max-w-3xl">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent">Status</p>
-          <h2 className="text-2xl font-bold tracking-normal text-foreground sm:text-3xl">Current status</h2>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+            Status
+          </p>
+          <h2 className="text-2xl font-bold tracking-normal text-foreground sm:text-3xl">
+            Current status
+          </h2>
         </div>
         <div className="mt-8 divide-y divide-border border-y border-border">
           {caseStudy.currentStatus.map((item) => (
-            <div key={item.label} className="grid gap-3 py-4 sm:grid-cols-[180px_minmax(0,1fr)] sm:items-start">
+            <div
+              key={item.label}
+              className="grid gap-3 py-4 sm:grid-cols-[180px_minmax(0,1fr)] sm:items-start"
+            >
               <CaseStudyStatus state={item.state} />
               <div>
                 <h3 className="font-semibold text-foreground">{item.label}</h3>
@@ -82,9 +97,15 @@ export const ArchitectureDiagram = ({ architecture }: { architecture?: CaseStudy
     <Section id="architecture" tone="muted">
       <Container>
         <div className="max-w-3xl">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent">Architecture</p>
-          <h2 className="text-2xl font-bold tracking-normal text-foreground sm:text-3xl">{architecture.title}</h2>
-          {architecture.lead && <p className="mt-4 leading-relaxed text-muted-foreground">{architecture.lead}</p>}
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+            Architecture
+          </p>
+          <h2 className="text-2xl font-bold tracking-normal text-foreground sm:text-3xl">
+            {architecture.title}
+          </h2>
+          {architecture.lead && (
+            <p className="mt-4 leading-relaxed text-muted-foreground">{architecture.lead}</p>
+          )}
         </div>
         <figure className="mt-8">
           <div
@@ -100,18 +121,24 @@ export const ArchitectureDiagram = ({ architecture }: { architecture?: CaseStudy
                   </p>
                 )}
                 <h3 className="text-base font-semibold text-foreground">{node.label}</h3>
-                {node.detail && <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{node.detail}</p>}
+                {node.detail && (
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {node.detail}
+                  </p>
+                )}
               </div>
             ))}
           </div>
           <figcaption className="mt-4 text-sm leading-relaxed text-muted-foreground">
-            Lightweight HTML architecture diagram. It is readable in print, works without animation, and includes the
-            connection list below for screen readers and narrow screens.
+            Lightweight HTML architecture diagram. It is readable in print, works without animation,
+            and includes the connection list below for screen readers and narrow screens.
           </figcaption>
         </figure>
         <div className="mt-8 grid gap-6 lg:grid-cols-2">
           <section>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.16em] text-foreground">Connections</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.16em] text-foreground">
+              Connections
+            </h3>
             <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
               {architecture.connections.map((connection) => (
                 <li key={`${connection.from}-${connection.to}-${connection.label}`}>
@@ -125,7 +152,9 @@ export const ArchitectureDiagram = ({ architecture }: { architecture?: CaseStudy
           </section>
           {architecture.notes?.length ? (
             <section>
-              <h3 className="text-sm font-semibold uppercase tracking-[0.16em] text-foreground">Notes</h3>
+              <h3 className="text-sm font-semibold uppercase tracking-[0.16em] text-foreground">
+                Notes
+              </h3>
               <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                 {architecture.notes.map((note) => (
                   <li key={note}>{note}</li>
@@ -146,8 +175,12 @@ export const KeySystems = ({ caseStudy }: { caseStudy: CaseStudy }) => {
     <Section id="key-systems">
       <Container>
         <div className="max-w-3xl">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent">Systems</p>
-          <h2 className="text-2xl font-bold tracking-normal text-foreground sm:text-3xl">Key systems delivered</h2>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+            Systems
+          </p>
+          <h2 className="text-2xl font-bold tracking-normal text-foreground sm:text-3xl">
+            Key systems delivered
+          </h2>
         </div>
         <div className="mt-8 grid gap-7 md:grid-cols-2">
           {caseStudy.keySystems.map((system) => (
@@ -180,8 +213,12 @@ export const DecisionList = ({ caseStudy }: { caseStudy: CaseStudy }) => {
     <Section id="technical-decisions" tone="muted">
       <Container>
         <div className="max-w-3xl">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent">Decisions</p>
-          <h2 className="text-2xl font-bold tracking-normal text-foreground sm:text-3xl">Technical decisions and trade-offs</h2>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+            Decisions
+          </p>
+          <h2 className="text-2xl font-bold tracking-normal text-foreground sm:text-3xl">
+            Technical decisions and trade-offs
+          </h2>
         </div>
         <div className="mt-8 space-y-8">
           {caseStudy.technicalDecisions.map((decision) => (
@@ -240,12 +277,19 @@ export const ImplementationPhases = ({ caseStudy }: { caseStudy: CaseStudy }) =>
     <Section id="implementation">
       <Container>
         <div className="max-w-3xl">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent">Process</p>
-          <h2 className="text-2xl font-bold tracking-normal text-foreground sm:text-3xl">Implementation phases</h2>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+            Process
+          </p>
+          <h2 className="text-2xl font-bold tracking-normal text-foreground sm:text-3xl">
+            Implementation phases
+          </h2>
         </div>
         <div className="mt-8 divide-y divide-border border-y border-border">
           {caseStudy.implementationPhases.map((phase) => (
-            <section key={phase.title} className="grid gap-4 py-5 lg:grid-cols-[220px_minmax(0,1fr)]">
+            <section
+              key={phase.title}
+              className="grid gap-4 py-5 lg:grid-cols-[220px_minmax(0,1fr)]"
+            >
               <div>
                 <h3 className="font-semibold text-foreground">{phase.title}</h3>
                 {phase.status && <CaseStudyStatus state={phase.status} className="mt-3" />}
@@ -270,8 +314,12 @@ export const ChallengeResponse = ({ caseStudy }: { caseStudy: CaseStudy }) => {
     <Section id="challenges" tone="muted">
       <Container>
         <div className="max-w-3xl">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent">Challenges</p>
-          <h2 className="text-2xl font-bold tracking-normal text-foreground sm:text-3xl">Engineering challenges</h2>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+            Challenges
+          </p>
+          <h2 className="text-2xl font-bold tracking-normal text-foreground sm:text-3xl">
+            Engineering challenges
+          </h2>
         </div>
         <div className="mt-8 grid gap-8 lg:grid-cols-2">
           {caseStudy.challenges.map((challenge) => (
@@ -313,20 +361,35 @@ export const ChallengeResponse = ({ caseStudy }: { caseStudy: CaseStudy }) => {
   );
 };
 
-const MediaFigure = ({ item, priority = false }: { item: CaseStudyMediaItem; priority?: boolean }) => {
+const MediaFigure = ({
+  item,
+  priority = false,
+}: {
+  item: CaseStudyMediaItem;
+  priority?: boolean;
+}) => {
   if (!item.src) return null;
 
+  const isPortrait = Boolean(item.width && item.height && item.height > item.width);
+
   return (
-    <figure className="border-t border-border pt-4">
+    <figure
+      className={cn("border-t border-border pt-4", isPortrait && "justify-self-center md:max-w-sm")}
+    >
       <img
         src={item.src}
         alt={item.alt ?? item.label}
         width={item.width}
         height={item.height}
         loading={priority ? "eager" : "lazy"}
-        className="w-full rounded-md border border-border object-cover"
+        className={cn(
+          "w-full rounded-md border border-border",
+          isPortrait ? "object-contain" : "object-cover",
+        )}
       />
-      {item.caption && <figcaption className="mt-2 text-sm text-muted-foreground">{item.caption}</figcaption>}
+      {item.caption && (
+        <figcaption className="mt-2 text-sm text-muted-foreground">{item.caption}</figcaption>
+      )}
     </figure>
   );
 };
@@ -340,12 +403,17 @@ export const ProjectGallery = ({ caseStudy }: { caseStudy: CaseStudy }) => {
     <Section id="media">
       <Container>
         <div className="max-w-3xl">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent">Media</p>
-          <h2 className="text-2xl font-bold tracking-normal text-foreground sm:text-3xl">Gallery and product media</h2>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+            Media
+          </p>
+          <h2 className="text-2xl font-bold tracking-normal text-foreground sm:text-3xl">
+            Gallery and product media
+          </h2>
           {!media.length && (
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              Verified product media is not available in this repository yet, so this page does not render simulated
-              screenshots. The required assets are documented below for later insertion.
+              Verified product media is not available in this repository yet, so this page does not
+              render simulated screenshots. The required assets are documented below for later
+              insertion.
             </p>
           )}
           {media.length && caseStudy.mediaNote ? (
@@ -394,8 +462,12 @@ export const RelatedProjects = ({ caseStudy }: { caseStudy: CaseStudy }) => {
               to={`/projects/${item!.slug}`}
               className="group border-t border-border pt-4 text-sm transition-colors hover:border-accent"
             >
-              <span className="font-semibold text-foreground group-hover:text-accent">{item!.project.title}</span>
-              {item!.reason && <p className="mt-2 leading-relaxed text-muted-foreground">{item!.reason}</p>}
+              <span className="font-semibold text-foreground group-hover:text-accent">
+                {item!.project.title}
+              </span>
+              {item!.reason && (
+                <p className="mt-2 leading-relaxed text-muted-foreground">{item!.reason}</p>
+              )}
             </Link>
           ))}
         </div>
@@ -441,7 +513,9 @@ export const CaseStudyFooterNavigation = ({ slug }: { slug: string }) => {
           )}
         </nav>
         <div className="mt-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Available case studies</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            Available case studies
+          </p>
           <div className="mt-3 flex flex-wrap gap-2">
             {caseStudyNavigation.map((item) => (
               <Link
@@ -464,7 +538,9 @@ export const ProjectLinks = ({ caseStudy }: { caseStudy: CaseStudy }) => {
 
   return (
     <div className="mt-6">
-      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Project links</p>
+      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+        Project links
+      </p>
       <div className="flex flex-wrap gap-2">
         {caseStudy.links.map((link) => {
           const isExternal = link.href.startsWith("http");
@@ -472,7 +548,13 @@ export const ProjectLinks = ({ caseStudy }: { caseStudy: CaseStudy }) => {
             "inline-flex items-center gap-1 rounded-md border border-border px-3 py-1.5 text-sm text-foreground hover:border-accent/60 hover:text-accent";
 
           return isExternal ? (
-            <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className={classes}>
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={classes}
+            >
               {link.label}
               <ArrowUpRight size={14} aria-hidden="true" />
             </a>
@@ -492,7 +574,9 @@ export const TechnologySummary = ({ caseStudy }: { caseStudy: CaseStudy }) => (
     <Container>
       <div className="grid gap-6 lg:grid-cols-[220px_minmax(0,1fr)]">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Technology</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            Technology
+          </p>
           <h2 className="mt-2 text-xl font-semibold text-foreground">Stack and platforms</h2>
         </div>
         <div className="space-y-4">

@@ -40,12 +40,8 @@ export const ImpactBar = () => (
       >
         {impactPoints.map((point) => (
           <motion.li key={point.value} variants={fadeUp} className="flex flex-col gap-1">
-            <span className="text-sm font-semibold text-foreground">
-              {point.value}
-            </span>
-            <span className="text-xs leading-relaxed text-muted-foreground">
-              {point.label}
-            </span>
+            <span className="text-sm font-semibold text-foreground">{point.value}</span>
+            <span className="text-xs leading-relaxed text-muted-foreground">{point.label}</span>
           </motion.li>
         ))}
       </motion.ul>

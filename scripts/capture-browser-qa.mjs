@@ -38,19 +38,25 @@ const routeBreakpoints = [
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const chrome = spawn(chromePath, [
-  "--headless=new",
-  "--disable-gpu",
-  "--no-first-run",
-  "--no-default-browser-check",
-  `--user-data-dir=/tmp/kenoye-chrome-qa-${port}`,
-  `--remote-debugging-port=${port}`,
-  "about:blank",
-], { stdio: "ignore" });
+const chrome = spawn(
+  chromePath,
+  [
+    "--headless=new",
+    "--disable-gpu",
+    "--no-first-run",
+    "--no-default-browser-check",
+    `--user-data-dir=/tmp/kenoye-chrome-qa-${port}`,
+    `--remote-debugging-port=${port}`,
+    "about:blank",
+  ],
+  { stdio: "ignore" },
+);
 
 const connect = async () => {
   await wait(2500);
-  const target = await fetch(`http://127.0.0.1:${port}/json/new?about:blank`, { method: "PUT" }).then((res) => res.json());
+  const target = await fetch(`http://127.0.0.1:${port}/json/new?about:blank`, {
+    method: "PUT",
+  }).then((res) => res.json());
   const ws = new WebSocket(target.webSocketDebuggerUrl);
   let id = 0;
   const pending = new Map();

@@ -7,6 +7,15 @@ The Milestone 3 case-study system does not generate or simulate screenshots. Mis
 ## Asele
 
 - Priority: high.
+- Approved native mobile assets added on 2026-08-02:
+  - `public/images/projects/asele/asele-native-cycle-home.webp`.
+  - `public/images/projects/asele/asele-native-cycle-insights.webp`.
+  - `public/images/projects/asele/asele-native-daily-checkin.webp`.
+  - `public/images/projects/asele/asele-native-health-brief.webp`.
+  - `public/images/projects/asele/asele-native-recommendations.webp`.
+  - `public/images/projects/asele/asele-native-cycle-calendar.webp`.
+  - `public/images/projects/asele/asele-native-journal.webp`.
+  - Source captures are stored under `public/images/projects/asele/source/` with matching `.jpeg` names.
 - Public temporary assets added on 2026-07-24:
   - `public/images/projects/asele/asele-public-home-desktop.webp` from `https://asele.health/`.
   - `public/images/projects/asele/asele-public-home-mobile.webp` from `https://asele.health/`.
@@ -15,8 +24,8 @@ The Milestone 3 case-study system does not generate or simulate screenshots. Mis
   - `public/images/projects/asele/asele-public-wellness.webp` from `https://asele.health/`.
 - Source captures stored under `public/images/projects/asele/source/`.
 - Source status: public, unauthenticated website pages only. No private dashboard, admin route, user account, staging environment, or personal health information was accessed.
-- Temporary status: these screenshots are public website references for the case study and should be replaced when approved native application or sanitized product screenshots are available.
-- Needed: approved native mobile wellness/cycle workflow, health-brief or reminder workflow using synthetic or redacted data, administrative workflow with private data removed.
+- Current status: approved native mobile screenshots cover the cycle home, cycle insights, daily check-in, health brief, phase recommendations, cycle calendar, and private journal workflows.
+- Needed: administrative workflow screenshot with private data removed.
 - Recommended dimensions: 1600 x 1200 for desktop/product screenshots; 1170 x 2532 for mobile screenshots.
 - Alt text: describe the exact workflow shown without exposing personal health data.
 - Redaction: remove personal health information, emails, phone numbers, IDs, internal notes, and private analytics.
@@ -45,6 +54,9 @@ The Milestone 3 case-study system does not generate or simulate screenshots. Mis
 ## Reframe
 
 - Priority: high.
+- Approved native mobile assets added on 2026-08-02:
+  - `public/images/projects/reframe/reframe-native-feed.webp`.
+  - Source capture: `public/images/projects/reframe/source/reframe-native-feed.jpeg`.
 - Public web assets added on 2026-07-24:
   - `public/images/projects/reframe/reframe-public-feed-desktop.webp` from `https://reframe.network/`.
   - `public/images/projects/reframe/reframe-public-feed-mobile-web.webp` from `https://reframe.network/`.
@@ -53,14 +65,14 @@ The Milestone 3 case-study system does not generate or simulate screenshots. Mis
   - `public/images/projects/reframe/reframe-public-discovery.webp` from `https://reframe.network/discover`.
 - Source captures stored under `public/images/projects/reframe/source/`.
 - Source status: public, unauthenticated `reframe.network` web pages only. No private mobile build, TestFlight build, APK, staging route, CMS admin, analytics, moderation tool, account, or unpublished content was accessed.
-- Desktop or mobile-web status: desktop public web captures plus one mobile-web viewport. These are not native mobile application screenshots.
-- Temporary status: public web screenshots support the case study until approved native mobile screenshots are available after public release.
+- Desktop, mobile-web, and native status: public web captures plus one approved native mobile feed screenshot are available.
+- Current status: the approved native feed screenshot supports the case study alongside public web screenshots.
 - Skipped: public article detail screenshots that centered identifiable authors or personal profile details were not added; the Reframe Voices overview and resource repository provide safer CMS/editorial context.
-- Needed: approved native mobile news feed, article reader, community feed, and deep-link or push-notification workflow after public release.
+- Needed: approved native article reader, community feed, and deep-link or push-notification workflow after public release.
 - Recommended dimensions: 1170 x 2532 for native mobile screenshots after release; 1440 x 900 for public web screenshots.
 - Alt text: describe the screen and platform context, distinguishing mobile web from native mobile app.
 - Redaction: avoid private moderation data, unpublished editorial content, credentials, or user-identifying information.
-- Approval: native mobile screenshots require release/publication approval before they are added.
+- Approval: additional native mobile screenshots require release/publication approval before they are added.
 
 ## Shared Social Media
 

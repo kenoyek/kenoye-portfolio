@@ -50,11 +50,11 @@ const AdminLogin = () => {
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-primary px-4">
-      <div className="w-full max-w-md bg-card rounded-2xl p-8 shadow-2xl border border-border">
-        <div className="text-center mb-8">
+    <main className="flex min-h-screen items-center justify-center bg-primary px-4">
+      <div className="w-full max-w-md rounded-2xl border border-border bg-card p-8 shadow-2xl">
+        <div className="mb-8 text-center">
           <h1 className="font-heading text-2xl font-bold text-foreground">Admin Login</h1>
-          <p className="text-muted-foreground text-sm mt-1">Sign in to manage your blog</p>
+          <p className="mt-1 text-sm text-muted-foreground">Sign in to manage your blog</p>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-4">
@@ -80,7 +80,11 @@ const AdminLogin = () => {
               required
             />
           </div>
-          <Button type="submit" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" disabled={loading}>
+          <Button
+            type="submit"
+            className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
+            disabled={loading}
+          >
             <LogIn size={16} />
             {loading ? "Signing in..." : "Sign In"}
           </Button>

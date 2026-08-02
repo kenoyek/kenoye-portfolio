@@ -24,10 +24,13 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
       return (
         <main className="flex min-h-screen items-center justify-center bg-background px-5 text-foreground">
           <section className="max-w-md text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Something went wrong</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+              Something went wrong
+            </p>
             <h1 className="mt-3 text-3xl font-bold">The page could not be loaded safely.</h1>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Please refresh the page or return home. The error has been logged locally for debugging.
+              Please refresh the page or return home. The error has been logged locally for
+              debugging.
             </p>
             <a
               href="/"

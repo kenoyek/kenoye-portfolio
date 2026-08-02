@@ -18,7 +18,9 @@ export const ProjectEvidence = ({ project, variant = "compact" }: ProjectEvidenc
       {project.platforms?.length ? (
         <div>
           <dt className="text-metadata uppercase text-muted-foreground">Platforms</dt>
-          <dd className="mt-1 text-sm font-medium text-foreground">{project.platforms.join(" / ")}</dd>
+          <dd className="mt-1 text-sm font-medium text-foreground">
+            {project.platforms.join(" / ")}
+          </dd>
         </div>
       ) : null}
       {outcomes.map((outcome) => (
@@ -30,4 +32,3 @@ export const ProjectEvidence = ({ project, variant = "compact" }: ProjectEvidenc
     </dl>
   );
 };
-

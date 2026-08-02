@@ -1,12 +1,7 @@
 import { getProjectBySlug, projects, type ProjectLink } from "@/content/projects";
 
 export type CaseStudyStatusState =
-  | "implemented"
-  | "in-progress"
-  | "planned"
-  | "deferred"
-  | "private"
-  | "available";
+  "implemented" | "in-progress" | "planned" | "deferred" | "private" | "available";
 
 export type CaseStudyTextSection = {
   id: string;
@@ -195,27 +190,74 @@ export const caseStudies = [
     skillGroups: [
       {
         title: "Frontend Engineering",
-        items: ["React", "TypeScript", "Vite", "component architecture", "responsive UI", "forms", "data visualisation", "accessibility-aware UI"],
+        items: [
+          "React",
+          "TypeScript",
+          "Vite",
+          "component architecture",
+          "responsive UI",
+          "forms",
+          "data visualisation",
+          "accessibility-aware UI",
+        ],
       },
       {
         title: "Backend and Database Engineering",
-        items: ["Supabase", "PostgreSQL", "SQL", "database migrations", "Edge Functions", "RLS", "realtime data", "secure API workflows"],
+        items: [
+          "Supabase",
+          "PostgreSQL",
+          "SQL",
+          "database migrations",
+          "Edge Functions",
+          "RLS",
+          "realtime data",
+          "secure API workflows",
+        ],
       },
       {
         title: "Mobile Engineering",
-        items: ["Capacitor", "Android Studio", "Xcode", "safe areas", "app lifecycle", "app signing", "TestFlight workflow", "Google Play release", "Apple App Store release"],
+        items: [
+          "Capacitor",
+          "Android Studio",
+          "Xcode",
+          "safe areas",
+          "app lifecycle",
+          "app signing",
+          "TestFlight workflow",
+          "Google Play release",
+          "Apple App Store release",
+        ],
       },
       {
         title: "Security and Authorization",
-        items: ["Supabase Auth", "Google OAuth", "Sign in with Apple", "JWT sessions", "user data isolation", "environment secrets"],
+        items: [
+          "Supabase Auth",
+          "Google OAuth",
+          "Sign in with Apple",
+          "JWT sessions",
+          "user data isolation",
+          "environment secrets",
+        ],
       },
       {
         title: "Cloud and Integrations",
-        items: ["Firebase Cloud Messaging", "device tokens", "notification permissions", "scheduled reminders", "notification preferences"],
+        items: [
+          "Firebase Cloud Messaging",
+          "device tokens",
+          "notification permissions",
+          "scheduled reminders",
+          "notification preferences",
+        ],
       },
       {
         title: "AI and Localisation",
-        items: ["AI-assisted health briefs", "structured health context", "prompt guardrails", "24-language localisation", "Arabic RTL"],
+        items: [
+          "AI-assisted health briefs",
+          "structured health context",
+          "prompt guardrails",
+          "24-language localisation",
+          "Arabic RTL",
+        ],
       },
     ],
     canonicalUrl: "https://www.kenoye.site/projects/asele",
@@ -227,14 +269,13 @@ export const caseStudies = [
       summary:
         "Privacy-conscious women’s cycle and wellness platform delivered across web, Android and iOS with React, TypeScript, Supabase, PostgreSQL, Capacitor, Firebase Cloud Messaging, localisation, and AI-assisted health briefs.",
       primaryMediaNote:
-        "Temporary public website screenshots are included below while approved native application screenshots remain pending.",
+        "Approved native mobile and public website screenshots are included below with private implementation details withheld.",
     },
     overview: {
       id: "overview",
       eyebrow: "Overview",
       title: "What the product is",
-      lead:
-        "Asele is a privacy-conscious women’s cycle and wellness platform delivered across web, Android, and iOS.",
+      lead: "Asele is a privacy-conscious women’s cycle and wellness platform delivered across web, Android, and iOS.",
       body: [
         "The product brings cycle tracking, fertility-related calculations, late-period handling, wellness logging, health trend visualisation, cycle-aware reminders, multilingual support, health-context summaries, authentication, administrative workflows, and mobile delivery into a shared React foundation.",
         "The important engineering constraint is product safety: the platform can support tracking and wellness context without presenting itself as diagnosis, treatment, clinical approval, or a medical device.",
@@ -307,17 +348,56 @@ export const caseStudies = [
     ],
     architecture: {
       title: "Asele platform architecture",
-      lead:
-        "A shared React and TypeScript product surface connects to Supabase Authentication, PostgreSQL, RLS policies, Edge Functions, administrative tooling, Firebase push workflows, and native app delivery through Capacitor.",
+      lead: "A shared React and TypeScript product surface connects to Supabase Authentication, PostgreSQL, RLS policies, Edge Functions, administrative tooling, Firebase push workflows, and native app delivery through Capacitor.",
       nodes: [
-        { id: "user", label: "Web and mobile users", detail: "Cycle, wellness, reminder, and brief workflows", group: "Experience" },
-        { id: "react", label: "React + TypeScript + Vite app", detail: "Shared product interface, reusable UI system, forms, state, and visualisation", group: "Application" },
-        { id: "capacitor", label: "Capacitor mobile layer", detail: "Android production delivery and Apple App Store release", group: "Mobile" },
-        { id: "supabase", label: "Supabase", detail: "Auth, PostgreSQL, RLS, realtime data, and Edge Functions", group: "Backend" },
-        { id: "notifications", label: "Firebase Cloud Messaging", detail: "Device tokens, permissions, notification centre, and cycle-aware reminders", group: "Integration" },
-        { id: "oauth", label: "Platform authentication", detail: "Google OAuth, Apple sign-in workflow, redirects, and JWT sessions", group: "Security" },
-        { id: "ai", label: "AI-assisted brief workflow", detail: "Structured health context, prompt guardrails, and response presentation", group: "AI" },
-        { id: "admin", label: "Administrative tooling", detail: "User activity reporting, CSV export, and operational visibility", group: "Operations" },
+        {
+          id: "user",
+          label: "Web and mobile users",
+          detail: "Cycle, wellness, reminder, and brief workflows",
+          group: "Experience",
+        },
+        {
+          id: "react",
+          label: "React + TypeScript + Vite app",
+          detail: "Shared product interface, reusable UI system, forms, state, and visualisation",
+          group: "Application",
+        },
+        {
+          id: "capacitor",
+          label: "Capacitor mobile layer",
+          detail: "Android production delivery and Apple App Store release",
+          group: "Mobile",
+        },
+        {
+          id: "supabase",
+          label: "Supabase",
+          detail: "Auth, PostgreSQL, RLS, realtime data, and Edge Functions",
+          group: "Backend",
+        },
+        {
+          id: "notifications",
+          label: "Firebase Cloud Messaging",
+          detail: "Device tokens, permissions, notification centre, and cycle-aware reminders",
+          group: "Integration",
+        },
+        {
+          id: "oauth",
+          label: "Platform authentication",
+          detail: "Google OAuth, Apple sign-in workflow, redirects, and JWT sessions",
+          group: "Security",
+        },
+        {
+          id: "ai",
+          label: "AI-assisted brief workflow",
+          detail: "Structured health context, prompt guardrails, and response presentation",
+          group: "AI",
+        },
+        {
+          id: "admin",
+          label: "Administrative tooling",
+          detail: "User activity reporting, CSV export, and operational visibility",
+          group: "Operations",
+        },
       ],
       connections: [
         { from: "user", to: "react", label: "uses" },
@@ -424,20 +504,62 @@ export const caseStudies = [
       },
     ],
     implementationPhases: [
-      { title: "Product and data foundation", status: "implemented", items: ["React and TypeScript product surface", "Supabase Authentication", "PostgreSQL data model", "Row Level Security access boundaries", "Privacy-sensitive product boundaries"] },
-      { title: "Domain workflows", status: "implemented", items: ["Cycle tracking", "Fertility-window calculations", "Late-period handling", "Historical trends", "AI-assisted health briefs"] },
-      { title: "Mobile and notifications", status: "implemented", items: ["Capacitor workflow", "Android production release", "Apple App Store release", "Firebase Cloud Messaging", "Cycle-aware reminders"] },
-      { title: "Localisation and operations", status: "implemented", items: ["24-language localisation", "Arabic RTL layout support", "User activity reporting", "CSV export"] },
+      {
+        title: "Product and data foundation",
+        status: "implemented",
+        items: [
+          "React and TypeScript product surface",
+          "Supabase Authentication",
+          "PostgreSQL data model",
+          "Row Level Security access boundaries",
+          "Privacy-sensitive product boundaries",
+        ],
+      },
+      {
+        title: "Domain workflows",
+        status: "implemented",
+        items: [
+          "Cycle tracking",
+          "Fertility-window calculations",
+          "Late-period handling",
+          "Historical trends",
+          "AI-assisted health briefs",
+        ],
+      },
+      {
+        title: "Mobile and notifications",
+        status: "implemented",
+        items: [
+          "Capacitor workflow",
+          "Android production release",
+          "Apple App Store release",
+          "Firebase Cloud Messaging",
+          "Cycle-aware reminders",
+        ],
+      },
+      {
+        title: "Localisation and operations",
+        status: "implemented",
+        items: [
+          "24-language localisation",
+          "Arabic RTL layout support",
+          "User activity reporting",
+          "CSV export",
+        ],
+      },
     ],
     challenges: [
       {
         title: "Secure health-data access",
         whyItMattered:
           "Cycle and wellness records are private by nature, so authenticated access needs to be enforced beyond screen-level checks.",
-        constraints: ["Public case-study content cannot expose schemas, private policies, credentials, or user data."],
+        constraints: [
+          "Public case-study content cannot expose schemas, private policies, credentials, or user data.",
+        ],
         response:
           "Supabase Authentication, JWT-backed sessions, and PostgreSQL Row Level Security patterns were used to isolate private records at the data layer.",
-        result: "The case study can communicate security depth without publishing sensitive implementation details.",
+        result:
+          "The case study can communicate security depth without publishing sensitive implementation details.",
       },
       {
         title: "Cross-platform mobile delivery",
@@ -454,16 +576,20 @@ export const caseStudies = [
           "Health-adjacent reminders depend on user preferences, cycle state, recurring schedules, notification permissions, and device-token reliability.",
         response:
           "Firebase Cloud Messaging, notification preference controls, device-token handling, scheduled reminders, cycle-aware triggers, and recurring birth-control reminders were implemented as coordinated workflows.",
-        result: "The notification system is described as implemented without claiming guaranteed user behavior or health outcomes.",
+        result:
+          "The notification system is described as implemented without claiming guaranteed user behavior or health outcomes.",
       },
       {
         title: "Internationalisation across 24 languages",
         whyItMattered:
           "Localised wellness interfaces need readable copy, stable responsive layouts, and right-to-left support without creating a separate component system.",
-        constraints: ["Arabic RTL layouts and narrow mobile screens create the highest risk for overflow and layout drift."],
+        constraints: [
+          "Arabic RTL layouts and narrow mobile screens create the highest risk for overflow and layout drift.",
+        ],
         response:
           "Locale-aware content and right-to-left layout handling were integrated into the React interface patterns so translated UI could remain part of the shared product system.",
-        result: "The platform can represent 24-language support and Arabic RTL handling as implemented product architecture.",
+        result:
+          "The platform can represent 24-language support and Arabic RTL handling as implemented product architecture.",
       },
       {
         title: "Mobile authentication",
@@ -471,8 +597,7 @@ export const caseStudies = [
           "OAuth and Sign in with Apple behave differently across web, Android, iOS, redirect flows, and app lifecycle transitions.",
         response:
           "Google OAuth, the Sign in with Apple deployment workflow, JWT session handling, redirect debugging, and native lifecycle behavior were handled as part of mobile release readiness.",
-        result:
-          "The authentication workflow supported the completed iOS App Store release.",
+        result: "The authentication workflow supported the completed iOS App Store release.",
       },
     ],
     security: {
@@ -507,12 +632,25 @@ export const caseStudies = [
       bullets: asele.outcomes?.map((outcome) => outcome.label),
     },
     currentStatus: [
-      { label: "Android production delivery", state: "implemented", detail: "Completed according to existing portfolio content." },
-      { label: "Apple App Store release", state: "implemented", detail: "Completed after iOS build, signing, TestFlight, export-compliance, and App Store submission work." },
+      {
+        label: "Android production delivery",
+        state: "implemented",
+        detail: "Completed according to existing portfolio content.",
+      },
+      {
+        label: "Apple App Store release",
+        state: "implemented",
+        detail:
+          "Completed after iOS build, signing, TestFlight, export-compliance, and App Store submission work.",
+      },
       { label: "Secure health-data access with PostgreSQL RLS", state: "implemented" },
       { label: "Cycle-aware notification engine", state: "implemented" },
       { label: "24-language localisation with Arabic RTL", state: "implemented" },
-      { label: "AI-assisted health briefs", state: "implemented", detail: "Presented as assistive wellness summaries, not diagnosis or treatment." },
+      {
+        label: "AI-assisted health briefs",
+        state: "implemented",
+        detail: "Presented as assistive wellness summaries, not diagnosis or treatment.",
+      },
       { label: "Administrative reporting and CSV export", state: "implemented" },
     ],
     lessons: {
@@ -526,6 +664,73 @@ export const caseStudies = [
     },
     gallery: [
       {
+        label: "Asele native cycle home screen",
+        src: "/images/projects/asele/asele-native-cycle-home.webp",
+        alt: "Asele mobile app home screen showing the user's current luteal phase, next period date, and log period or symptom actions.",
+        caption:
+          "Approved native mobile screenshot showing Asele's cycle phase and wellness logging home screen.",
+        kind: "screenshot",
+        width: 591,
+        height: 1280,
+      },
+      {
+        label: "Asele native cycle insights",
+        src: "/images/projects/asele/asele-native-cycle-insights.webp",
+        alt: "Asele mobile app cycle insights screen showing the luteal phase, cycle syncing guidance, progress, and medical disclaimer.",
+        caption:
+          "Cycle insights screen showing phase-aware guidance with a clear non-medical-device disclaimer.",
+        kind: "screenshot",
+        width: 591,
+        height: 1280,
+      },
+      {
+        label: "Asele native daily check-in",
+        src: "/images/projects/asele/asele-native-daily-checkin.webp",
+        alt: "Asele mobile app daily check-in screen showing discharge, mood, and energy logging options.",
+        caption: "Daily check-in flow for lightweight wellness and symptom logging.",
+        kind: "screenshot",
+        width: 591,
+        height: 1280,
+      },
+      {
+        label: "Asele native health brief",
+        src: "/images/projects/asele/asele-native-health-brief.webp",
+        alt: "Asele mobile app health support screen showing the health brief tab, management action, disclaimer, and generate brief section.",
+        caption:
+          "Health brief workflow framed as support for organising and communicating health information.",
+        kind: "screenshot",
+        width: 499,
+        height: 1080,
+      },
+      {
+        label: "Asele native phase recommendations",
+        src: "/images/projects/asele/asele-native-recommendations.webp",
+        alt: "Asele mobile app recommendations screen showing Asele Insights and a phase-aware meal plan recommendation.",
+        caption: "Phase-aware recommendations connected to the user's current cycle context.",
+        kind: "screenshot",
+        width: 591,
+        height: 1280,
+      },
+      {
+        label: "Asele native cycle calendar",
+        src: "/images/projects/asele/asele-native-cycle-calendar.webp",
+        alt: "Asele mobile app cycle calendar screen showing phase legend, logged data legend, and August 2026 cycle calendar.",
+        caption:
+          "Cycle calendar with phase and logged-data legends for interpreting daily records.",
+        kind: "screenshot",
+        width: 591,
+        height: 1280,
+      },
+      {
+        label: "Asele native private journal",
+        src: "/images/projects/asele/asele-native-journal.webp",
+        alt: "Asele mobile app notes screen showing a private daily journal editor with mood tagging and save entry action.",
+        caption: "Private journal workflow for notes that do not fit structured symptom logging.",
+        kind: "screenshot",
+        width: 591,
+        height: 1280,
+      },
+      {
         label: "Asele public homepage desktop",
         src: "/images/projects/asele/asele-public-home-desktop.webp",
         alt: "Asele public website showing the cycle and wellness product overview.",
@@ -534,52 +739,17 @@ export const caseStudies = [
         width: 1440,
         height: 900,
       },
-      {
-        label: "Asele public homepage mobile",
-        src: "/images/projects/asele/asele-public-home-mobile.webp",
-        alt: "Mobile viewport of the Asele public website hero for cycle and wellness tracking.",
-        caption: "Responsive public experience across desktop and mobile web.",
-        kind: "screenshot",
-        width: 390,
-        height: 844,
-      },
-      {
-        label: "Asele public feature section",
-        src: "/images/projects/asele/asele-public-features.webp",
-        alt: "Asele public website feature section listing cycle tracking, reminders, mood logging, and wellness tips.",
-        caption: "Public product experience supporting the platform discussed in this case study.",
-        kind: "screenshot",
-        width: 1440,
-        height: 900,
-      },
-      {
-        label: "Asele public health brief overview",
-        src: "/images/projects/asele/asele-public-health-brief.webp",
-        alt: "Asele public app page describing cycle logging, private guidance, and the Asele Health Brief.",
-        caption: "Public overview of Asele's AI-assisted health brief feature.",
-        kind: "screenshot",
-        width: 1440,
-        height: 900,
-      },
-      {
-        label: "Asele public privacy and wellness section",
-        src: "/images/projects/asele/asele-public-wellness.webp",
-        alt: "Asele public website section describing period logging, mood tracking, reminders, and private encrypted data.",
-        caption: "Public privacy and wellness messaging aligned with the product boundaries in this case study.",
-        kind: "screenshot",
-        width: 1440,
-        height: 560,
-      },
     ],
     mediaNote:
-      "These images are from Asele's public website. Native mobile screenshots will replace them once approved for publication.",
-    mediaRequirements: [
-      "Approved native mobile cycle or wellness workflow screenshot with private data removed.",
-      "Approved health-brief or reminder workflow screenshot using synthetic or redacted data.",
-      "Administrative workflow screenshot with private data removed.",
-      "Replace temporary public website captures when approved native application screenshots are available.",
+      "This gallery combines approved native mobile screenshots with one public Asele website capture. Sensitive health data, schemas, secrets, and internal operational views remain withheld.",
+    mediaRequirements: ["Administrative workflow screenshot with private data removed."],
+    relatedProjects: [
+      {
+        slug: "teacheasy",
+        reason:
+          "Another Supabase-backed platform with permissions and product operations as core architecture.",
+      },
     ],
-    relatedProjects: [{ slug: "teacheasy", reason: "Another Supabase-backed platform with permissions and product operations as core architecture." }],
     links: asele.links,
     seo: {
       title: "Asele Case Study | HealthTech, Supabase and Capacitor Engineering",
@@ -592,7 +762,7 @@ export const caseStudies = [
       ogUrl: "https://www.kenoye.site/projects/asele",
       socialImage: "https://www.kenoye.site/og-asele.svg",
     },
-    lastReviewed: "2026-07-25",
+    lastReviewed: "2026-08-02",
   },
   {
     slug: "teacheasy",
@@ -607,27 +777,80 @@ export const caseStudies = [
     skillGroups: [
       {
         title: "SaaS and Multi-Tenant Architecture",
-        items: ["tenant-scoped routing", "academy portals", "tenant-aware queries", "secure tenant isolation", "academy branding", "tenant settings"],
+        items: [
+          "tenant-scoped routing",
+          "academy portals",
+          "tenant-aware queries",
+          "secure tenant isolation",
+          "academy branding",
+          "tenant settings",
+        ],
       },
       {
         title: "Frontend Engineering",
-        items: ["React", "TypeScript", "Vite", "dashboard components", "role-specific interfaces", "complex forms", "scheduling UI", "permission-aware rendering"],
+        items: [
+          "React",
+          "TypeScript",
+          "Vite",
+          "dashboard components",
+          "role-specific interfaces",
+          "complex forms",
+          "scheduling UI",
+          "permission-aware rendering",
+        ],
       },
       {
         title: "Backend and Database Engineering",
-        items: ["Supabase", "PostgreSQL", "migrations", "SQL functions", "triggers", "RLS", "Realtime", "file-storage policies", "reporting queries"],
+        items: [
+          "Supabase",
+          "PostgreSQL",
+          "migrations",
+          "SQL functions",
+          "triggers",
+          "RLS",
+          "Realtime",
+          "file-storage policies",
+          "reporting queries",
+        ],
       },
       {
         title: "Security and Authorization",
-        items: ["multi-role auth", "admins", "tutors", "students", "parents", "super admins", "permission matrices", "participant-level access"],
+        items: [
+          "multi-role auth",
+          "admins",
+          "tutors",
+          "students",
+          "parents",
+          "super admins",
+          "permission matrices",
+          "participant-level access",
+        ],
       },
       {
         title: "Learning Systems",
-        items: ["recurring scheduling", "attendance", "Jitsi Meet", "Yjs", "tldraw", "shared PDFs", "shared notes", "quizzes", "scoring"],
+        items: [
+          "recurring scheduling",
+          "attendance",
+          "Jitsi Meet",
+          "Yjs",
+          "tldraw",
+          "shared PDFs",
+          "shared notes",
+          "quizzes",
+          "scoring",
+        ],
       },
       {
         title: "Cloud and Integrations",
-        items: ["Supabase Edge Functions", "Resend", "webhooks", "email delivery events", "automated reminders", "CSV export", "GitHub"],
+        items: [
+          "Supabase Edge Functions",
+          "Resend",
+          "webhooks",
+          "email delivery events",
+          "automated reminders",
+          "CSV export",
+          "GitHub",
+        ],
       },
     ],
     canonicalUrl: "https://www.kenoye.site/projects/teacheasy",
@@ -644,8 +867,7 @@ export const caseStudies = [
     overview: {
       id: "overview",
       title: "What the product is",
-      lead:
-        "TeachEasy is a multi-tenant learning-management platform for academies, tutors, students, and parents.",
+      lead: "TeachEasy is a multi-tenant learning-management platform for academies, tutors, students, and parents.",
       body: [
         "The platform is built around academy operations: tenant-specific portals, role-based dashboards, tutor and student management, class scheduling, recurring lessons, live classrooms, collaborative learning tools, assessments, attendance, messaging, reporting, and academy-level administration.",
         "The engineering focus is less about a single feature and more about coordinating roles, permissions, tenant boundaries, and learning workflows so each user sees the right work at the right time.",
@@ -718,20 +940,75 @@ export const caseStudies = [
     ],
     architecture: {
       title: "TeachEasy multi-tenant architecture",
-      lead:
-        "A React and TypeScript application uses Supabase, PostgreSQL RLS, Realtime, Edge Functions, Jitsi, Yjs, and Resend integration boundaries to support tenant-specific academy operations.",
+      lead: "A React and TypeScript application uses Supabase, PostgreSQL RLS, Realtime, Edge Functions, Jitsi, Yjs, and Resend integration boundaries to support tenant-specific academy operations.",
       nodes: [
-        { id: "academy", label: "Academy tenant", detail: "Tenant identity, branding, users, and operations", group: "Tenant" },
-        { id: "admin", label: "Admin portal", detail: "Academy setup, users, scheduling, communications", group: "Portal" },
-        { id: "tutor", label: "Tutor portal", detail: "Classes, materials, live sessions, assessments", group: "Portal" },
-        { id: "student", label: "Student portal", detail: "Class access, collaboration, quizzes", group: "Portal" },
-        { id: "parent", label: "Parent portal", detail: "Learner context and permitted communication", group: "Portal" },
-        { id: "supabase", label: "Supabase + PostgreSQL RLS", detail: "Tenant-aware auth, role access, storage policies, and reporting", group: "Backend" },
-        { id: "scheduler", label: "Recurring scheduler", detail: "Series identifiers, occurrences, future changes, and completed lesson history", group: "Learning" },
-        { id: "jitsi", label: "Jitsi Meet integration", detail: "Academy domains, classroom routes, moderators, participant context, JWT-ready auth", group: "Integration" },
-        { id: "collab", label: "Collaborative workspace", detail: "Yjs, Supabase Realtime, shared PDFs, whiteboard, notes, and persistence", group: "Learning" },
-        { id: "assessments", label: "Assessments", detail: "Quiz creation, submissions, scoring, parent visibility, and RLS", group: "Learning" },
-        { id: "email", label: "Resend email infrastructure", detail: "Transactional email, newsletters, webhooks, and delivery event history", group: "Integration" },
+        {
+          id: "academy",
+          label: "Academy tenant",
+          detail: "Tenant identity, branding, users, and operations",
+          group: "Tenant",
+        },
+        {
+          id: "admin",
+          label: "Admin portal",
+          detail: "Academy setup, users, scheduling, communications",
+          group: "Portal",
+        },
+        {
+          id: "tutor",
+          label: "Tutor portal",
+          detail: "Classes, materials, live sessions, assessments",
+          group: "Portal",
+        },
+        {
+          id: "student",
+          label: "Student portal",
+          detail: "Class access, collaboration, quizzes",
+          group: "Portal",
+        },
+        {
+          id: "parent",
+          label: "Parent portal",
+          detail: "Learner context and permitted communication",
+          group: "Portal",
+        },
+        {
+          id: "supabase",
+          label: "Supabase + PostgreSQL RLS",
+          detail: "Tenant-aware auth, role access, storage policies, and reporting",
+          group: "Backend",
+        },
+        {
+          id: "scheduler",
+          label: "Recurring scheduler",
+          detail: "Series identifiers, occurrences, future changes, and completed lesson history",
+          group: "Learning",
+        },
+        {
+          id: "jitsi",
+          label: "Jitsi Meet integration",
+          detail:
+            "Academy domains, classroom routes, moderators, participant context, JWT-ready auth",
+          group: "Integration",
+        },
+        {
+          id: "collab",
+          label: "Collaborative workspace",
+          detail: "Yjs, Supabase Realtime, shared PDFs, whiteboard, notes, and persistence",
+          group: "Learning",
+        },
+        {
+          id: "assessments",
+          label: "Assessments",
+          detail: "Quiz creation, submissions, scoring, parent visibility, and RLS",
+          group: "Learning",
+        },
+        {
+          id: "email",
+          label: "Resend email infrastructure",
+          detail: "Transactional email, newsletters, webhooks, and delivery event history",
+          group: "Integration",
+        },
       ],
       connections: [
         { from: "academy", to: "admin", label: "configures" },
@@ -840,8 +1117,7 @@ export const caseStudies = [
       },
       {
         title: "Capture email delivery events",
-        context:
-          "Academy communications need more observability than a send button can provide.",
+        context: "Academy communications need more observability than a send button can provide.",
         decision:
           "Use Resend webhook events to record sent, delivered, bounced, opened, and clicked states in delivery history.",
         result:
@@ -849,39 +1125,99 @@ export const caseStudies = [
       },
     ],
     implementationPhases: [
-      { title: "Tenant and portal foundation", status: "implemented", items: ["Academy tenancy", "Tenant-scoped routing", "Academy-specific portals", "Role-specific dashboards", "Supabase and PostgreSQL RLS architecture"] },
-      { title: "Learning workflow systems", status: "implemented", items: ["Class scheduling", "Recurring lesson management", "Tutor permissions", "Student assignment", "Attendance", "Automated reminders"] },
-      { title: "Classroom and collaboration", status: "implemented", items: ["Jitsi live classroom integration", "Shared PDFs", "Shared notes", "Whiteboard", "Yjs collaboration", "Supabase Realtime persistence"] },
-      { title: "Assessment, communication, and reporting", status: "implemented", items: ["Quiz workflows", "Parent-visible assessment results", "Secure document sharing", "Academy messaging", "Resend webhook event history", "CSV export"] },
-      { title: "Classroom authentication hardening", status: "in-progress", items: ["JWT-ready Jitsi authentication", "Production secret configuration", "Moderation and edge-case QA"] },
+      {
+        title: "Tenant and portal foundation",
+        status: "implemented",
+        items: [
+          "Academy tenancy",
+          "Tenant-scoped routing",
+          "Academy-specific portals",
+          "Role-specific dashboards",
+          "Supabase and PostgreSQL RLS architecture",
+        ],
+      },
+      {
+        title: "Learning workflow systems",
+        status: "implemented",
+        items: [
+          "Class scheduling",
+          "Recurring lesson management",
+          "Tutor permissions",
+          "Student assignment",
+          "Attendance",
+          "Automated reminders",
+        ],
+      },
+      {
+        title: "Classroom and collaboration",
+        status: "implemented",
+        items: [
+          "Jitsi live classroom integration",
+          "Shared PDFs",
+          "Shared notes",
+          "Whiteboard",
+          "Yjs collaboration",
+          "Supabase Realtime persistence",
+        ],
+      },
+      {
+        title: "Assessment, communication, and reporting",
+        status: "implemented",
+        items: [
+          "Quiz workflows",
+          "Parent-visible assessment results",
+          "Secure document sharing",
+          "Academy messaging",
+          "Resend webhook event history",
+          "CSV export",
+        ],
+      },
+      {
+        title: "Classroom authentication hardening",
+        status: "in-progress",
+        items: [
+          "JWT-ready Jitsi authentication",
+          "Production secret configuration",
+          "Moderation and edge-case QA",
+        ],
+      },
     ],
     challenges: [
       {
         title: "Multi-tenant data isolation",
         whyItMattered:
           "A multi-tenant education product loses trust quickly if tenant boundaries are only implied by interface state.",
-        constraints: ["Each academy needs separate routes, settings, users, documents, lessons, assessments, communications, and reports."],
+        constraints: [
+          "Each academy needs separate routes, settings, users, documents, lessons, assessments, communications, and reports.",
+        ],
         response:
           "Tenant-scoped routing, tenant-aware queries, academy-specific settings, and PostgreSQL Row Level Security patterns were used as the foundation for the platform.",
-        result: "Role-specific portals can be built around explicit tenant boundaries rather than informal UI conventions.",
+        result:
+          "Role-specific portals can be built around explicit tenant boundaries rather than informal UI conventions.",
       },
       {
         title: "Role and permission complexity",
         whyItMattered:
           "Academy administrators, tutors, students, parents, and super administrators need different capabilities across scheduling, documents, lessons, assessments, attendance, and reporting.",
-        constraints: ["Tutor-specific permissions and parent visibility rules require more nuance than broad role checks."],
+        constraints: [
+          "Tutor-specific permissions and parent visibility rules require more nuance than broad role checks.",
+        ],
         response:
           "Permission-aware UI rendering was paired with database-enforced role, tenant, participant, and storage policies.",
-        result: "Authorization can be communicated as both product behaviour and backend architecture.",
+        result:
+          "Authorization can be communicated as both product behaviour and backend architecture.",
       },
       {
         title: "Recurring scheduling",
         whyItMattered:
           "Recurring lessons are easy to create but difficult to edit safely once students, tutors, attendance, and completed sessions are attached.",
-        constraints: ["Completed lessons should not be casually destroyed by a future schedule change."],
+        constraints: [
+          "Completed lessons should not be casually destroyed by a future schedule change.",
+        ],
         response:
           "Recurring-series identifiers and occurrence-level workflows support deleting one occurrence, deleting current and future occurrences, deleting an entire series, and preserving completed lesson history.",
-        result: "Academies get flexible scheduling controls without flattening every recurring class into unrelated events.",
+        result:
+          "Academies get flexible scheduling controls without flattening every recurring class into unrelated events.",
       },
       {
         title: "Real-time collaboration",
@@ -889,7 +1225,8 @@ export const caseStudies = [
           "A live classroom needs shared state for whiteboards, documents, notes, and lesson context, not only a meeting room.",
         response:
           "Yjs and Supabase Realtime were used for collaborative document state synchronisation and persistence around shared PDFs, notes, whiteboard, and workspace flows.",
-        result: "Lesson participants can share learning context inside the platform rather than juggling disconnected tools.",
+        result:
+          "Lesson participants can share learning context inside the platform rather than juggling disconnected tools.",
       },
       {
         title: "Video classroom ownership",
@@ -906,7 +1243,8 @@ export const caseStudies = [
           "Academy messaging needs a reliable delivery history for operational support and communication follow-up.",
         response:
           "Resend webhooks record sent, delivered, bounced, opened, and clicked events for transactional email and academy communication workflows.",
-        result: "The case study can describe email delivery tracking without claiming engagement or delivery guarantees.",
+        result:
+          "The case study can describe email delivery tracking without claiming engagement or delivery guarantees.",
       },
     ],
     security: {
@@ -935,8 +1273,18 @@ export const caseStudies = [
       { label: "Admin, tutor, student, parent, and super-admin portals", state: "implemented" },
       { label: "Role-based access and PostgreSQL RLS", state: "implemented" },
       { label: "Recurring class series management", state: "implemented" },
-      { label: "Jitsi live classroom integration", state: "implemented", detail: "Classroom routes, academy domains, participant context, and moderator-role handling are represented as implemented integration work." },
-      { label: "JWT-ready Jitsi authentication", state: "in-progress", detail: "Prepared infrastructure; production secret configuration and QA should be confirmed before claiming full enforcement." },
+      {
+        label: "Jitsi live classroom integration",
+        state: "implemented",
+        detail:
+          "Classroom routes, academy domains, participant context, and moderator-role handling are represented as implemented integration work.",
+      },
+      {
+        label: "JWT-ready Jitsi authentication",
+        state: "in-progress",
+        detail:
+          "Prepared infrastructure; production secret configuration and QA should be confirmed before claiming full enforcement.",
+      },
       { label: "Real-time collaborative lesson workspace", state: "implemented" },
       { label: "Quiz and assessment workflows", state: "implemented" },
       { label: "Secure document sharing", state: "implemented" },
@@ -985,7 +1333,8 @@ export const caseStudies = [
         label: "TeachEasy public feature overview",
         src: "/images/projects/teacheasy/teacheasy-public-feature-overview.webp",
         alt: "TeachEasy public website feature cards for scheduling lessons, billing clients, and growing the business.",
-        caption: "Public feature overview supporting the scheduling and billing systems discussed in this case study.",
+        caption:
+          "Public feature overview supporting the scheduling and billing systems discussed in this case study.",
         kind: "screenshot",
         width: 720,
         height: 900,
@@ -1017,7 +1366,13 @@ export const caseStudies = [
       "Synthetic student or parent workspace screenshot.",
       "Architecture diagram or tenant-role matrix suitable for public viewing.",
     ],
-    relatedProjects: [{ slug: "asele", reason: "Another product where Supabase, privacy boundaries, and product operations shape architecture." }],
+    relatedProjects: [
+      {
+        slug: "asele",
+        reason:
+          "Another product where Supabase, privacy boundaries, and product operations shape architecture.",
+      },
+    ],
     links: teacheasy.links,
     seo: {
       title: "TeachEasy LMS Case Study | Multi-Tenant SaaS and Supabase Engineering",
@@ -1050,13 +1405,12 @@ export const caseStudies = [
       summary:
         "Reframe is a CMS-driven news and community platform adapted for iOS and Android delivery with React, TypeScript, Next.js, shared APIs, native integration through Capacitor, and store-readiness work.",
       primaryMediaNote:
-        "Public web screenshots are included below while native mobile screenshots remain withheld until the mobile application is approved for public release.",
+        "Approved native mobile and public web screenshots are included below with private implementation details withheld.",
     },
     overview: {
       id: "overview",
       title: "What the product is",
-      lead:
-        "Reframe publishes news, articles, images, likes, comments, and community content from a CMS-backed platform.",
+      lead: "Reframe publishes news, articles, images, likes, comments, and community content from a CMS-backed platform.",
       body: [
         "The existing web platform remained the product foundation. The mobile work focused on adapting that shared product into Android and iOS delivery workflows without representing it as a fully native rebuild.",
         "Content synchronization remained central: editorial updates should flow through the shared backend and CMS-backed APIs rather than requiring a new app release for ordinary content changes.",
@@ -1113,20 +1467,49 @@ export const caseStudies = [
       "The existing Next.js web product and shared APIs were the foundation.",
       "Mobile platform behavior needed targeted native integration.",
       "Store-readiness work must be separated from final public store status unless verified by store records.",
-      "Native mobile screenshots are not available in the repository and should not be fabricated.",
+      "Only approved native mobile screenshots should be published; additional mobile flows remain excluded until they are safe for public viewing.",
     ],
     architecture: {
       title: "Reframe web-to-mobile architecture",
-      lead:
-        "The CMS and shared APIs remain the source of truth. Capacitor adds mobile distribution and native integration around the existing React/Next.js product surface.",
+      lead: "The CMS and shared APIs remain the source of truth. Capacitor adds mobile distribution and native integration around the existing React/Next.js product surface.",
       nodes: [
         { id: "cms", label: "CMS", detail: "Editorial publishing source", group: "Content" },
-        { id: "api", label: "Shared backend APIs", detail: "News, images, community data, likes, comments", group: "Backend" },
-        { id: "web", label: "Next.js web platform", detail: "Existing product surface", group: "Web" },
-        { id: "capacitor", label: "Capacitor shell", detail: "Mobile bridge and native project configuration", group: "Mobile" },
-        { id: "ios", label: "iOS app workflow", detail: "Safe areas, lifecycle, deep links, build prep", group: "Mobile" },
-        { id: "android", label: "Android app workflow", detail: "Native configuration, notifications, build prep", group: "Mobile" },
-        { id: "stores", label: "Store readiness", detail: "Signing, QA, release preparation", group: "Delivery" },
+        {
+          id: "api",
+          label: "Shared backend APIs",
+          detail: "News, images, community data, likes, comments",
+          group: "Backend",
+        },
+        {
+          id: "web",
+          label: "Next.js web platform",
+          detail: "Existing product surface",
+          group: "Web",
+        },
+        {
+          id: "capacitor",
+          label: "Capacitor shell",
+          detail: "Mobile bridge and native project configuration",
+          group: "Mobile",
+        },
+        {
+          id: "ios",
+          label: "iOS app workflow",
+          detail: "Safe areas, lifecycle, deep links, build prep",
+          group: "Mobile",
+        },
+        {
+          id: "android",
+          label: "Android app workflow",
+          detail: "Native configuration, notifications, build prep",
+          group: "Mobile",
+        },
+        {
+          id: "stores",
+          label: "Store readiness",
+          detail: "Signing, QA, release preparation",
+          group: "Delivery",
+        },
       ],
       connections: [
         { from: "cms", to: "api", label: "publishes through" },
@@ -1182,8 +1565,7 @@ export const caseStudies = [
         title: "Use Capacitor rather than a separate native rebuild",
         context:
           "The goal was mobile distribution and native integration without splitting the product into multiple independent implementations.",
-        decision:
-          "Use Capacitor as the bridge around the existing React/Next.js product surface.",
+        decision: "Use Capacitor as the bridge around the existing React/Next.js product surface.",
         tradeoffs: [
           "The approach preserves shared product logic but needs targeted native work for safe areas, lifecycle, deep links, notifications, and store builds.",
         ],
@@ -1192,10 +1574,39 @@ export const caseStudies = [
       },
     ],
     implementationPhases: [
-      { title: "Assessment and mobile foundation", status: "implemented", items: ["Reviewed existing web architecture", "Evaluated CMS integration", "Planned Capacitor architecture"] },
-      { title: "Native project setup", status: "implemented", items: ["Capacitor integration", "Android setup", "iOS setup", "Platform configuration"] },
-      { title: "Mobile enhancement", status: "implemented", items: ["Safe-area improvements", "Lifecycle handling", "Deep links", "Push-notification infrastructure"] },
-      { title: "Release workflow", status: "implemented", items: ["Build optimization", "Cross-platform testing", "Store preparation and troubleshooting"] },
+      {
+        title: "Assessment and mobile foundation",
+        status: "implemented",
+        items: [
+          "Reviewed existing web architecture",
+          "Evaluated CMS integration",
+          "Planned Capacitor architecture",
+        ],
+      },
+      {
+        title: "Native project setup",
+        status: "implemented",
+        items: ["Capacitor integration", "Android setup", "iOS setup", "Platform configuration"],
+      },
+      {
+        title: "Mobile enhancement",
+        status: "implemented",
+        items: [
+          "Safe-area improvements",
+          "Lifecycle handling",
+          "Deep links",
+          "Push-notification infrastructure",
+        ],
+      },
+      {
+        title: "Release workflow",
+        status: "implemented",
+        items: [
+          "Build optimization",
+          "Cross-platform testing",
+          "Store preparation and troubleshooting",
+        ],
+      },
     ],
     challenges: [
       {
@@ -1212,7 +1623,8 @@ export const caseStudies = [
           "A simple WebView wrapper would not address safe areas, lifecycle behavior, push infrastructure, deep links, or platform release requirements.",
         response:
           "Native integrations and platform-specific configuration were added around the shared product surface.",
-        result: "The route now describes the work as cross-platform mobile engineering rather than a fully native rebuild.",
+        result:
+          "The route now describes the work as cross-platform mobile engineering rather than a fully native rebuild.",
       },
     ],
     performance: {
@@ -1235,11 +1647,23 @@ export const caseStudies = [
       bullets: reframe.outcomes?.map((outcome) => outcome.label),
     },
     currentStatus: [
-      { label: "Existing web product and CMS", state: "implemented", detail: "Inherited platform foundation." },
+      {
+        label: "Existing web product and CMS",
+        state: "implemented",
+        detail: "Inherited platform foundation.",
+      },
       { label: "Capacitor mobile architecture", state: "implemented" },
       { label: "Deep links and push-notification infrastructure", state: "implemented" },
-      { label: "Store-readiness work", state: "implemented", detail: "Final store status should be confirmed from external records." },
-      { label: "Public web screenshots", state: "implemented", detail: "Native mobile screenshots remain withheld pending approval." },
+      {
+        label: "Store-readiness work",
+        state: "implemented",
+        detail: "Final store status should be confirmed from external records.",
+      },
+      {
+        label: "Approved native mobile screenshot",
+        state: "implemented",
+        detail: "A native feed screenshot is approved for portfolio use.",
+      },
     ],
     lessons: {
       id: "lessons",
@@ -1251,6 +1675,15 @@ export const caseStudies = [
       ],
     },
     gallery: [
+      {
+        label: "Reframe native community feed",
+        src: "/images/projects/reframe/reframe-native-feed.webp",
+        alt: "Reframe mobile app feed showing a community post card with image, likes, comments, sharing, and bottom navigation.",
+        caption: "Approved native mobile screenshot showing Reframe's community feed experience.",
+        kind: "screenshot",
+        width: 540,
+        height: 1170,
+      },
       {
         label: "Reframe public web feed desktop",
         src: "/images/projects/reframe/reframe-public-feed-desktop.webp",
@@ -1298,14 +1731,19 @@ export const caseStudies = [
       },
     ],
     mediaNote:
-      "The visuals shown here are from Reframe's public web platform. Native mobile screenshots are withheld until the mobile application is approved for public release.",
+      "This gallery combines an approved native mobile screenshot with public Reframe web captures. Private moderation tools, unpublished content, credentials, and internal records remain withheld.",
     mediaRequirements: [
-      "Approved native news feed screenshot after public mobile release.",
       "Approved native article reader screenshot after public mobile release.",
       "Approved native community feed screenshot after public mobile release.",
       "Push-notification or deep-link flow screenshot only when safe and approved for public viewing.",
     ],
-    relatedProjects: [{ slug: "asele", reason: "Another Capacitor-backed mobile delivery story with notification and deep-link concerns." }],
+    relatedProjects: [
+      {
+        slug: "asele",
+        reason:
+          "Another Capacitor-backed mobile delivery story with notification and deep-link concerns.",
+      },
+    ],
     links: reframe.links,
     seo: {
       title: "Reframe Case Study | Cross-platform Mobile Engineering",
@@ -1318,7 +1756,7 @@ export const caseStudies = [
       ogUrl: "https://www.kenoye.site/projects/reframe",
       socialImage: "https://www.kenoye.site/og-reframe.svg",
     },
-    lastReviewed: "2026-07-24",
+    lastReviewed: "2026-08-02",
   },
 ] satisfies CaseStudy[];
 
@@ -1356,8 +1794,14 @@ export const getCaseStudySectionLinks = (caseStudy: CaseStudy) =>
     caseStudy.problem,
     caseStudy.architecture && { id: "architecture", title: caseStudy.architecture.title },
     caseStudy.keySystems?.length && { id: "key-systems", title: "Key systems" },
-    caseStudy.technicalDecisions?.length && { id: "technical-decisions", title: "Technical decisions" },
-    caseStudy.implementationPhases?.length && { id: "implementation", title: "Implementation phases" },
+    caseStudy.technicalDecisions?.length && {
+      id: "technical-decisions",
+      title: "Technical decisions",
+    },
+    caseStudy.implementationPhases?.length && {
+      id: "implementation",
+      title: "Implementation phases",
+    },
     caseStudy.challenges?.length && { id: "challenges", title: "Engineering challenges" },
     caseStudy.security,
     caseStudy.privacy,

@@ -20,13 +20,9 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const isHome = location.pathname === "/";
-  const isOverlayNav = isHome && !scrolled;
-
-  const textClass = isOverlayNav ? "text-primary-foreground" : "text-foreground";
-  const mutedTextClass = isOverlayNav ? "text-primary-foreground/70" : "text-muted-foreground";
-  const navShellClass = isOverlayNav
-    ? "bg-transparent"
-    : "border-b border-border bg-background/95 backdrop-blur-xl";
+  const navShellClass = !scrolled
+    ? "border-b border-border/70 bg-background/90 backdrop-blur-xl"
+    : "border-b border-border bg-background/95 shadow-subtle backdrop-blur-xl";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -35,12 +31,27 @@ const Navbar = () => {
   }, []);
 
   // Close mobile menu on route change
-  useEffect(() => { setMobileOpen(false); }, [location.pathname]);
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileOpen(false);
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
   }, [mobileOpen]);
 
   useEffect(() => {
@@ -54,7 +65,7 @@ const Navbar = () => {
           if (entry.isIntersecting) setActiveSection(entry.target.id);
         });
       },
-      { rootMargin: "-40% 0px -55% 0px" }
+      { rootMargin: "-40% 0px -55% 0px" },
     );
     sectionIds.forEach((id) => {
       const el = document.getElementById(id);
@@ -76,16 +87,16 @@ const Navbar = () => {
   const isActive = (href: string) =>
     href.startsWith("#") ? activeSection === href.replace("#", "") : location.pathname === href;
 
-  const renderLink = (link: typeof navLinks[0], mobile = false) => {
+  const renderLink = (link: (typeof navLinks)[0], mobile = false) => {
     const active = isActive(link.href);
     const cls = mobile
       ? `block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
-          active ? "text-accent bg-accent/10" : "text-foreground hover:text-accent hover:bg-accent/5"
-        }`
-      : `text-sm font-medium px-3 py-1.5 rounded-full transition-colors whitespace-nowrap ${
           active
             ? "text-accent bg-accent/10"
-            : `${mutedTextClass} hover:text-accent`
+            : "text-foreground hover:text-accent hover:bg-accent/5"
+        }`
+      : `text-sm font-medium px-3 py-1.5 rounded-full transition-colors whitespace-nowrap ${
+          active ? "text-accent bg-accent/10" : "text-muted-foreground hover:text-accent"
         }`;
 
     if (link.href.startsWith("/")) {
@@ -94,6 +105,7 @@ const Navbar = () => {
           key={link.href + (mobile ? "-m" : "")}
           to={link.href}
           className={cls}
+          aria-current={active ? "page" : undefined}
           onClick={() => setMobileOpen(false)}
         >
           {link.label}
@@ -106,6 +118,7 @@ const Navbar = () => {
         href={getHref(link.href)}
         onClick={(e) => handleHashClick(e, link.href)}
         className={cls}
+        aria-current={active ? "page" : undefined}
       >
         {link.label}
       </a>
@@ -116,38 +129,32 @@ const Navbar = () => {
     <>
       <nav
         aria-label="Primary navigation"
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navShellClass}`}
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${navShellClass}`}
       >
-        <div className="max-w-[1120px] mx-auto flex items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
+        <div className="mx-auto flex max-w-[1120px] items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
           <Link
             to="/"
-            className={`font-semibold tracking-tight text-base shrink-0 ${textClass}`}
+            className="shrink-0 text-base font-semibold tracking-tight text-foreground"
             aria-label="Okagua Kenoye home"
           >
             Okagua<span className="text-accent">.</span>
           </Link>
 
           {/* Desktop nav links */}
-          <div className="hidden md:flex items-center gap-1 mx-3 min-w-0 flex-1 justify-center">
-            <div className="flex items-center gap-1 rounded-full px-1.5 py-1 backdrop-blur-md bg-card/60 border border-border/50">
+          <div className="mx-3 hidden min-w-0 flex-1 items-center justify-center gap-1 md:flex">
+            <div className="flex items-center gap-1 rounded-full border border-border/50 bg-card/60 px-1.5 py-1 backdrop-blur-md">
               {navLinks.map((link) => renderLink(link))}
             </div>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
-            <ThemeToggle
-              className={isOverlayNav ? "border-primary-foreground/20 text-primary-foreground/70 hover:text-accent" : ""}
-            />
+          <div className="flex shrink-0 items-center gap-2">
+            <ThemeToggle />
             {/* Résumé link (desktop) */}
             <a
               href={siteConfig.social.resume}
               target="_blank"
               rel="noopener noreferrer"
-              className={`hidden md:inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-sm font-medium transition-colors ${
-                isOverlayNav
-                  ? "border-primary-foreground/20 text-primary-foreground/70 hover:border-accent/60 hover:text-accent"
-                  : "border-border text-muted-foreground hover:border-accent/60 hover:text-accent"
-              }`}
+              className="hidden items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:border-accent/60 hover:text-accent md:inline-flex"
               aria-label="View résumé (opens in new tab)"
             >
               <FileText size={14} aria-hidden="true" />
@@ -156,7 +163,7 @@ const Navbar = () => {
             <Button
               asChild
               size="sm"
-              className="hidden md:inline-flex bg-accent text-accent-foreground hover:bg-accent/90 font-semibold rounded-md"
+              className="hidden rounded-md bg-accent font-semibold text-accent-foreground hover:bg-accent/90 md:inline-flex"
             >
               <a href={getHref("#contact")} onClick={(e) => handleHashClick(e, "#contact")}>
                 Contact
@@ -168,11 +175,7 @@ const Navbar = () => {
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
               aria-controls="mobile-navigation"
-              className={`md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg transition-colors ${
-                isOverlayNav
-                  ? "text-primary-foreground hover:bg-primary-foreground/10"
-                  : "text-foreground hover:bg-muted"
-              }`}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-foreground transition-colors hover:bg-muted md:hidden"
             >
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
@@ -202,41 +205,38 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="fixed top-0 right-0 bottom-0 z-50 w-72 max-w-[85vw] bg-background border-l border-border shadow-2xl md:hidden flex flex-col"
+              className="fixed bottom-0 right-0 top-0 z-50 flex w-72 max-w-[85vw] flex-col border-l border-border bg-background shadow-2xl md:hidden"
             >
-              <div className="flex items-center justify-between px-4 py-4 border-b border-border">
+              <div className="flex items-center justify-between border-b border-border px-4 py-4">
                 <span className="font-semibold text-foreground">Menu</span>
                 <button
                   onClick={() => setMobileOpen(false)}
                   aria-label="Close menu"
-                  className="w-10 h-10 inline-flex items-center justify-center rounded-lg text-foreground hover:bg-muted transition-colors"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-foreground transition-colors hover:bg-muted"
                 >
                   <X size={20} />
                 </button>
               </div>
-              <div className="flex-1 overflow-y-auto py-4 px-2 space-y-1">
+              <div className="flex-1 space-y-1 overflow-y-auto px-2 py-4">
                 {navLinks.map((link) => renderLink(link, true))}
                 <a
                   href={siteConfig.social.resume}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex w-full items-center gap-2 px-4 py-3 text-base font-medium rounded-lg text-foreground hover:text-accent hover:bg-accent/5 transition-colors"
+                  className="flex w-full items-center gap-2 rounded-lg px-4 py-3 text-base font-medium text-foreground transition-colors hover:bg-accent/5 hover:text-accent"
                   onClick={() => setMobileOpen(false)}
                 >
                   <FileText size={16} aria-hidden="true" />
                   Résumé
                 </a>
               </div>
-              <div className="px-4 py-4 border-t border-border">
+              <div className="border-t border-border px-4 py-4">
                 <Button
                   asChild
                   size="lg"
-                  className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-semibold rounded-xl"
+                  className="w-full rounded-xl bg-accent font-semibold text-accent-foreground hover:bg-accent/90"
                 >
-                  <a
-                    href={getHref("#contact")}
-                    onClick={(e) => handleHashClick(e, "#contact")}
-                  >
+                  <a href={getHref("#contact")} onClick={(e) => handleHashClick(e, "#contact")}>
                     Contact
                   </a>
                 </Button>

@@ -11,15 +11,16 @@ const footerLinks = [
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground py-12 sm:py-16 px-5 sm:px-6 border-t border-primary-foreground/10">
-      <div className="max-w-[1120px] mx-auto">
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 mb-10">
+    <footer className="border-t border-primary-foreground/10 bg-primary px-5 py-12 text-primary-foreground sm:px-6 sm:py-16">
+      <div className="mx-auto max-w-[1120px]">
+        <div className="mb-10 grid gap-8 sm:grid-cols-2 sm:gap-10 md:grid-cols-3">
           <div>
-            <p className="font-semibold text-base mb-2">
+            <p className="mb-2 text-base font-semibold">
               Okagua<span className="text-accent">.</span>
             </p>
-            <p className="text-sm text-primary-foreground/50 leading-relaxed">
-              Senior full-stack and product engineer building production systems across web, mobile, health, and education.
+            <p className="text-sm leading-relaxed text-primary-foreground/50">
+              Senior full-stack and product engineer building production systems across web, mobile,
+              health, and education.
             </p>
             {siteConfig.openToWork && (
               <div className="mt-4 inline-flex items-center gap-2">
@@ -30,13 +31,16 @@ const Footer = () => {
           </div>
 
           <div>
-            <p className="font-semibold text-xs mb-3 text-primary-foreground/70 uppercase tracking-wider">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-primary-foreground/70">
               Navigate
             </p>
             <ul className="space-y-2">
               {footerLinks.map((link) => (
                 <li key={link.href}>
-                  <Link to={link.href} className="text-sm text-primary-foreground/50 hover:text-accent transition-colors">
+                  <Link
+                    to={link.href}
+                    className="text-sm text-primary-foreground/50 transition-colors hover:text-accent"
+                  >
                     {link.label}
                   </Link>
                 </li>
@@ -46,7 +50,7 @@ const Footer = () => {
                   href={siteConfig.social.resume}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-primary-foreground/50 hover:text-accent transition-colors"
+                  className="inline-flex items-center gap-1.5 text-sm text-primary-foreground/50 transition-colors hover:text-accent"
                 >
                   <FileText size={13} aria-hidden="true" />
                   Résumé
@@ -56,14 +60,14 @@ const Footer = () => {
           </div>
 
           <div>
-            <p className="font-semibold text-xs mb-3 text-primary-foreground/70 uppercase tracking-wider">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-primary-foreground/70">
               Connect
             </p>
             <div className="flex items-center gap-3">
               <a
                 href={`mailto:${siteConfig.email}`}
                 aria-label={`Email ${siteConfig.email}`}
-                className="w-10 h-10 rounded-md border border-primary-foreground/15 flex items-center justify-center text-primary-foreground/60 hover:text-accent hover:border-accent/40 transition-all"
+                className="flex h-10 w-10 items-center justify-center rounded-md border border-primary-foreground/15 text-primary-foreground/60 transition-all hover:border-accent/40 hover:text-accent"
               >
                 <Mail size={16} />
               </a>
@@ -72,7 +76,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn profile (opens in new tab)"
-                className="w-10 h-10 rounded-md border border-primary-foreground/15 flex items-center justify-center text-primary-foreground/60 hover:text-accent hover:border-accent/40 transition-all"
+                className="flex h-10 w-10 items-center justify-center rounded-md border border-primary-foreground/15 text-primary-foreground/60 transition-all hover:border-accent/40 hover:text-accent"
               >
                 <Linkedin size={16} />
               </a>
@@ -81,7 +85,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub profile (opens in new tab)"
-                className="w-10 h-10 rounded-md border border-primary-foreground/15 flex items-center justify-center text-primary-foreground/60 hover:text-accent hover:border-accent/40 transition-all"
+                className="flex h-10 w-10 items-center justify-center rounded-md border border-primary-foreground/15 text-primary-foreground/60 transition-all hover:border-accent/40 hover:text-accent"
               >
                 <Github size={16} />
               </a>
@@ -89,9 +93,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="h-px w-full bg-primary-foreground/10 mb-6" />
+        <div className="mb-6 h-px w-full bg-primary-foreground/10" />
 
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
           <p className="text-xs text-primary-foreground/30">
             © {new Date().getFullYear()} Okagua Kenoye. All rights reserved.
           </p>

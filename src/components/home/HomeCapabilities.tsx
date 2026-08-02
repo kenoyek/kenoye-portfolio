@@ -25,11 +25,16 @@ export const HomeCapabilities = () => (
             className="border-t border-border pt-5"
           >
             <h3 className="text-lg font-semibold text-foreground">{capability.title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{capability.summary}</p>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              {capability.summary}
+            </p>
             <ul className="mt-5 space-y-2" role="list">
               {capability.evidence.map((item) => (
                 <li key={item} className="flex gap-2.5 text-sm text-foreground/85">
-                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+                  <span
+                    className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent"
+                    aria-hidden="true"
+                  />
                   {item}
                 </li>
               ))}

@@ -17,6 +17,7 @@ Structured content now lives in:
 The main project model is `PortfolioProject` in `src/content/projects.ts`.
 
 Core fields:
+
 - `slug`
 - `title`
 - `shortTitle`
@@ -43,6 +44,7 @@ Core fields:
 - `seo`
 
 Required for every project:
+
 - `slug`
 - `title`
 - `category`
@@ -68,6 +70,7 @@ Optional fields should be used when the detail is known and verified.
 ## Initial Project Entries
 
 Current structured entries:
+
 - Asele
 - TeachEasy LMS
 - Reframe Mobile App
@@ -81,12 +84,14 @@ Current structured entries:
 - Agricultural Data Dashboard
 
 Project order:
+
 1. Asele
 2. TeachEasy
 3. Reframe
 4. LearnEasy Academy
 
 Secondary work order:
+
 1. TogaCode LMS
 2. 1Vet Online Pet Store
 3. Python Playground
@@ -130,6 +135,7 @@ Only Asele, TeachEasy, and Reframe have public case-study routes as of Milestone
 ## Verification Rules
 
 Do not publish numeric metrics unless verified through:
+
 - production analytics
 - app-store records
 - repository history
@@ -139,6 +145,7 @@ Do not publish numeric metrics unless verified through:
 - explicit user confirmation
 
 When metrics are unavailable, prefer factual outcomes:
+
 - Android production release completed
 - iOS deployment workflow implemented
 - one shared React codebase across platforms
@@ -153,6 +160,7 @@ When metrics are unavailable, prefer factual outcomes:
 ## HealthTech Language Rules
 
 For Asele:
+
 - Do not present wellness or AI-assisted features as medical diagnosis.
 - Use language such as tracking, wellness context, cycle-aware notifications, and health briefs.
 - Avoid clinical claims unless confirmed and legally reviewed.

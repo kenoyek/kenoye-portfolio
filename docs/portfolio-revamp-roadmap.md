@@ -7,6 +7,7 @@ Date: 2026-07-24
 Objective: establish evidence, remove uncertainty, and decide the design direction before visual implementation.
 
 Tasks:
+
 - Complete repository audit.
 - Create route, component, content, and dependency inventory.
 - Capture current screenshots for desktop and mobile.
@@ -17,20 +18,24 @@ Tasks:
 - Decide whether blog/admin stays in scope.
 
 Files likely affected:
+
 - `docs/portfolio-revamp-audit.md`
 - `docs/portfolio-revamp-roadmap.md`
 - `.gitignore`
 
 Dependencies:
+
 - Browser/Lighthouse tooling.
 - User approval on design direction.
 - User confirmation of project facts.
 
 Risks:
+
 - Acting before facts are verified may preserve or amplify weak claims.
 - Screenshot and Lighthouse work requires local browser tooling.
 
 Acceptance criteria:
+
 - Audit and roadmap exist in `docs/`.
 - Validation baseline is documented.
 - Open questions are explicit.
@@ -45,6 +50,7 @@ Objective: create a maintainable design/content foundation before rebuilding pag
 Status: implemented on `refactor/portfolio-foundation`; pending review and approval before Milestone 2.
 
 Tasks:
+
 - Add `npm run typecheck`.
 - Fix lint errors and decide warning policy.
 - Address high-risk dependency audit items in a controlled update branch.
@@ -70,6 +76,7 @@ Tasks:
 - Add route-level lazy loading for admin/blog editor.
 
 Files likely affected:
+
 - `package.json`
 - `package-lock.json`
 - `vite.config.ts`
@@ -82,14 +89,17 @@ Files likely affected:
 - `src/components/layout/*`
 
 Dependencies:
+
 - Agreement on type/content architecture.
 - Dependency-update tolerance.
 
 Risks:
+
 - Dependency upgrades may affect React Router, Vite, Vitest, or Tiptap.
 - Stricter TypeScript may reveal more issues than expected.
 
 Acceptance criteria:
+
 - `npm run lint` passes or documented warnings are intentionally allowed.
 - `npm run typecheck` passes.
 - `npm run test` passes.
@@ -108,6 +118,7 @@ Status: implemented on `feature/homepage-editorial-redesign`; pending review and
 Restoration note, 2026-07-24: the homepage keeps the flagship four-project hierarchy, then restores valid earlier portfolio work in a secondary "More engineering work" section. See `docs/portfolio-project-restoration-audit.md`.
 
 Tasks:
+
 - Redesign hero around precise senior positioning.
 - Add proof anchors: domains, platforms delivered, selected systems, availability.
 - Rebuild Selected Work around 3-4 flagship projects.
@@ -121,6 +132,7 @@ Tasks:
 - Apply mobile-first responsive polish.
 
 Files likely affected:
+
 - `src/pages/Index.tsx`
 - `src/components/HeroSection.tsx`
 - `src/components/PortfolioSection.tsx`
@@ -134,15 +146,18 @@ Files likely affected:
 - new homepage section components
 
 Dependencies:
+
 - Approved visual direction.
 - Verified content and metrics.
 - Real project screenshots or diagrams.
 
 Risks:
+
 - Too much redesign in one pass could break mobile layout.
 - Weak assets will limit visual credibility.
 
 Acceptance criteria:
+
 - Homepage communicates identity, seniority, domains, and CTA within five seconds.
 - Projects are above generic skill lists.
 - No unverifiable metrics remain.
@@ -159,6 +174,7 @@ Objective: make projects the strongest proof of technical credibility.
 Status: implemented on `feature/project-case-study-system`; pending review and approval before Milestone 4.
 
 Tasks:
+
 - Create reusable case-study data model.
 - Create reusable case-study components:
   - `CaseStudyHero`
@@ -176,6 +192,7 @@ Tasks:
 - Remove screenshot placeholders and document verified media requirements.
 
 Files likely affected:
+
 - `src/pages/projects/CaseStudyPage.tsx`
 - `src/components/case-study/*`
 - `src/content/caseStudies.ts`
@@ -184,15 +201,18 @@ Files likely affected:
 - `docs/case-study-*.md`
 
 Dependencies:
+
 - Project facts in the typed content layer and repository documentation.
 - Screenshots/product artifacts for later visual replacement.
 - User approval before moving into Milestone 4.
 
 Risks:
+
 - Case studies can become too long if not structured for scanning.
 - App/product screenshots may expose private data if not cleaned.
 
 Acceptance criteria:
+
 - A reusable case-study route system exists.
 - Asele, TeachEasy, and Reframe have published pages.
 - Reframe no longer contains placeholder gallery.
@@ -208,6 +228,7 @@ Objective: harden the site for performance, accessibility, SEO, security, and re
 Status: implemented on `chore/production-readiness`; pending review, merge, deployment, and production verification.
 
 Tasks:
+
 - Run Lighthouse and address Core Web Vitals issues.
 - Split admin/blog/editor chunks.
 - Optimize font loading.
@@ -228,6 +249,7 @@ Tasks:
   - blog empty/error states
 
 Files likely affected:
+
 - `vercel.json`
 - `index.html`
 - `src/App.tsx`
@@ -239,15 +261,18 @@ Files likely affected:
 - test files
 
 Dependencies:
+
 - Production domain.
 - Supabase/Resend access.
 - Final route structure.
 
 Risks:
+
 - Security headers can break external assets if CSP is too strict.
 - Sanitization may alter existing blog content.
 
 Acceptance criteria:
+
 - Lighthouse baseline improves or documented exceptions exist.
 - `npm run lint`, `npm run typecheck`, `npm run test`, and `npm run build` pass.
 - `npm audit` has no critical/high runtime issues, or accepted exceptions are documented.
@@ -261,6 +286,7 @@ Estimated complexity: medium-large.
 Objective: ship the polished portfolio with deployment confidence and clear maintenance practices.
 
 Tasks:
+
 - Final content review.
 - Final visual QA on desktop/tablet/mobile.
 - Cross-browser checks: Chrome, Safari, Firefox.
@@ -273,6 +299,7 @@ Tasks:
 - Tag a release in GitHub.
 
 Files likely affected:
+
 - `README.md`
 - `docs/*`
 - `vercel.json`
@@ -280,15 +307,18 @@ Files likely affected:
 - Vercel environment settings
 
 Dependencies:
+
 - Access to Vercel/Supabase/Resend.
 - Final domain.
 - Final assets.
 
 Risks:
+
 - Environment mismatches between local, Vercel, and Supabase.
 - DNS/domain changes can delay validation.
 
 Acceptance criteria:
+
 - Production deploy is verified manually.
 - Contact form sends to the correct inbox.
 - Direct routes work on refresh.
@@ -300,6 +330,7 @@ Estimated complexity: medium.
 ## Prioritization
 
 Critical:
+
 - Fix lint failures.
 - Resolve or document security audit findings.
 - Confirm production domain and remove Lovable/generated URLs.
@@ -307,6 +338,7 @@ Critical:
 - Deploy and configure contact email function.
 
 High value:
+
 - Content/data layer.
 - Homepage IA redesign.
 - Case-study architecture.
@@ -315,6 +347,7 @@ High value:
 - Accessibility baseline.
 
 Refinement:
+
 - Typography polish.
 - Social preview design.
 - Micro-interactions.
@@ -326,6 +359,7 @@ Refinement:
 Start with Milestone 1 after approval. It is the best first build phase because it improves reliability and maintainability without locking the site into a visual direction too early.
 
 Recommended first task sequence:
+
 1. Add `typecheck` script.
 2. Fix lint errors in app-owned code.
 3. Remove Lovable tagger dependency if safe.

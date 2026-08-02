@@ -116,4 +116,3 @@ Removed unused asset:
 - Lighthouse/browser responsive testing was not available in this environment.
 - Blog homepage preview was omitted until real published technical/product writing exists.
 - Detailed case-study routes for Asele and TeachEasy are intentionally deferred to Milestone 3.
-

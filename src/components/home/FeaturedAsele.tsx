@@ -5,7 +5,13 @@ import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { ProjectEvidence } from "@/components/home/ProjectEvidence";
 import { getProjectBySlug } from "@/content/projects";
-import { fadeUp, inViewProps, slideFromLeft, slideFromRight, staggerContainer } from "@/lib/animations";
+import {
+  fadeUp,
+  inViewProps,
+  slideFromLeft,
+  slideFromRight,
+  staggerContainer,
+} from "@/lib/animations";
 
 const asele = getProjectBySlug("asele");
 
@@ -16,12 +22,13 @@ export const FeaturedAsele = () => {
     <Section className="border-y border-border bg-surface">
       <Container>
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.92fr)] lg:items-center">
-
           {/* Left column */}
           <motion.div variants={slideFromLeft} {...inViewProps}>
             <p className="mb-3 text-metadata uppercase text-accent">Flagship project</p>
             <h2 className="text-page-title font-semibold text-foreground">{asele.title}</h2>
-            <p className="mt-5 max-w-2xl text-body-large leading-relaxed text-muted-foreground">{asele.summary}</p>
+            <p className="mt-5 max-w-2xl text-body-large leading-relaxed text-muted-foreground">
+              {asele.summary}
+            </p>
 
             <div className="mt-8 border-y border-border py-6">
               <ProjectEvidence project={asele} variant="featured" />
@@ -37,33 +44,35 @@ export const FeaturedAsele = () => {
               <motion.div variants={fadeUp}>
                 <h3 className="text-sm font-semibold text-foreground">Engineering challenge</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  Build a wellness platform around sensitive personal health context with PostgreSQL RLS,
-                  mobile-native authentication flows, Firebase push notifications, 24-language localisation,
-                  AI-assisted briefs, and administrative operations.
+                  Build a wellness platform around sensitive personal health context with PostgreSQL
+                  RLS, mobile-native authentication flows, Firebase push notifications, 24-language
+                  localisation, AI-assisted briefs, and administrative operations.
                 </p>
               </motion.div>
               <motion.div variants={fadeUp}>
                 <h3 className="text-sm font-semibold text-foreground">Product boundary</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  Asele supports cycle tracking, wellness trends, reminders, and assistive briefs. It is deliberately
-                  not positioned as medical diagnosis, a product decision that shapes every data model and feature
-                  boundary.
+                  Asele supports cycle tracking, wellness trends, reminders, and assistive briefs.
+                  It is deliberately not positioned as medical diagnosis, a product decision that
+                  shapes every data model and feature boundary.
                 </p>
               </motion.div>
             </motion.div>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              {asele.links?.filter((link) => link.kind !== "case-study").map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-semibold text-accent-foreground transition-all hover:bg-accent/90 hover:shadow-md"
-                >
-                  {link.label} <ArrowRight className="ml-2" size={16} aria-hidden="true" />
-                </a>
-              ))}
+              {asele.links
+                ?.filter((link) => link.kind !== "case-study")
+                .map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-semibold text-accent-foreground transition-all hover:bg-accent/90 hover:shadow-md"
+                  >
+                    {link.label} <ArrowRight className="ml-2" size={16} aria-hidden="true" />
+                  </a>
+                ))}
               <Link
                 to="/projects/asele"
                 className="inline-flex min-h-11 items-center rounded-md border border-border px-5 text-sm font-medium text-foreground transition-all hover:border-accent/60 hover:text-accent"
@@ -82,7 +91,9 @@ export const FeaturedAsele = () => {
           >
             <div className="grid min-h-[420px] grid-rows-[auto_1fr_auto] p-6 sm:p-7">
               <div className="flex items-center justify-between gap-4">
-                <p className="text-metadata uppercase text-muted-foreground">HealthTech · Mobile · Full-stack</p>
+                <p className="text-metadata uppercase text-muted-foreground">
+                  HealthTech · Mobile · Full-stack
+                </p>
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
@@ -93,12 +104,19 @@ export const FeaturedAsele = () => {
                   Women's cycle and wellness platform
                 </p>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  React · TypeScript · Supabase · PostgreSQL RLS · Capacitor · Firebase push · AI briefs
+                  React · TypeScript · Supabase · PostgreSQL RLS · Capacitor · Firebase push · AI
+                  briefs
                 </p>
                 <ul className="mt-6 space-y-2" role="list">
                   {(asele.outcomes ?? []).slice(0, 4).map((outcome) => (
-                    <li key={outcome.label} className="flex items-center gap-2 text-sm text-foreground/80">
-                      <span className="h-1 w-1 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+                    <li
+                      key={outcome.label}
+                      className="flex items-center gap-2 text-sm text-foreground/80"
+                    >
+                      <span
+                        className="h-1 w-1 shrink-0 rounded-full bg-accent"
+                        aria-hidden="true"
+                      />
                       {outcome.label}
                     </li>
                   ))}
@@ -119,7 +137,6 @@ export const FeaturedAsele = () => {
               </div>
             </div>
           </motion.aside>
-
         </div>
       </Container>
     </Section>

@@ -9,6 +9,7 @@ Date: 2026-07-24
 ## Baseline Results
 
 Before implementation:
+
 - `npm run lint`: failed with 8 errors and 13 warnings.
 - `npx tsc -b`: passed.
 - `npm run test`: passed, 1 test.
@@ -18,10 +19,12 @@ Before implementation:
 ## Dependency and Security Review
 
 Safe remediation applied:
+
 - Ran `npm audit fix` without `--force`.
 - Removed `lovable-tagger` after removing it from Vite config.
 
 Fixed by non-forced updates:
+
 - `@remix-run/router` lockfile update.
 - `@tootallnate/once`.
 - `ajv`.
@@ -39,22 +42,26 @@ Fixed by non-forced updates:
 - `yaml`.
 
 Remaining:
+
 - `esbuild <=0.24.2` via Vite 5: moderate dev-server exposure. Audit recommends `vite@8.1.5`, a breaking change. Deferred to a reviewed Vite major migration.
 - `react-router` / `react-router-dom`: audit still reports moderate advisories across the current major range. Deferred to a React Router upgrade/migration review.
 
 Production exposure:
+
 - The Vite/esbuild advisory affects development server behavior, not the static Vercel production bundle.
 - React Router advisory should be handled, but current app does not intentionally navigate to untrusted backslash-controlled URLs. Still recommended for follow-up.
 
 ## Bundle Output
 
 After route-level lazy loading:
+
 - Main JS chunk: about 489 kB uncompressed / 147 kB gzip.
 - Admin editor chunk: about 450 kB uncompressed / 142 kB gzip.
 - Homepage route chunk: about 56 kB uncompressed / 15 kB gzip.
 - Reframe route chunk: about 23 kB uncompressed / 6 kB gzip.
 
 Result:
+
 - Admin/Tiptap-heavy code is separated from the first public route load.
 - The app still has a large shared vendor chunk and should receive deeper bundle analysis in Milestone 4.
 
@@ -93,4 +100,3 @@ Result:
 - React Router migration.
 - Lighthouse/browser baseline.
 - Real responsive screenshot QA.
-

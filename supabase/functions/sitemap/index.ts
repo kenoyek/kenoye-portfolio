@@ -41,9 +41,24 @@ Deno.serve(async (req) => {
 
   const urls: SitemapUrl[] = [
     { loc: SITE_URL + "/", priority: "1.0", changefreq: "weekly", lastmod: STATIC_LASTMOD },
-    { loc: SITE_URL + "/projects/asele", priority: "0.8", changefreq: "monthly", lastmod: STATIC_LASTMOD },
-    { loc: SITE_URL + "/projects/teacheasy", priority: "0.8", changefreq: "monthly", lastmod: STATIC_LASTMOD },
-    { loc: SITE_URL + "/projects/reframe", priority: "0.8", changefreq: "monthly", lastmod: STATIC_LASTMOD },
+    {
+      loc: SITE_URL + "/projects/asele",
+      priority: "0.8",
+      changefreq: "monthly",
+      lastmod: STATIC_LASTMOD,
+    },
+    {
+      loc: SITE_URL + "/projects/teacheasy",
+      priority: "0.8",
+      changefreq: "monthly",
+      lastmod: STATIC_LASTMOD,
+    },
+    {
+      loc: SITE_URL + "/projects/reframe",
+      priority: "0.8",
+      changefreq: "monthly",
+      lastmod: STATIC_LASTMOD,
+    },
     { loc: SITE_URL + "/blog", priority: "0.7", changefreq: "weekly", lastmod: STATIC_LASTMOD },
     ...(posts || []).map((p) => ({
       loc: `${SITE_URL}/blog/${p.slug}`,
@@ -62,7 +77,7 @@ ${urls
     ${u.lastmod ? `<lastmod>${escapeXml(u.lastmod)}</lastmod>` : ""}
     <changefreq>${u.changefreq}</changefreq>
     <priority>${u.priority}</priority>
-  </url>`
+  </url>`,
   )
   .join("\n")}
 </urlset>`;

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, BookOpen, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { PortfolioProject } from "@/content/projects";
+import { projectPreviewMedia } from "@/content/projectMedia";
 import { ProjectStatus } from "@/components/projects/ProjectStatus";
 import { ProjectTechnologyList } from "@/components/projects/ProjectTechnologyList";
 import { fadeUp, inViewProps } from "@/lib/animations";
@@ -28,27 +29,36 @@ const titleClass: Record<Emphasis, string> = {
 export const ProjectPreview = ({ project, emphasis = "standard" }: ProjectPreviewProps) => {
   const caseStudy = getCaseStudyLink(project);
   const live = getLiveLink(project);
+  const media = projectPreviewMedia[project.slug];
   const isFeatured = emphasis === "featured";
   const outcomeLimit = isFeatured ? 4 : 3;
   const visibleOutcomes = project.outcomes?.slice(0, outcomeLimit) ?? [];
+  const mediaAspectRatio =
+    media?.width && media.height ? `${media.width} / ${media.height}` : "16 / 10";
 
   return (
     <motion.article
       variants={fadeUp}
       {...inViewProps}
-      className={`group border-t border-border py-7 first:border-t-0 ${isFeatured ? "pb-10 pt-8" : ""}`}
+      className={`group border-t border-border py-8 first:border-t-0 ${isFeatured ? "pb-11 pt-9" : ""}`}
     >
-      <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
-        <div>
+      <div
+        className={`grid gap-6 ${isFeatured ? "lg:grid-cols-[minmax(0,1fr)_360px]" : "lg:grid-cols-[minmax(0,1fr)_300px]"} lg:items-start`}
+      >
+        <div className="min-w-0">
           <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2">
             <ProjectStatus status={project.projectStatus} />
-            <span className="text-muted-foreground" aria-hidden="true">/</span>
+            <span className="text-muted-foreground" aria-hidden="true">
+              /
+            </span>
             <p className="text-metadata uppercase text-muted-foreground">
               {project.metadata?.productCategory || project.category.join(" · ")}
             </p>
             {project.platforms && project.platforms.length > 1 && (
               <>
-                <span className="text-muted-foreground" aria-hidden="true">/</span>
+                <span className="text-muted-foreground" aria-hidden="true">
+                  /
+                </span>
                 <p className="text-metadata uppercase text-accent">
                   {project.platforms.join(" · ")}
                 </p>
@@ -63,7 +73,11 @@ export const ProjectPreview = ({ project, emphasis = "standard" }: ProjectPrevie
           </p>
 
           {visibleOutcomes.length > 0 && (
-            <ul className="mt-5 flex flex-wrap gap-2" role="list" aria-label={`${project.title} engineering outcomes`}>
+            <ul
+              className="mt-5 flex flex-wrap gap-2"
+              role="list"
+              aria-label={`${project.title} engineering outcomes`}
+            >
               {visibleOutcomes.map((outcome) => (
                 <li
                   key={outcome.label}
@@ -78,11 +92,36 @@ export const ProjectPreview = ({ project, emphasis = "standard" }: ProjectPrevie
           <ProjectTechnologyList technologies={project.technologies.slice(0, 5)} className="mt-4" />
         </div>
 
-        <div className="space-y-4 lg:text-right">
-          <p className="text-sm font-medium text-foreground">{project.role}</p>
-          {project.timeframe && (
-            <p className="text-sm text-muted-foreground">{project.timeframe}</p>
+        <div className="space-y-4">
+          {media?.src ? (
+            <figure className="overflow-hidden rounded-lg border border-border bg-surface shadow-subtle">
+              <div
+                className="grid w-full place-items-center overflow-hidden bg-[radial-gradient(circle_at_50%_0%,hsl(var(--accent)/0.12),transparent_55%),hsl(var(--surface))]"
+                style={{ aspectRatio: mediaAspectRatio }}
+              >
+                <img
+                  src={media.src}
+                  alt={media.alt || `${project.title} product screenshot`}
+                  width={media.width}
+                  height={media.height}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-contain transition-transform duration-500 [transition-timing-function:var(--ease-standard)] group-hover:scale-[1.015]"
+                />
+              </div>
+              <figcaption className="border-t border-border px-4 py-3 text-xs leading-relaxed text-muted-foreground">
+                {media.caption || project.metadata?.productCategory}
+              </figcaption>
+            </figure>
+          ) : (
+            <div className="border-l border-border pl-4">
+              <p className="text-sm font-medium text-foreground">{project.role}</p>
+              {project.timeframe && (
+                <p className="mt-1 text-sm text-muted-foreground">{project.timeframe}</p>
+              )}
+            </div>
           )}
+
           <div className="flex flex-wrap gap-3 lg:justify-end">
             {caseStudy ? (
               <Link
@@ -107,6 +146,10 @@ export const ProjectPreview = ({ project, emphasis = "standard" }: ProjectPrevie
               </span>
             )}
           </div>
+
+          {media?.src ? (
+            <p className="text-sm font-medium text-foreground lg:text-right">{project.role}</p>
+          ) : null}
         </div>
       </div>
     </motion.article>

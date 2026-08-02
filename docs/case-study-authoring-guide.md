@@ -139,4 +139,3 @@ Before publishing, add significant claims to `docs/case-study-content-verificati
 ## Related Navigation
 
 Use `relatedProjects` with slugs that already exist in `caseStudies`. The shared footer navigation is generated from typed case-study order.
-

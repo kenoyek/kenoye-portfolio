@@ -7,22 +7,28 @@ const height = Number(process.argv[4] || 568);
 const port = 9333 + Math.floor(Math.random() * 1000);
 const userDataDir = `/tmp/kenoye-chrome-overflow-${port}`;
 
-const chrome = spawn(chromePath, [
-  "--headless=new",
-  "--disable-gpu",
-  "--no-first-run",
-  "--no-default-browser-check",
-  `--user-data-dir=${userDataDir}`,
-  `--remote-debugging-port=${port}`,
-  `--window-size=${width},${height}`,
-  "about:blank",
-], { stdio: "ignore" });
+const chrome = spawn(
+  chromePath,
+  [
+    "--headless=new",
+    "--disable-gpu",
+    "--no-first-run",
+    "--no-default-browser-check",
+    `--user-data-dir=${userDataDir}`,
+    `--remote-debugging-port=${port}`,
+    `--window-size=${width},${height}`,
+    "about:blank",
+  ],
+  { stdio: "ignore" },
+);
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 try {
   await wait(2500);
-  const target = await fetch(`http://127.0.0.1:${port}/json/new?${encodeURIComponent(url)}`, { method: "PUT" }).then((res) => res.json());
+  const target = await fetch(`http://127.0.0.1:${port}/json/new?${encodeURIComponent(url)}`, {
+    method: "PUT",
+  }).then((res) => res.json());
   const ws = new WebSocket(target.webSocketDebuggerUrl);
   let id = 0;
   const pending = new Map();

@@ -43,7 +43,9 @@ const AdminBlog = () => {
     setLoading(false);
   }, [toast]);
 
-  useEffect(() => { fetchPosts(); }, [fetchPosts]);
+  useEffect(() => {
+    fetchPosts();
+  }, [fetchPosts]);
 
   const handleDelete = async (id: string, title: string) => {
     if (!confirm(`Delete "${title}"?`)) return;
@@ -63,12 +65,18 @@ const AdminBlog = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b border-border bg-card sticky top-0 z-10">
-        <div className="max-w-5xl mx-auto flex items-center justify-between px-6 py-4">
+      <header className="sticky top-0 z-10 border-b border-border bg-card">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
           <h1 className="font-heading text-xl font-bold text-foreground">Blog Dashboard</h1>
           <div className="flex items-center gap-3">
-            <Button asChild size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90">
-              <Link to="/admin/blog/new"><Plus size={16} /> New Post</Link>
+            <Button
+              asChild
+              size="sm"
+              className="bg-accent text-accent-foreground hover:bg-accent/90"
+            >
+              <Link to="/admin/blog/new">
+                <Plus size={16} /> New Post
+              </Link>
             </Button>
             <Button variant="ghost" size="sm" onClick={handleLogout}>
               <LogOut size={16} />
@@ -77,42 +85,60 @@ const AdminBlog = () => {
         </div>
       </header>
 
-      <main className="max-w-5xl mx-auto px-6 py-8">
+      <main className="mx-auto max-w-5xl px-6 py-8">
         {loading ? (
           <div className="flex justify-center py-12">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent" />
+            <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-accent" />
           </div>
         ) : posts.length === 0 ? (
-          <div className="text-center py-16 text-muted-foreground">
-            <p className="text-lg mb-4">No blog posts yet</p>
+          <div className="py-16 text-center text-muted-foreground">
+            <p className="mb-4 text-lg">No blog posts yet</p>
             <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
-              <Link to="/admin/blog/new"><Plus size={16} /> Create your first post</Link>
+              <Link to="/admin/blog/new">
+                <Plus size={16} /> Create your first post
+              </Link>
             </Button>
           </div>
         ) : (
           <div className="space-y-3">
             {posts.map((post) => (
-              <div key={post.id} className="flex items-center justify-between bg-card border border-border rounded-xl px-5 py-4 hover:shadow-md transition-shadow">
+              <div
+                key={post.id}
+                className="flex items-center justify-between rounded-xl border border-border bg-card px-5 py-4 transition-shadow hover:shadow-md"
+              >
                 <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h2 className="font-heading font-semibold text-foreground truncate">{post.title}</h2>
-                    <Badge className={`text-xs ${statusColor[post.status] || ""}`}>{post.status}</Badge>
+                  <div className="mb-1 flex items-center gap-2">
+                    <h2 className="truncate font-heading font-semibold text-foreground">
+                      {post.title}
+                    </h2>
+                    <Badge className={`text-xs ${statusColor[post.status] || ""}`}>
+                      {post.status}
+                    </Badge>
                   </div>
                   <p className="text-xs text-muted-foreground">
                     Updated {format(new Date(post.updated_at), "MMM d, yyyy")}
-                    {post.published_at && ` · Published ${format(new Date(post.published_at), "MMM d, yyyy")}`}
+                    {post.published_at &&
+                      ` · Published ${format(new Date(post.published_at), "MMM d, yyyy")}`}
                   </p>
                 </div>
-                <div className="flex items-center gap-1 ml-4">
+                <div className="ml-4 flex items-center gap-1">
                   {post.status === "published" && (
                     <Button variant="ghost" size="icon" asChild>
-                      <Link to={`/blog/${post.slug}`} target="_blank"><Eye size={16} /></Link>
+                      <Link to={`/blog/${post.slug}`} target="_blank">
+                        <Eye size={16} />
+                      </Link>
                     </Button>
                   )}
                   <Button variant="ghost" size="icon" asChild>
-                    <Link to={`/admin/blog/edit/${post.id}`}><Edit size={16} /></Link>
+                    <Link to={`/admin/blog/edit/${post.id}`}>
+                      <Edit size={16} />
+                    </Link>
                   </Button>
-                  <Button variant="ghost" size="icon" onClick={() => handleDelete(post.id, post.title)}>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => handleDelete(post.id, post.title)}
+                  >
                     <Trash2 size={16} className="text-destructive" />
                   </Button>
                 </div>

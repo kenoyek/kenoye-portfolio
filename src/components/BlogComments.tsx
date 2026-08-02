@@ -34,12 +34,18 @@ const BlogComments = ({ postId }: { postId: string }) => {
 
     const channel = supabase
       .channel(`comments-${postId}`)
-      .on("postgres_changes", { event: "*", schema: "public", table: "blog_comments", filter: `post_id=eq.${postId}` }, () => {
-        fetchComments();
-      })
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "blog_comments", filter: `post_id=eq.${postId}` },
+        () => {
+          fetchComments();
+        },
+      )
       .subscribe();
 
-    return () => { supabase.removeChannel(channel); };
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, [fetchComments, postId]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -69,13 +75,16 @@ const BlogComments = ({ postId }: { postId: string }) => {
 
   return (
     <section className="mt-12 border-t border-border pt-10">
-      <h2 className="font-heading text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
+      <h2 className="mb-6 flex items-center gap-2 font-heading text-2xl font-bold text-foreground">
         <MessageCircle size={22} />
         Comments ({comments.length})
       </h2>
 
       {/* Comment form */}
-      <form onSubmit={handleSubmit} className="mb-8 space-y-3 rounded-xl border border-border bg-surface/80 p-4 sm:p-5">
+      <form
+        onSubmit={handleSubmit}
+        className="mb-8 space-y-3 rounded-xl border border-border bg-surface/80 p-4 sm:p-5"
+      >
         <Input
           placeholder="Your name (optional)"
           value={name}
@@ -91,7 +100,12 @@ const BlogComments = ({ postId }: { postId: string }) => {
           required
           rows={3}
         />
-        <Button type="submit" disabled={submitting || !content.trim()} size="sm" className="gap-1.5">
+        <Button
+          type="submit"
+          disabled={submitting || !content.trim()}
+          size="sm"
+          className="gap-1.5"
+        >
           <Send size={14} />
           {submitting ? "Posting..." : "Post Comment"}
         </Button>
@@ -100,17 +114,17 @@ const BlogComments = ({ postId }: { postId: string }) => {
       {/* Comments list */}
       <div className="space-y-4">
         {comments.length === 0 && (
-          <p className="text-muted-foreground text-sm">No comments yet. Be the first!</p>
+          <p className="text-sm text-muted-foreground">No comments yet. Be the first!</p>
         )}
         {comments.map((c) => (
           <div key={c.id} className="glass-card p-4">
             <div className="mb-2 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
-              <span className="font-medium text-sm text-foreground">{c.author_name}</span>
+              <span className="text-sm font-medium text-foreground">{c.author_name}</span>
               <span className="text-xs text-muted-foreground">
                 {format(new Date(c.created_at), "MMM d, yyyy 'at' h:mm a")}
               </span>
             </div>
-            <p className="text-sm text-foreground/90 whitespace-pre-wrap">{c.content}</p>
+            <p className="whitespace-pre-wrap text-sm text-foreground/90">{c.content}</p>
           </div>
         ))}
       </div>

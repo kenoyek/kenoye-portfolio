@@ -59,4 +59,3 @@ The Milestone 2 homepage redesign does not fabricate product screenshots. Where 
 - Recommended dimensions: 1200 x 630.
 - Suggested content: Okagua Kenoye name, role, restrained editorial layout, no fake logos or inflated claims.
 - Priority: medium.
-

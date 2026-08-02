@@ -113,6 +113,7 @@ const routeJsonLd = (route) => {
 const routeHead = (route) => {
   const canonical = absoluteUrl(route.path);
   const image = absoluteUrl(route.image);
+  const imageAlt = route.imageAlt || `${route.title} social preview image`;
   const jsonLd = routeJsonLd(route);
 
   return `
@@ -128,11 +129,17 @@ const routeHead = (route) => {
     <meta property="og:image" content="${image}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="${escapeHtml(imageAlt)}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${escapeHtml(route.title)}" />
     <meta name="twitter:description" content="${escapeHtml(route.description)}" />
-    <meta name="twitter:image" content="${image}" />${jsonLd ? `
-    <script id="route-jsonld" type="application/ld+json">${safeJson(jsonLd)}</script>` : ""}`;
+    <meta name="twitter:image:alt" content="${escapeHtml(imageAlt)}" />
+    <meta name="twitter:image" content="${image}" />${
+      jsonLd
+        ? `
+    <script id="route-jsonld" type="application/ld+json">${safeJson(jsonLd)}</script>`
+        : ""
+    }`;
 };
 
 const replaceHeadMetadata = (html, route) => {

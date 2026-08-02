@@ -109,11 +109,11 @@ Browser checks included nonblank content, page title, `h1`, main/article landmar
 
 Sequential local Lighthouse runs against production preview:
 
-| Route | Perf | A11y | Best Practices | SEO | LCP | CLS | TBT |
-| --- | ---: | ---: | ---: | ---: | --- | --- | --- |
-| `/` | 82 | 93 | 100 | 100 | 3.6 s | 0 | 0 ms |
-| `/projects/asele` | 82 | 96 | 100 | 100 | 3.6 s | 0 | 0 ms |
-| `/blog` | 73 | 94 | 100 | 100 | 4.8 s | 0 | 30 ms |
+| Route             | Perf | A11y | Best Practices | SEO | LCP   | CLS | TBT   |
+| ----------------- | ---: | ---: | -------------: | --: | ----- | --- | ----- |
+| `/`               |   82 |   93 |            100 | 100 | 3.6 s | 0   | 0 ms  |
+| `/projects/asele` |   82 |   96 |            100 | 100 | 3.6 s | 0   | 0 ms  |
+| `/blog`           |   73 |   94 |            100 | 100 | 4.8 s | 0   | 30 ms |
 
 One earlier Asele Lighthouse sample reported 61 performance with 6.5 s LCP, but an immediate sequential rerun returned 82 performance with 3.6 s LCP.
 

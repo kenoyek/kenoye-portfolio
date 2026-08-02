@@ -9,10 +9,13 @@ type SectionHeaderProps = {
 
 export const SectionHeader = ({ eyebrow, title, description, className }: SectionHeaderProps) => (
   <div className={cn("mb-8 sm:mb-10", className)}>
-    {eyebrow && <p className="text-accent font-medium text-xs tracking-widest uppercase mb-3">{eyebrow}</p>}
-    <h2 className="text-section-title font-bold tracking-normal text-foreground mb-3">{title}</h2>
-    <div className="w-16 h-px bg-border-strong mb-4" />
-    {description && <p className="text-body-large text-muted-foreground max-w-2xl">{description}</p>}
+    {eyebrow && (
+      <p className="mb-3 text-xs font-medium uppercase tracking-widest text-accent">{eyebrow}</p>
+    )}
+    <h2 className="mb-3 text-section-title font-bold tracking-normal text-foreground">{title}</h2>
+    <div className="mb-4 h-px w-16 bg-border-strong" />
+    {description && (
+      <p className="max-w-2xl text-body-large text-muted-foreground">{description}</p>
+    )}
   </div>
 );
-

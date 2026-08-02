@@ -81,11 +81,11 @@ Result: passed after adding the missing `main` landmarks.
 
 Sequential local Lighthouse runs against production preview:
 
-| Route | Perf | A11y | Best Practices | SEO | LCP | CLS | TBT |
-| --- | ---: | ---: | ---: | ---: | --- | --- | --- |
-| `/` | 82 | 93 | 100 | 100 | 3.5 s | 0 | 0 ms |
-| `/projects/asele` | 84 | 96 | 100 | 100 | 3.5 s | 0 | 0 ms |
-| `/blog` | 76 | 94 | 100 | 100 | 4.5 s | 0 | 20 ms |
+| Route             | Perf | A11y | Best Practices | SEO | LCP   | CLS | TBT   |
+| ----------------- | ---: | ---: | -------------: | --: | ----- | --- | ----- |
+| `/`               |   82 |   93 |            100 | 100 | 3.5 s | 0   | 0 ms  |
+| `/projects/asele` |   84 |   96 |            100 | 100 | 3.5 s | 0   | 0 ms  |
+| `/blog`           |   76 |   94 |            100 | 100 | 4.5 s | 0   | 20 ms |
 
 ## Contact Form QA
 

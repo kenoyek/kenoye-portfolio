@@ -8,9 +8,15 @@ import {
 
 describe("case study content system", () => {
   it("publishes the required project case-study routes", () => {
-    expect(getCaseStudyBySlug("asele")?.canonicalUrl).toBe("https://www.kenoye.site/projects/asele");
-    expect(getCaseStudyBySlug("teacheasy")?.canonicalUrl).toBe("https://www.kenoye.site/projects/teacheasy");
-    expect(getCaseStudyBySlug("reframe")?.canonicalUrl).toBe("https://www.kenoye.site/projects/reframe");
+    expect(getCaseStudyBySlug("asele")?.canonicalUrl).toBe(
+      "https://www.kenoye.site/projects/asele",
+    );
+    expect(getCaseStudyBySlug("teacheasy")?.canonicalUrl).toBe(
+      "https://www.kenoye.site/projects/teacheasy",
+    );
+    expect(getCaseStudyBySlug("reframe")?.canonicalUrl).toBe(
+      "https://www.kenoye.site/projects/reframe",
+    );
   });
 
   it("returns undefined for unavailable project slugs", () => {

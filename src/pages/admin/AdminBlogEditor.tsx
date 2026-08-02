@@ -13,16 +13,37 @@ import Image from "@tiptap/extension-image";
 import Underline from "@tiptap/extension-underline";
 import Placeholder from "@tiptap/extension-placeholder";
 import {
-  ArrowLeft, Save, Send, Clock, Bold, Italic, Underline as UnderlineIcon,
-  Strikethrough, Heading1, Heading2, Heading3, List, ListOrdered,
-  LinkIcon, ImageIcon, Undo, Redo, Quote, Code, Minus, Code2,
+  ArrowLeft,
+  Save,
+  Send,
+  Clock,
+  Bold,
+  Italic,
+  Underline as UnderlineIcon,
+  Strikethrough,
+  Heading1,
+  Heading2,
+  Heading3,
+  List,
+  ListOrdered,
+  LinkIcon,
+  ImageIcon,
+  Undo,
+  Redo,
+  Quote,
+  Code,
+  Minus,
+  Code2,
 } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { format } from "date-fns";
 
 const slugify = (text: string) =>
-  text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 
 const AdminBlogEditor = () => {
   const { id } = useParams();
@@ -60,22 +81,27 @@ const AdminBlogEditor = () => {
 
   useEffect(() => {
     if (isEditing) {
-      supabase.from("blog_posts").select("*").eq("id", id).single().then(({ data, error }) => {
-        if (error || !data) {
-          toast({ title: "Post not found", variant: "destructive" });
-          navigate("/admin/blog");
-          return;
-        }
-        setTitle(data.title);
-        setSlug(data.slug);
-        setExcerpt(data.excerpt || "");
-        setCoverImageUrl(data.cover_image_url || "");
-        if (data.status === "scheduled" && data.published_at) {
-          setScheduledDate(new Date(data.published_at));
-        }
-        setSlugManuallyEdited(true);
-        editor?.commands.setContent(data.content || "");
-      });
+      supabase
+        .from("blog_posts")
+        .select("*")
+        .eq("id", id)
+        .single()
+        .then(({ data, error }) => {
+          if (error || !data) {
+            toast({ title: "Post not found", variant: "destructive" });
+            navigate("/admin/blog");
+            return;
+          }
+          setTitle(data.title);
+          setSlug(data.slug);
+          setExcerpt(data.excerpt || "");
+          setCoverImageUrl(data.cover_image_url || "");
+          if (data.status === "scheduled" && data.published_at) {
+            setScheduledDate(new Date(data.published_at));
+          }
+          setSlugManuallyEdited(true);
+          editor?.commands.setContent(data.content || "");
+        });
     }
   }, [id, editor, isEditing, navigate, toast]);
 
@@ -101,40 +127,64 @@ const AdminBlogEditor = () => {
     [editor, htmlMode, rawHtml],
   );
 
-  const savePost = useCallback(async (status: "draft" | "scheduled" | "published") => {
-    if (!title.trim()) {
-      toast({ title: "Title is required", variant: "destructive" });
-      return;
-    }
-    setSaving(true);
+  const savePost = useCallback(
+    async (status: "draft" | "scheduled" | "published") => {
+      if (!title.trim()) {
+        toast({ title: "Title is required", variant: "destructive" });
+        return;
+      }
+      setSaving(true);
 
-    const postData = {
-      title: title.trim(),
-      slug: slug.trim() || slugify(title),
-      content: getContent(),
-      excerpt: excerpt.trim() || null,
-      cover_image_url: coverImageUrl.trim() || null,
-      status,
-      published_at: status === "published" ? new Date().toISOString()
-        : status === "scheduled" && scheduledDate ? scheduledDate.toISOString()
-        : null,
-    };
+      const postData = {
+        title: title.trim(),
+        slug: slug.trim() || slugify(title),
+        content: getContent(),
+        excerpt: excerpt.trim() || null,
+        cover_image_url: coverImageUrl.trim() || null,
+        status,
+        published_at:
+          status === "published"
+            ? new Date().toISOString()
+            : status === "scheduled" && scheduledDate
+              ? scheduledDate.toISOString()
+              : null,
+      };
 
-    let error;
-    if (isEditing) {
-      ({ error } = await supabase.from("blog_posts").update(postData).eq("id", id));
-    } else {
-      ({ error } = await supabase.from("blog_posts").insert(postData));
-    }
+      let error;
+      if (isEditing) {
+        ({ error } = await supabase.from("blog_posts").update(postData).eq("id", id));
+      } else {
+        ({ error } = await supabase.from("blog_posts").insert(postData));
+      }
 
-    if (error) {
-      toast({ title: "Save failed", description: error.message, variant: "destructive" });
-    } else {
-      toast({ title: status === "published" ? "Published!" : status === "scheduled" ? "Scheduled!" : "Draft saved" });
-      navigate("/admin/blog");
-    }
-    setSaving(false);
-  }, [title, slug, excerpt, coverImageUrl, getContent, scheduledDate, isEditing, id, navigate, toast]);
+      if (error) {
+        toast({ title: "Save failed", description: error.message, variant: "destructive" });
+      } else {
+        toast({
+          title:
+            status === "published"
+              ? "Published!"
+              : status === "scheduled"
+                ? "Scheduled!"
+                : "Draft saved",
+        });
+        navigate("/admin/blog");
+      }
+      setSaving(false);
+    },
+    [
+      title,
+      slug,
+      excerpt,
+      coverImageUrl,
+      getContent,
+      scheduledDate,
+      isEditing,
+      id,
+      navigate,
+      toast,
+    ],
+  );
 
   const addLink = () => {
     const url = prompt("Enter URL:");
@@ -146,7 +196,17 @@ const AdminBlogEditor = () => {
     if (url) editor?.chain().focus().setImage({ src: url }).run();
   };
 
-  const ToolbarButton = ({ onClick, active, children, title }: { onClick: () => void; active?: boolean; children: React.ReactNode; title?: string }) => (
+  const ToolbarButton = ({
+    onClick,
+    active,
+    children,
+    title,
+  }: {
+    onClick: () => void;
+    active?: boolean;
+    children: React.ReactNode;
+    title?: string;
+  }) => (
     <Button
       type="button"
       variant="ghost"
@@ -161,8 +221,8 @@ const AdminBlogEditor = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b border-border bg-card sticky top-0 z-10">
-        <div className="max-w-4xl mx-auto flex items-center justify-between px-6 py-3">
+      <header className="sticky top-0 z-10 border-b border-border bg-card">
+        <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-3">
           <Button variant="ghost" size="sm" onClick={() => navigate("/admin/blog")}>
             <ArrowLeft size={16} /> Back
           </Button>
@@ -188,78 +248,155 @@ const AdminBlogEditor = () => {
                 />
               </PopoverContent>
             </Popover>
-            <Button size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90" onClick={() => savePost("published")} disabled={saving}>
+            <Button
+              size="sm"
+              className="bg-accent text-accent-foreground hover:bg-accent/90"
+              onClick={() => savePost("published")}
+              disabled={saving}
+            >
               <Send size={14} /> Publish
             </Button>
           </div>
         </div>
       </header>
 
-      <main className="max-w-4xl mx-auto px-6 py-8 space-y-6">
+      <main className="mx-auto max-w-4xl space-y-6 px-6 py-8">
         <div className="space-y-2">
           <Label htmlFor="title">Title</Label>
-          <Input id="title" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Post title" className="text-lg font-heading font-semibold" />
+          <Input
+            id="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Post title"
+            className="font-heading text-lg font-semibold"
+          />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="slug">Slug</Label>
-            <Input id="slug" value={slug} onChange={(e) => { setSlug(e.target.value); setSlugManuallyEdited(true); }} placeholder="post-url-slug" />
+            <Input
+              id="slug"
+              value={slug}
+              onChange={(e) => {
+                setSlug(e.target.value);
+                setSlugManuallyEdited(true);
+              }}
+              placeholder="post-url-slug"
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="cover">Cover Image URL</Label>
-            <Input id="cover" value={coverImageUrl} onChange={(e) => setCoverImageUrl(e.target.value)} placeholder="https://..." />
+            <Input
+              id="cover"
+              value={coverImageUrl}
+              onChange={(e) => setCoverImageUrl(e.target.value)}
+              placeholder="https://..."
+            />
           </div>
         </div>
 
         <div className="space-y-2">
           <Label htmlFor="excerpt">Excerpt</Label>
-          <Textarea id="excerpt" value={excerpt} onChange={(e) => setExcerpt(e.target.value)} placeholder="Brief summary of the post..." rows={2} />
+          <Textarea
+            id="excerpt"
+            value={excerpt}
+            onChange={(e) => setExcerpt(e.target.value)}
+            placeholder="Brief summary of the post..."
+            rows={2}
+          />
         </div>
 
         {/* Toolbar */}
-        <div className="flex flex-wrap items-center gap-1 border border-border rounded-t-xl bg-card px-3 py-2">
+        <div className="flex flex-wrap items-center gap-1 rounded-t-xl border border-border bg-card px-3 py-2">
           {!htmlMode && (
             <>
-              <ToolbarButton onClick={() => editor?.chain().focus().toggleBold().run()} active={editor?.isActive("bold")} title="Bold">
+              <ToolbarButton
+                onClick={() => editor?.chain().focus().toggleBold().run()}
+                active={editor?.isActive("bold")}
+                title="Bold"
+              >
                 <Bold size={14} />
               </ToolbarButton>
-              <ToolbarButton onClick={() => editor?.chain().focus().toggleItalic().run()} active={editor?.isActive("italic")} title="Italic">
+              <ToolbarButton
+                onClick={() => editor?.chain().focus().toggleItalic().run()}
+                active={editor?.isActive("italic")}
+                title="Italic"
+              >
                 <Italic size={14} />
               </ToolbarButton>
-              <ToolbarButton onClick={() => editor?.chain().focus().toggleUnderline().run()} active={editor?.isActive("underline")} title="Underline">
+              <ToolbarButton
+                onClick={() => editor?.chain().focus().toggleUnderline().run()}
+                active={editor?.isActive("underline")}
+                title="Underline"
+              >
                 <UnderlineIcon size={14} />
               </ToolbarButton>
-              <ToolbarButton onClick={() => editor?.chain().focus().toggleStrike().run()} active={editor?.isActive("strike")} title="Strikethrough">
+              <ToolbarButton
+                onClick={() => editor?.chain().focus().toggleStrike().run()}
+                active={editor?.isActive("strike")}
+                title="Strikethrough"
+              >
                 <Strikethrough size={14} />
               </ToolbarButton>
-              <div className="w-px h-5 bg-border mx-1" />
-              <ToolbarButton onClick={() => editor?.chain().focus().toggleHeading({ level: 1 }).run()} active={editor?.isActive("heading", { level: 1 })} title="Heading 1">
+              <div className="mx-1 h-5 w-px bg-border" />
+              <ToolbarButton
+                onClick={() => editor?.chain().focus().toggleHeading({ level: 1 }).run()}
+                active={editor?.isActive("heading", { level: 1 })}
+                title="Heading 1"
+              >
                 <Heading1 size={14} />
               </ToolbarButton>
-              <ToolbarButton onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()} active={editor?.isActive("heading", { level: 2 })} title="Heading 2">
+              <ToolbarButton
+                onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()}
+                active={editor?.isActive("heading", { level: 2 })}
+                title="Heading 2"
+              >
                 <Heading2 size={14} />
               </ToolbarButton>
-              <ToolbarButton onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()} active={editor?.isActive("heading", { level: 3 })} title="Heading 3">
+              <ToolbarButton
+                onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()}
+                active={editor?.isActive("heading", { level: 3 })}
+                title="Heading 3"
+              >
                 <Heading3 size={14} />
               </ToolbarButton>
-              <div className="w-px h-5 bg-border mx-1" />
-              <ToolbarButton onClick={() => editor?.chain().focus().toggleBulletList().run()} active={editor?.isActive("bulletList")} title="Bullet List">
+              <div className="mx-1 h-5 w-px bg-border" />
+              <ToolbarButton
+                onClick={() => editor?.chain().focus().toggleBulletList().run()}
+                active={editor?.isActive("bulletList")}
+                title="Bullet List"
+              >
                 <List size={14} />
               </ToolbarButton>
-              <ToolbarButton onClick={() => editor?.chain().focus().toggleOrderedList().run()} active={editor?.isActive("orderedList")} title="Ordered List">
+              <ToolbarButton
+                onClick={() => editor?.chain().focus().toggleOrderedList().run()}
+                active={editor?.isActive("orderedList")}
+                title="Ordered List"
+              >
                 <ListOrdered size={14} />
               </ToolbarButton>
-              <ToolbarButton onClick={() => editor?.chain().focus().toggleBlockquote().run()} active={editor?.isActive("blockquote")} title="Blockquote">
+              <ToolbarButton
+                onClick={() => editor?.chain().focus().toggleBlockquote().run()}
+                active={editor?.isActive("blockquote")}
+                title="Blockquote"
+              >
                 <Quote size={14} />
               </ToolbarButton>
-              <ToolbarButton onClick={() => editor?.chain().focus().toggleCodeBlock().run()} active={editor?.isActive("codeBlock")} title="Code Block">
+              <ToolbarButton
+                onClick={() => editor?.chain().focus().toggleCodeBlock().run()}
+                active={editor?.isActive("codeBlock")}
+                title="Code Block"
+              >
                 <Code size={14} />
               </ToolbarButton>
-              <ToolbarButton onClick={() => editor?.chain().focus().setHorizontalRule().run()} title="Horizontal Rule">
+              <ToolbarButton
+                onClick={() => editor?.chain().focus().setHorizontalRule().run()}
+                title="Horizontal Rule"
+              >
                 <Minus size={14} />
               </ToolbarButton>
-              <div className="w-px h-5 bg-border mx-1" />
+              <div className="mx-1 h-5 w-px bg-border" />
               <ToolbarButton onClick={addLink} active={editor?.isActive("link")} title="Add Link">
                 <LinkIcon size={14} />
               </ToolbarButton>
@@ -280,19 +417,19 @@ const AdminBlogEditor = () => {
             type="button"
             variant={htmlMode ? "default" : "outline"}
             size="sm"
-            className="h-8 text-xs gap-1"
+            className="h-8 gap-1 text-xs"
             onClick={toggleHtmlMode}
           >
             <Code2 size={14} /> {htmlMode ? "Rich Text" : "HTML"}
           </Button>
         </div>
 
-        <div className="border border-t-0 border-border rounded-b-xl bg-card min-h-[300px]">
+        <div className="min-h-[300px] rounded-b-xl border border-t-0 border-border bg-card">
           {htmlMode ? (
             <textarea
               value={rawHtml}
               onChange={(e) => setRawHtml(e.target.value)}
-              className="w-full min-h-[300px] p-4 bg-transparent font-mono text-sm text-foreground focus:outline-none resize-y"
+              className="min-h-[300px] w-full resize-y bg-transparent p-4 font-mono text-sm text-foreground focus:outline-none"
               placeholder="<p>Write your HTML here...</p>"
               spellCheck={false}
             />

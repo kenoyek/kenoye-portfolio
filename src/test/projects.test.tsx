@@ -2,7 +2,12 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { MemoryRouter } from "react-router-dom";
 import { AdditionalProjects } from "@/components/home/AdditionalProjects";
-import { additionalProjects, getProjectBySlug, primaryProjects, projects } from "@/content/projects";
+import {
+  additionalProjects,
+  getProjectBySlug,
+  primaryProjects,
+  projects,
+} from "@/content/projects";
 import type { ProjectLink } from "@/content/projects";
 
 /**
