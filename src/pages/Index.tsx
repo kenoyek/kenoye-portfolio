@@ -29,7 +29,7 @@ const Index = () => {
           name: siteConfig.name,
           url: absoluteUrl("/"),
           email: `mailto:${siteConfig.email}`,
-          jobTitle: "Senior Full-Stack and Product Engineer",
+          jobTitle: "Software Architect and Product Engineer",
           address: {
             "@type": "PostalAddress",
             addressCountry: "NG",
@@ -70,7 +70,7 @@ const Index = () => {
   }, []);
 
   return (
-    <main className="overflow-x-clip scroll-smooth" id="main">
+    <main className="portfolio-home" id="main">
       <Navbar />
       <HomeHero />
       <ImpactBar />

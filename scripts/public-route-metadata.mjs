@@ -5,9 +5,9 @@ export const routeLastmod = "2026-07-25";
 export const publicRoutes = [
   {
     path: "/",
-    title: "Okagua Kenoye - Software Architect and Product Engineer",
+    title: "Okagua Kenoye | Software Architect & Product Engineer",
     description:
-      "Okagua Kenoye designs and ships full-stack, mobile, and product systems across health technology, education technology, CMS-driven platforms, and technical consulting.",
+      "Explore the portfolio of Okagua Kenoye, a software architect and product engineer building scalable web applications, mobile apps, and modern digital platforms.",
     image: "/og-home.svg",
     type: "website",
     priority: "1.0",

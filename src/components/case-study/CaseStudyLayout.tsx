@@ -1,3 +1,4 @@
+import { ProjectFeatureTabs } from "@/components/projects/ProjectFeatureTabs";
 import type { CaseStudy } from "@/content/caseStudies";
 import { getCaseStudySectionLinks } from "@/content/caseStudies";
 import Navbar from "@/components/Navbar";
@@ -27,10 +28,14 @@ export const CaseStudyLayout = ({ caseStudy }: { caseStudy: CaseStudy }) => {
   const sectionLinks = getCaseStudySectionLinks(caseStudy);
 
   return (
-    <main className="overflow-x-clip bg-background">
+    <main className="case-study-editorial overflow-x-clip bg-background">
       <CaseStudySeo caseStudy={caseStudy} />
       <Navbar />
       <CaseStudyHero caseStudy={caseStudy} />
+      <div className="case-study-product">
+        <h2 className="mb-6 text-2xl">Inside the product</h2>
+        <ProjectFeatureTabs slug={caseStudy.slug} headingLevel="h3" />
+      </div>
       <CaseStudyTableOfContents links={sectionLinks} />
       <TechnologySummary caseStudy={caseStudy} />
       <CaseStudySection section={caseStudy.overview} />

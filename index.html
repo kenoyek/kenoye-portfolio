@@ -1,23 +1,39 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script>
+      (() => {
+        let stored;
+        try {
+          stored = localStorage.getItem("theme");
+        } catch {}
+        const theme =
+          stored === "dark" || stored === "light"
+            ? stored
+            : matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        document.documentElement.classList.add(theme);
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
     <link rel="canonical" href="https://www.kenoye.site/" />
 
     <!-- Viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
     <!-- Theme colour for mobile browsers -->
     <meta name="theme-color" content="#0b1118" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#faf9f6" media="(prefers-color-scheme: light)" />
 
     <!-- Primary meta -->
-    <title>Okagua Kenoye | Senior Full-Stack and Product Engineer</title>
+    <title>Okagua Kenoye | Software Architect & Product Engineer</title>
     <meta
       name="description"
-      content="Okagua Kenoye is a senior full-stack and product engineer building production web and mobile systems across HealthTech, EdTech, SaaS, and CMS platforms with ownership from architecture to App Store delivery."
+      content="Explore the portfolio of Okagua Kenoye, a software architect and product engineer building scalable web applications, mobile apps, and modern digital platforms."
     />
     <meta name="author" content="Okagua Kenoye" />
     <meta name="robots" content="index, follow" />
@@ -26,22 +42,22 @@
       content="senior software engineer, full-stack engineer, React TypeScript engineer, Supabase engineer, Capacitor mobile engineer, EdTech platform engineer, HealthTech product engineer, software architect Nigeria"
     />
 
-    <!-- Font preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="/fonts/inter-latin-variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
 
     <!-- Open Graph -->
     <meta property="og:site_name" content="Okagua Kenoye" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.kenoye.site/" />
-    <meta property="og:title" content="Okagua Kenoye | Senior Full-Stack and Product Engineer" />
+    <meta property="og:title" content="Okagua Kenoye | Software Architect & Product Engineer" />
     <meta
       property="og:description"
-      content="Okagua Kenoye is a senior full-stack and product engineer building production web and mobile systems across HealthTech, EdTech, SaaS, and CMS platforms with ownership from architecture to App Store delivery."
+      content="Explore the portfolio of Okagua Kenoye, a software architect and product engineer building scalable web applications, mobile apps, and modern digital platforms."
     />
     <meta property="og:image" content="https://www.kenoye.site/og-home.svg" />
     <meta property="og:image:width" content="1200" />
@@ -54,7 +70,7 @@
 
     <!-- Twitter / X Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Okagua Kenoye | Senior Full-Stack and Product Engineer" />
+    <meta name="twitter:title" content="Okagua Kenoye | Software Architect & Product Engineer" />
     <meta
       name="twitter:description"
       content="Senior full-stack and product engineer building production web and mobile systems across HealthTech, EdTech, SaaS, and CMS platforms."

@@ -1,3 +1,5 @@
+import Navbar from "@/components/Navbar";
+import { ArrowUpRight } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -27,12 +29,19 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-        <a href="/" className="text-accent underline underline-offset-4 hover:text-accent/90">
-          Return to Home
+    <main className="flex min-h-screen items-center bg-background px-6 py-32">
+      <Navbar />
+      <div className="mx-auto w-full max-w-4xl">
+        <p className="eyebrow">404 / A small detour</p>
+        <h1 className="mt-6 text-5xl font-normal tracking-tight sm:text-7xl">
+          Good ideas.
+          <br />A different address.
+        </h1>
+        <p className="mt-6 max-w-md text-muted-foreground">
+          The page you’re looking for isn’t here. Let’s get you back to the work.
+        </p>
+        <a href="/#work" className="premium-button mt-8">
+          Explore the work <ArrowUpRight size={18} />
         </a>
       </div>
     </main>

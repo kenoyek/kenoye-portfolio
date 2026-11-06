@@ -11,8 +11,13 @@ interface ThemeContextValue {
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
 const getInitialTheme = (): Theme => {
-  if (typeof window === "undefined") return "light";
-  const stored = localStorage.getItem("theme") as Theme | null;
+  if (typeof window === "undefined") return "dark";
+  let stored: string | null = null;
+  try {
+    stored = localStorage.getItem("theme");
+  } catch {
+    /* Storage may be disabled. */
+  }
   if (stored === "light" || stored === "dark") return stored;
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 };
@@ -24,11 +29,32 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     const root = document.documentElement;
     root.classList.remove("light", "dark");
     root.classList.add(theme);
-    localStorage.setItem("theme", theme);
+    root.style.colorScheme = theme;
   }, [theme]);
 
-  const toggleTheme = () => setThemeState((t) => (t === "dark" ? "light" : "dark"));
-  const setTheme = (t: Theme) => setThemeState(t);
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+    const onChange = () => {
+      let stored: string | null = null;
+      try {
+        stored = localStorage.getItem("theme");
+      } catch {
+        /* Storage may be disabled. */
+      }
+      if (stored !== "light" && stored !== "dark") setThemeState(media.matches ? "dark" : "light");
+    };
+    media.addEventListener("change", onChange);
+    return () => media.removeEventListener("change", onChange);
+  }, []);
+  const setTheme = (t: Theme) => {
+    try {
+      localStorage.setItem("theme", t);
+    } catch {
+      /* Keep the session preference. */
+    }
+    setThemeState(t);
+  };
+  const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>

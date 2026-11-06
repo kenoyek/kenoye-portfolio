@@ -96,10 +96,10 @@ const Footer = () => {
         <div className="mb-6 h-px w-full bg-primary-foreground/10" />
 
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-          <p className="text-xs text-primary-foreground/30">
+          <p className="text-xs text-primary-foreground/65">
             © {new Date().getFullYear()} Okagua Kenoye. All rights reserved.
           </p>
-          <p className="text-xs text-primary-foreground/30">
+          <p className="text-xs text-primary-foreground/65">
             Built with React, TypeScript, and Supabase.
           </p>
         </div>

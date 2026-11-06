@@ -23,6 +23,8 @@ interface BlogPost {
 const Blog = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
+  const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
     const title = "Blog | Okagua Kenoye";
@@ -41,35 +43,61 @@ const Blog = () => {
   }, []);
 
   useEffect(() => {
+    setLoading(true);
+    setLoadError(false);
+    let cancelled = false;
     supabase
       .from("blog_posts")
       .select("id, title, slug, excerpt, cover_image_url, published_at, author_name")
       .eq("status", "published")
       .lte("published_at", new Date().toISOString())
       .order("published_at", { ascending: false })
-      .then(({ data }) => {
+      .then(({ data, error }) => {
+        if (cancelled) return;
+        setLoadError(Boolean(error));
         setPosts(data || []);
         setLoading(false);
       });
-  }, []);
+    return () => {
+      cancelled = true;
+    };
+  }, [attempt]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background">
       <Navbar />
 
-      <section className="px-5 pb-14 pt-24 sm:px-6 md:pb-16 md:pt-28">
+      <section className="px-5 pb-20 pt-36 sm:px-6 md:pt-44">
         <div className="mx-auto mb-8 max-w-4xl text-center sm:mb-10 md:mb-12">
-          <h1 className="mb-4 font-heading text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
-            Blog
+          <p className="eyebrow mb-6">Field notes / Writing</p>
+          <h1 className="mb-6 text-4xl font-normal tracking-tight sm:text-6xl">
+            Ideas behind <em className="font-serif text-accent">the engineering.</em>
           </h1>
           <p className="mx-auto max-w-2xl text-base text-muted-foreground">
-            Insights, tutorials, and updates from Okagua
+            Notes on building products, making technical decisions, and teaching what I learn.
           </p>
         </div>
 
         {loading ? (
-          <div className="flex justify-center py-12">
+          <div className="flex justify-center py-12" role="status" aria-label="Loading articles">
             <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-accent" />
+          </div>
+        ) : loadError ? (
+          <div className="py-16 text-center" role="status">
+            <p className="text-muted-foreground">Articles couldn’t be loaded right now.</p>
+            <button
+              className="text-action mt-4 text-accent"
+              onClick={() => setAttempt((value) => value + 1)}
+            >
+              Try again
+            </button>
+            <p className="mt-2 text-sm text-muted-foreground">
+              You can still{" "}
+              <Link to="/#work" className="underline underline-offset-4">
+                explore my work
+              </Link>
+              .
+            </p>
           </div>
         ) : posts.length === 0 ? (
           <p className="py-16 text-center text-muted-foreground">No posts yet. Check back soon!</p>
@@ -127,7 +155,7 @@ const Blog = () => {
       </section>
 
       {!loading && <Footer />}
-    </div>
+    </main>
   );
 };
 

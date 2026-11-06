@@ -3,10 +3,10 @@ export const siteConfig = {
   shortName: "Kenoye",
   canonicalOrigin: "https://www.kenoye.site",
   apexOrigin: "https://kenoye.site",
-  title: "Okagua Kenoye | Senior Full-Stack and Product Engineer",
+  title: "Okagua Kenoye | Software Architect & Product Engineer",
   titleTemplate: "%s | Okagua Kenoye",
   description:
-    "Okagua Kenoye is a senior full-stack and product engineer building production web and mobile systems across HealthTech, EdTech, SaaS, and CMS platforms with ownership from architecture to App Store delivery.",
+    "Explore the portfolio of Okagua Kenoye, a software architect and product engineer building scalable web applications, mobile apps, and modern digital platforms.",
   email: "okagua.kenny@gmail.com",
   location: "Nigeria",
   /**
