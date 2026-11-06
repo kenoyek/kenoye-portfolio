@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { projectExperiences } from "@/content/projectExperiences";
 
@@ -48,7 +48,15 @@ export const ProjectFeatureTabs = ({
             {slug === "teacheasy" && <small>Public product website imagery</small>}
           </div>
           <figure className={`product-stage ${view.format}`}>
-            <div className="device-frame">
+            <a
+              className="device-frame"
+              href={view.src}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View ${slug} ${view.label.toLowerCase()} screenshot at full size (opens in a new tab)`}
+              title="View full-size screenshot"
+              style={{ "--screenshot-aspect": view.width / view.height } as CSSProperties}
+            >
               <div className="device-chrome" aria-hidden="true">
                 <i />
                 <i />
@@ -60,10 +68,10 @@ export const ProjectFeatureTabs = ({
                 alt={view.alt}
                 loading="lazy"
                 decoding="async"
-                width={view.format === "phone" ? 591 : 720}
-                height={view.format === "phone" ? 1280 : 900}
+                width={view.width}
+                height={view.height}
               />
-            </div>
+            </a>
             <figcaption>
               {view.label}{" "}
               <span>

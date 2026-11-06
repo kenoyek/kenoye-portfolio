@@ -1179,6 +1179,7 @@
   margin-top: 12px;
 }
 .product-stage {
+  --screenshot-max-height: 330px;
   margin: 0;
   padding: 32px;
   height: 480px;
@@ -1199,6 +1200,9 @@
   border-radius: 50%;
 }
 .device-frame {
+  display: block;
+  flex-shrink: 0;
+  cursor: zoom-in;
   position: relative;
   background: #fff;
   box-shadow: 0 15px 40px #0003;
@@ -1207,7 +1211,7 @@
 .phone .device-frame {
   width: 178px;
   flex-shrink: 0;
-  height: 386px;
+  height: auto;
   border: 5px solid #262a32;
   border-radius: 24px;
 }
@@ -1216,20 +1220,20 @@
 }
 .device-frame img {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
   object-position: top;
 }
 .browser .device-frame {
-  width: min(100%, 430px);
-  height: 330px;
+  width: min(100%, 430px, calc(var(--screenshot-max-height) * var(--screenshot-aspect)));
+  height: auto;
   border-radius: 7px;
   border: 1px solid #cbd0d8;
 }
 .browser .device-frame img {
-  height: calc(100% - 28px);
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
 }
 .device-chrome {
   display: flex;
@@ -1795,15 +1799,13 @@
     padding-top: 14px;
   }
   .product-stage {
+    --screenshot-max-height: 300px;
     height: 445px;
     padding: 28px 20px;
   }
   .phone .device-frame {
-    height: 355px;
+    height: auto;
     width: 164px;
-  }
-  .browser .device-frame {
-    height: 330px;
   }
   .showcase-teacheasy .product-stage {
     order: 0;

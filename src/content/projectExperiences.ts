@@ -7,6 +7,8 @@ export type ProductView = {
   src: string;
   alt: string;
   format: "phone" | "browser";
+  width: number;
+  height: number;
 };
 
 export const projectExperiences: Record<string, ProductView[]> = {
@@ -19,6 +21,8 @@ export const projectExperiences: Record<string, ProductView[]> = {
         "A cycle-aware home experience brings daily context, logging and wellness support into one calm interface.",
       engineering: "Shared React application · Capacitor for iOS & Android",
       src: "/images/projects/asele/asele-native-cycle-home.webp",
+      width: 591,
+      height: 1280,
       alt: "Asele native app showing cycle phase, next period and logging actions",
       format: "phone",
     },
@@ -30,6 +34,8 @@ export const projectExperiences: Record<string, ProductView[]> = {
         "Cycle insights help users explore their own patterns, with clear boundaries between wellness support and medical diagnosis.",
       engineering: "Supabase authentication · PostgreSQL row-level security",
       src: "/images/projects/asele/asele-native-cycle-insights.webp",
+      width: 591,
+      height: 1280,
       alt: "Asele native cycle insights screen",
       format: "phone",
     },
@@ -41,6 +47,8 @@ export const projectExperiences: Record<string, ProductView[]> = {
         "A private journaling experience sits alongside cycle tracking and daily wellness check-ins.",
       engineering: "Authenticated data access · Privacy-conscious workflows",
       src: "/images/projects/asele/asele-native-journal.webp",
+      width: 591,
+      height: 1280,
       alt: "Asele native journal interface",
       format: "phone",
     },
@@ -54,6 +62,8 @@ export const projectExperiences: Record<string, ProductView[]> = {
         "Academy operations, scheduling and learning workflows come together in a tenant-aware platform for tutors, students and parents.",
       engineering: "React & TypeScript · Supabase · Academy-scoped tenancy",
       src: "/images/projects/teacheasy/teacheasy-public-home-desktop.webp",
+      width: 720,
+      height: 900,
       alt: "TeachEasy public website introducing its academy management platform",
       format: "browser",
     },
@@ -65,6 +75,8 @@ export const projectExperiences: Record<string, ProductView[]> = {
         "Recurring lessons, Jitsi classrooms and collaborative workspaces support the everyday rhythm of an academy.",
       engineering: "Jitsi Meet · Yjs · Supabase Realtime",
       src: "/images/projects/teacheasy/teacheasy-public-feature-overview.webp",
+      width: 720,
+      height: 900,
       alt: "TeachEasy public feature overview describing its learning platform capabilities",
       format: "browser",
     },
@@ -76,6 +88,8 @@ export const projectExperiences: Record<string, ProductView[]> = {
         "Admin, tutor, student and parent experiences are structured around explicit permissions and academy data boundaries.",
       engineering: "PostgreSQL RLS · Role modelling · Tenant-scoped routing",
       src: "/images/projects/teacheasy/teacheasy-public-role-overview.webp",
+      width: 1440,
+      height: 900,
       alt: "TeachEasy public role overview explaining platform portals, not a private dashboard",
       format: "browser",
     },
@@ -89,6 +103,8 @@ export const projectExperiences: Record<string, ProductView[]> = {
         "A CMS-driven community experience brought to mobile, with a shared content source across web, iOS and Android.",
       engineering: "React · Next.js · Capacitor · Shared APIs",
       src: "/images/projects/reframe/reframe-native-feed.webp",
+      width: 540,
+      height: 1170,
       alt: "Reframe native community feed with posts, comments and bottom navigation",
       format: "phone",
     },
@@ -100,6 +116,8 @@ export const projectExperiences: Record<string, ProductView[]> = {
         "Editorial updates flow from the CMS into the product without requiring a new native release for each content change.",
       engineering: "CMS synchronisation · Deep linking · Native lifecycle",
       src: "/images/projects/reframe/reframe-public-discovery.webp",
+      width: 1440,
+      height: 900,
       alt: "Reframe public discovery website",
       format: "browser",
     },
