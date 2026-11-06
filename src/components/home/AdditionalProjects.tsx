@@ -13,7 +13,7 @@ const getPrimaryExternalLink = (links: ProjectLink[] | undefined) =>
   );
 
 export const AdditionalProjects = () => (
-  <Section id="additional-work" className="pt-0">
+  <Section id="additional-work">
     <Container>
       <div className="grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)]">
         <SectionHeader
