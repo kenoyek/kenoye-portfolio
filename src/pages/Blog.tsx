@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
+import { getPublishedPosts } from "@/lib/blog";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { format } from "date-fns";
@@ -16,7 +16,7 @@ interface BlogPost {
   slug: string;
   excerpt: string | null;
   cover_image_url: string | null;
-  published_at: string;
+  published_at: string | null;
   author_name: string;
 }
 
@@ -46,17 +46,15 @@ const Blog = () => {
     setLoading(true);
     setLoadError(false);
     let cancelled = false;
-    supabase
-      .from("blog_posts")
-      .select("id, title, slug, excerpt, cover_image_url, published_at, author_name")
-      .eq("status", "published")
-      .lte("published_at", new Date().toISOString())
-      .order("published_at", { ascending: false })
-      .then(({ data, error }) => {
-        if (cancelled) return;
-        setLoadError(Boolean(error));
-        setPosts(data || []);
-        setLoading(false);
+    getPublishedPosts()
+      .then((data) => {
+        if (!cancelled) setPosts(data || []);
+      })
+      .catch(() => {
+        if (!cancelled) setLoadError(true);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
       });
     return () => {
       cancelled = true;
@@ -131,7 +129,11 @@ const Blog = () => {
                   <div className="p-4 sm:p-5 md:p-6">
                     <div className="mb-3 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
                       <Calendar size={12} />
-                      <time>{format(new Date(post.published_at), "MMMM d, yyyy")}</time>
+                      <time dateTime={post.published_at || undefined}>
+                        {post.published_at
+                          ? format(new Date(post.published_at), "MMMM d, yyyy")
+                          : "Published article"}
+                      </time>
                       <span>·</span>
                       <span>{post.author_name}</span>
                     </div>

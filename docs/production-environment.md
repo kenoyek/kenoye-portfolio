@@ -26,3 +26,11 @@ Do not commit secret values. This document lists variable names only.
 - The static `/sitemap.xml` covers core public routes without requiring Edge Function secrets.
 - The sitemap Edge Function also includes the core public routes and adds published blog-post entries from Supabase when deployed with its required secrets.
 - If `/sitemap.xml` remains static on Vercel, published blog-post sitemap entries still require either a deployed sitemap Edge Function URL or future build-time Supabase fetching.
+
+## Public blog request isolation
+
+Public article lists and article pages use a separate anonymous Supabase client. It does not read or persist admin sessions, refresh tokens, or consume OAuth tokens from the URL. Administrator login and management retain the authenticated client. Both use the same shared project configuration; neither changes database permissions or publication filters.
+
+`VITE_SUPABASE_ANON_KEY` is accepted as an alternative to `VITE_SUPABASE_PUBLISHABLE_KEY`. The publishable-key variable takes precedence. Values are trimmed before use, and the existing public fallback is preserved when values are absent. Never put a service-role key in either browser variable.
+
+Public reads time out after 15 seconds and offer retry. Article failures are no longer presented as missing posts. Regression tests cover rejected saved-admin tokens, unchanged admin storage, publication filters, backend errors, timeouts, successful rendering and retries. A production-browser check with an intercepted test response confirmed anonymous authorization and article rendering. Live service recovery remains unverified from the restricted cloud network.

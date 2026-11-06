@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
+import { getPublishedPost } from "@/lib/blog";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BlogComments from "@/components/BlogComments";
@@ -11,17 +11,7 @@ import { siteConfig } from "@/content/site";
 import { getOptimizedImageUrl } from "@/lib/images";
 import { buildBlogPostJsonLd, setPageMetadata } from "@/lib/seo";
 
-interface Post {
-  id: string;
-  title: string;
-  content: string;
-  excerpt: string | null;
-  cover_image_url: string | null;
-  published_at: string;
-  author_name: string;
-  slug: string;
-  updated_at: string;
-}
+type Post = NonNullable<Awaited<ReturnType<typeof getPublishedPost>>>;
 
 const SITE_URL = siteConfig.canonicalOrigin;
 
@@ -29,26 +19,32 @@ const BlogPost = () => {
   const { slug } = useParams();
   const [post, setPost] = useState<Post | null>(null);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
+  const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
     if (!slug) return;
-    supabase
-      .from("blog_posts")
-      .select(
-        "id, title, content, excerpt, cover_image_url, published_at, author_name, slug, updated_at",
-      )
-      .eq("slug", slug)
-      .eq("status", "published")
-      .lte("published_at", new Date().toISOString())
-      .single()
-      .then(({ data }) => {
-        setPost(data);
-        setLoading(false);
+    let cancelled = false;
+    setLoading(true);
+    setLoadError(false);
+    setPost(null);
+    getPublishedPost(slug)
+      .then((data) => {
+        if (!cancelled) setPost(data);
+      })
+      .catch(() => {
+        if (!cancelled) setLoadError(true);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
       });
-  }, [slug]);
+    return () => {
+      cancelled = true;
+    };
+  }, [slug, attempt]);
 
   useEffect(() => {
-    if (loading || post) return;
+    if (loading || post || loadError) return;
 
     setPageMetadata({
       title: "Post Not Found | Okagua Kenoye",
@@ -57,7 +53,7 @@ const BlogPost = () => {
       imageUrl: "/og-blog.svg",
       robots: "noindex, nofollow",
     });
-  }, [loading, post, slug]);
+  }, [loading, post, slug, loadError]);
 
   // Dynamic meta tags & JSON-LD
   useEffect(() => {
@@ -78,7 +74,7 @@ const BlogPost = () => {
         description,
         url,
         image: post.cover_image_url,
-        publishedAt: post.published_at,
+        publishedAt: post.published_at || post.updated_at,
         updatedAt: post.updated_at,
         authorName: post.author_name,
       }),
@@ -92,6 +88,25 @@ const BlogPost = () => {
         <div className="flex justify-center py-32">
           <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-accent" />
         </div>
+      </div>
+    );
+  }
+
+  if (loadError) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <main className="px-5 py-36 text-center">
+          <h1 className="text-3xl">This article couldn’t be loaded.</h1>
+          <p className="mt-4 text-muted-foreground">Please try again in a moment.</p>
+          <button className="premium-button mt-6" onClick={() => setAttempt((value) => value + 1)}>
+            Try again
+          </button>
+          <Link to="/blog" className="text-action mx-auto mt-4 flex w-fit">
+            Back to writing
+          </Link>
+        </main>
+        <Footer />
       </div>
     );
   }
@@ -142,7 +157,9 @@ const BlogPost = () => {
           <div className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
             <span className="inline-flex items-center gap-1">
               <Calendar size={14} />
-              {format(new Date(post.published_at), "MMMM d, yyyy")}
+              {post.published_at
+                ? format(new Date(post.published_at), "MMMM d, yyyy")
+                : "Published article"}
             </span>
             <span className="inline-flex items-center gap-1">
               <User size={14} />
