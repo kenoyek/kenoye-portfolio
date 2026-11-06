@@ -1,19 +1,47 @@
 import { ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/content/site";
 
+const portraitAssets = import.meta.glob<string>("/src/assets/okagua-kenoye.{jpg,jpeg,png,webp}", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
+const portraitSrc = Object.values(portraitAssets)[0];
+
 export const ProfessionalPositioning = () => (
   <section id="about" className="about-editorial premium-section">
-    <div className="about-monogram" aria-hidden="true">
-      <span>
-        O<span>K</span>
-      </span>
-      <p>
-        Thoughtful by nature.
-        <br />
-        Engineer by practice.
-      </p>
-      <small>NIGERIA / WORKING GLOBALLY</small>
-    </div>
+    {portraitSrc ? (
+      <figure className="about-portrait">
+        <img
+          src={portraitSrc}
+          alt="Okagua Kenoye seated at his software development workstation"
+          width={772}
+          height={842}
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>
+          <p>
+            Thoughtful by nature.
+            <br />
+            Engineer by practice.
+          </p>
+          <small>NIGERIA / WORKING GLOBALLY</small>
+        </figcaption>
+      </figure>
+    ) : (
+      <div className="about-monogram" aria-hidden="true">
+        <span>
+          O<span>K</span>
+        </span>
+        <p>
+          Thoughtful by nature.
+          <br />
+          Engineer by practice.
+        </p>
+        <small>NIGERIA / WORKING GLOBALLY</small>
+      </div>
+    )}
     <div>
       <p className="eyebrow">03 / Behind the work</p>
       <h2>

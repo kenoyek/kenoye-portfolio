@@ -1413,6 +1413,39 @@
   letter-spacing: 0.1em;
   color: hsl(var(--muted-foreground));
 }
+.about-portrait {
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--surface));
+}
+.about-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.about-portrait figcaption {
+  padding: 24px 28px;
+  border-top: 1px solid hsl(var(--border));
+  text-align: center;
+}
+.about-portrait figcaption p {
+  font-family: var(--font-editorial);
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.6;
+}
+.about-portrait figcaption small {
+  display: block;
+  margin-top: 18px;
+  color: hsl(var(--muted-foreground));
+  font:
+    8px ui-monospace,
+    monospace;
+  letter-spacing: 0.1em;
+}
 .about-editorial h2 {
   font-size: clamp(30px, 3.1vw, 43px);
   margin-bottom: 28px;
@@ -1838,6 +1871,11 @@
   .about-editorial {
     grid-template-columns: 1fr;
     gap: 36px;
+  }
+  .about-portrait {
+    width: 100%;
+    max-width: 400px;
+    justify-self: center;
   }
   .about-monogram {
     max-width: 400px;
