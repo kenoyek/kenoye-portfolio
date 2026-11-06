@@ -1,0 +1,97 @@
+<p>
+  A blank editor asks for several decisions at once. What should the first component be? Where does
+  the data live? How much structure is enough? Which parts are essential for the first useful
+  version?
+</p>
+<p>
+  Cursor can lower the effort of getting something onto the screen. A prompt can produce a
+  component, a route, or a first attempt at an integration. That can be valuable, especially when a
+  small working example helps clarify an idea.
+</p>
+<p>
+  The important question is what happens after the first version exists. The cost of beginning
+  includes the decisions the first draft encourages you to keep.
+</p>
+<h2>Starting quickly can help you ask better questions</h2>
+<p>
+  A rough interface can make an ambiguous requirement easier to discuss. A founder can react to an
+  actual flow. A developer can identify the missing state. A teacher can see whether an example is
+  suitable for a learner.
+</p>
+<p>
+  At that stage, the code is a tool for understanding the problem. It does not need to become the
+  final architecture simply because it was produced first.
+</p>
+<p>
+  I prefer a starting request that names a small, observable outcome: show a list, handle an empty
+  result, or demonstrate one interaction. That gives the first version a clear purpose and makes it
+  easier to discard parts that do not help.
+</p>
+<h2>A first draft quietly creates defaults</h2>
+<p>
+  Generated code makes choices even when the prompt does not mention them. It chooses names,
+  component boundaries, data shapes, packages, and assumptions about failure. Those choices can
+  spread when later work copies the first example.
+</p>
+<p>
+  A fetch call inside a component may be fine for a prototype. Repeating it across multiple screens
+  can create inconsistent loading states and error handling. A convenient client configuration may
+  also carry authentication assumptions into a public page.
+</p>
+<p>
+  The earlier those assumptions become visible, the less expensive they are to reconsider. Ask the
+  assistant to explain the boundaries it chose, then compare that explanation with the code.
+</p>
+<h2>Define the boundary before expanding the feature</h2>
+<p>For a data-backed feature, a useful starting checklist is short:</p>
+<ul>
+  <li>Who is allowed to read or change this information?</li>
+  <li>What happens when the request fails or never finishes?</li>
+  <li>Which system owns the authoritative record?</li>
+  <li>What must remain true if the implementation changes?</li>
+</ul>
+<p>
+  These questions are particularly important for authentication, permissions, migrations, and
+  publishing. A convincing screen cannot establish whether the right records are protected or
+  whether a message was actually delivered.
+</p>
+<p>
+  Write the important answers as constraints. “Published articles are readable anonymously; drafts
+  require an approved administrator” is a better foundation than “build a blog.” It gives both the
+  implementation and its tests something concrete to satisfy.
+</p>
+<h2>Review before the first draft becomes a pattern</h2>
+<p>
+  After a generated slice works, pause before asking for several more. Inspect the dependency
+  changes. Trace the request path. Look for duplicated logic, broad permissions, placeholder data,
+  and success states that do not depend on a real result.
+</p>
+<p>
+  A useful review question is: if this pattern appeared in ten more files, would it still be
+  reasonable? If the answer is no, this is a good point to adjust the structure.
+</p>
+<p>
+  That does not mean every prototype needs an elaborate abstraction. A small explicit helper and a
+  clear interface can be enough. The goal is to avoid multiplying a decision you have not examined.
+</p>
+<h2>Give a prototype an exit condition</h2>
+<p>
+  Before starting, decide what would make the experiment useful. Perhaps it needs to demonstrate a
+  booking flow, validate a data model, or expose an integration risk. Once it answers that question,
+  decide what to keep and what to replace.
+</p>
+<p>
+  Record known shortcuts rather than letting them disappear into the codebase. A mocked response, a
+  temporary image, and a missing permission check have very different implications. Each should have
+  a clear status before the product reaches real users.
+</p>
+<h2>Make the beginning serve the product</h2>
+<p>
+  AI-assisted development is valuable when it helps a team turn uncertainty into something testable.
+  The next step still requires judgment: deciding what the example proves, what it leaves
+  unresolved, and whether its foundations fit the product.
+</p>
+<p>
+  The best starting point is one you understand well enough to improve. Use the speed of the first
+  draft to create room for those decisions.
+</p>

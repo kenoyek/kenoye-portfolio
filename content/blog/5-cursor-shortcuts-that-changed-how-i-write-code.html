@@ -1,0 +1,94 @@
+<p>
+  Tab completion is an easy way to get started with Cursor. It is also easy to let it become the
+  whole workflow: type a little, accept a suggestion, and keep moving. The bigger improvement comes
+  when navigation, small edits, and code review become just as quick.
+</p>
+<p>
+  These are five keyboard-first workflows I would put ahead of collecting more prompts. Some come
+  from the editor foundation Cursor shares with VS Code. That is useful: familiar navigation still
+  matters when an AI assistant is writing part of the code.
+</p>
+<p>
+  <em
+    >The bindings below are common defaults. Operating-system shortcuts, extensions, and custom
+    keymaps can change them. Check the command name in Keyboard Shortcuts if a binding behaves
+    differently in your installation.</em
+  >
+</p>
+<h2>1. Cmd+K / Ctrl+K: make a focused inline edit</h2>
+<p>
+  A selected block of code gives an inline editing request a useful boundary. Highlight the function
+  you want to change, open Inline Edit, and describe one specific outcome.
+</p>
+<p>
+  For example: “Handle an empty response before reading the first item, and preserve the existing
+  return type.” That is easier to review than a request to improve an entire module. The expected
+  change has a location, a reason, and a constraint.
+</p>
+<p>
+  Before accepting the edit, read the difference. Check whether the assistant changed behaviour
+  outside the selected concern, widened a type, or removed an error path. A small request should
+  produce a small, explainable patch.
+</p>
+<h2>2. Cmd+P / Ctrl+P: open the file you actually need</h2>
+<p>
+  Quick Open helps keep exploration deliberate. Instead of asking an assistant to rediscover a file
+  you already know, open it by name and inspect the surrounding implementation.
+</p>
+<p>
+  For a failing blog page, that might mean opening the page component, the data-loading helper, and
+  the client configuration before changing any code. Seeing those boundaries makes the next question
+  more useful: is the problem rendering, authentication, configuration, or the remote service?
+</p>
+<p>
+  Giving an assistant the right file is often more effective than giving it a longer explanation of
+  the wrong part of the system.
+</p>
+<h2>3. Cmd+Shift+O / Ctrl+Shift+O: move through symbols</h2>
+<p>
+  Go to Symbol in Editor makes a large file easier to inspect. Jump to a component, handler, or
+  helper by its name instead of scrolling until something looks familiar.
+</p>
+<p>
+  This is particularly useful during review. If a generated patch changes a submit handler, jump to
+  that handler and trace its inputs and state updates. Then check the code that consumes its result.
+</p>
+<p>
+  Names can suggest intent, but the implementation establishes behaviour. Symbol navigation makes it
+  less tempting to approve a change based only on an assistant’s summary.
+</p>
+<h2>4. F12: follow the implementation</h2>
+<p>
+  Go to Definition is a quick way to test an assumption. A helper called
+  <code>getPublishedPosts</code> sounds clear, but its name does not tell you which credentials it
+  uses, what filters it applies, or how it handles a failed request.
+</p>
+<p>
+  Follow the definition. Read the query, inspect the return type, and check the error path. On some
+  keyboards, the function-key setting means using Fn+F12 or choosing Go to Definition from the
+  command palette.
+</p>
+<p>
+  This habit matters with AI-generated code because a plausible abstraction can hide the exact
+  behaviour you need to verify.
+</p>
+<h2>5. Cmd+Shift+P / Ctrl+Shift+P: find commands without memorising everything</h2>
+<p>
+  The command palette connects the other workflows. Search for a command by name, discover its
+  current binding, or run an action you use too infrequently to remember.
+</p>
+<p>
+  Use it to open Keyboard Shortcuts, navigate symbols, inspect changes, or find an editor action
+  before turning the problem into another chat request. It also helps when a tutorial assumes a
+  keymap different from yours.
+</p>
+<h2>Keep the keyboard loop connected to verification</h2>
+<p>
+  The useful loop is simple: navigate to the relevant code, make a bounded change, inspect the
+  difference, and run a check that can expose a mistake. A successful build answers a different
+  question from a meaningful behavioural test; use the check that fits the change.
+</p>
+<p>
+  Cursor can reduce the effort of producing a patch. These shortcuts help preserve the understanding
+  needed to decide whether that patch belongs in the product.
+</p>

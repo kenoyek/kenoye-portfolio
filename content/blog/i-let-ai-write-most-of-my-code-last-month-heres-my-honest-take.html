@@ -1,0 +1,92 @@
+<p>
+  When AI produces a large share of a patch, the engineering work changes shape. There is less time
+  spent entering some kinds of code and more responsibility concentrated in the instructions,
+  review, and verification around it.
+</p>
+<p>
+  My honest take is that an AI-heavy workflow is useful when it strengthens that loop. The volume of
+  generated code tells me much less than whether the resulting system is understandable, correct,
+  and ready for the people who depend on it.
+</p>
+<h2>Some work benefits from a fast first pass</h2>
+<p>
+  Repetitive interface structure, straightforward transformations, and examples of an unfamiliar API
+  can be good candidates for assistance. A draft can give you something concrete to question and
+  improve.
+</p>
+<p>
+  Specific requests help. “Add a recoverable error state to this existing request” gives the
+  assistant a narrower task than “make this page production-ready.” Existing types, surrounding
+  code, and a description of the expected behaviour provide useful constraints.
+</p>
+<p>
+  I still treat the result as a proposal. Familiar-looking code deserves the same review as code
+  written by a person, especially when it introduces a dependency or changes a shared abstraction.
+</p>
+<h2>The difficult decisions remain difficult</h2>
+<p>
+  AI can produce an implementation of a permission check without establishing that the permission
+  model is right. It can generate a database migration without knowing whether the source contains
+  records that must be preserved. It can describe a deployment without proving that a live service
+  works.
+</p>
+<p>
+  These are questions about the product and its operating environment. They require a clear account
+  of who owns the data, which actions are authorised, what failure would mean, and what evidence is
+  available.
+</p>
+<p>
+  For sensitive changes, I want a small, reviewable operation with a clear verification step. A
+  successful command is useful evidence, but its meaning depends on what that command actually did.
+</p>
+<h2>Review the request path, not just the visible screen</h2>
+<p>
+  A page can look complete while its data path remains fragile. Follow an interaction from the
+  component to the helper, through configuration and authentication, and into the service response.
+</p>
+<p>
+  Check whether a public read unnecessarily depends on a signed-in session. Check whether a rejected
+  request becomes an error state or a misleading empty list. Check whether a “saved” message appears
+  only after the service confirms the write.
+</p>
+<p>Those details often matter more to a user than the size or elegance of the generated patch.</p>
+<h2>Use tests to challenge the implementation</h2>
+<p>
+  A test is most useful when it could reject a plausible but incorrect solution. For an article
+  page, that might mean distinguishing a missing post from a failed request. For a migration, it
+  could mean verifying that a conflicting import rolls back without replacing existing content.
+</p>
+<p>
+  Ask for failure cases as explicitly as the happy path: an expired session, an unavailable service,
+  a slow response, a repeated submission, or a user without the necessary role.
+</p>
+<p>
+  Then inspect the test itself. A mocked success response can verify rendering, but it cannot prove
+  that a remote database is reachable. Keep those conclusions separate so that a passing local suite
+  does not become an unsupported claim about production.
+</p>
+<h2>Keep the changes small enough to explain</h2>
+<p>
+  A large generated change can be expensive to review even when producing it was quick. Smaller
+  steps make it easier to identify which assumption failed, preserve working behaviour, and reverse
+  a decision.
+</p>
+<p>
+  Before accepting a patch, I want to explain what changed, why it is needed, how it was checked,
+  and what remains uncertain. If that explanation is difficult, the change may need another pass.
+</p>
+<p>
+  This also helps with maintenance. The next engineer should be able to understand the system from
+  its code, data model, tests, and documentation rather than needing the original conversation with
+  an assistant.
+</p>
+<h2>The standard is still ownership</h2>
+<p>
+  The useful question is whether AI assistance leaves you with a product you can support. That
+  includes understanding its limits, acknowledging an unverified result, and making a recovery plan
+  when something goes wrong.
+</p>
+<p>
+  I am interested in tools that make that work more effective. The responsibility for the shipped
+  result stays with the engineer.
+</p>

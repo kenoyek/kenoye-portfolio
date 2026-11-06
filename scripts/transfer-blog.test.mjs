@@ -56,3 +56,9 @@ test("failed source access stops export without target writes or exposing creden
     (error) => error.message.includes("HTTP 401") && !error.message.includes("do-not-log"),
   );
 });
+
+test("publication mode can skip existing slugs without updating owner-authored rows", () => {
+  const sql = prepareImport([post()], { skipExistingSlugs: true });
+  assert.match(sql, /ON CONFLICT \(slug\) DO NOTHING/);
+  assert.ok(!/DO UPDATE|DELETE FROM/i.test(sql));
+});

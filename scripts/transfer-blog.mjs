@@ -63,13 +63,13 @@ export function validatePosts(value) {
   return posts;
 }
 
-export function prepareImport(value) {
+export function prepareImport(value, { skipExistingSlugs = false } = {}) {
   const posts = validatePosts(value);
   // Standard SQL strings preserve apostrophes, backslashes, Unicode, and HTML.
   const sql = (value) => (value === null ? "NULL" : `'${value.replaceAll("'", "''")}'`);
   const statements = posts.map(
     (post) =>
-      `INSERT INTO public.blog_posts (${columns.join(", ")}) VALUES (${columns.map((column) => sql(post[column])).join(", ")});`,
+      `INSERT INTO public.blog_posts (${columns.join(", ")}) VALUES (${columns.map((column) => sql(post[column])).join(", ")})${skipExistingSlugs ? " ON CONFLICT (slug) DO NOTHING" : ""};`,
   );
   return `-- Article transfer: ${posts.length} rows. No existing rows will be overwritten.\nBEGIN;\nSET LOCAL standard_conforming_strings = on;\n${statements.join("\n")}\nCOMMIT;\n`;
 }

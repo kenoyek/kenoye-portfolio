@@ -1,0 +1,42 @@
+{
+  "status": "Partial metadata only. Not an article backup and not suitable for importing as complete posts.",
+  "source_project": "pciaegxpldyyvxllzexc",
+  "records": [
+    {
+      "title": "5 Cursor Shortcuts That Changed How I Write Code",
+      "slug": "5-cursor-shortcuts-that-changed-how-i-write-code",
+      "full_content": null,
+      "cover_images": [
+        "https://res.cloudinary.com/dl4x3ljrr/image/upload/v1776124118/Screenshot_2026-04-13_at_5.37.16_PM_b0r8h8.png",
+        "https://res.cloudinary.com/dl4x3ljrr/image/upload/f_auto,q_auto,w_900/v1776124118/Screenshot_2026-04-13_at_5.37.16_PM_b0r8h8.png"
+      ],
+      "evidence": ["blog-after.report.json", "blog-final.report.json", "blog.report.json"],
+      "preview": {
+        "excerpt": "Most developers use Tab and call it a day. Here are the five shortcuts that unlock the other 80% of what Cursor can actually do.",
+        "displayed_date": "April 14, 2026",
+        "displayed_author": "Okagua",
+        "evidence": "docs/qa/screenshots/blog-1440x900.png"
+      }
+    },
+    {
+      "title": "Cursor AI and the Cost of Starting",
+      "slug": null,
+      "full_content": null,
+      "cover_images": [
+        "https://res.cloudinary.com/dl4x3ljrr/image/upload/v1774861622/WhatsApp_Image_2026-03-30_at_9.51.55_AM_gkp1mf.jpg",
+        "https://res.cloudinary.com/dl4x3ljrr/image/upload/f_auto,q_auto,w_900/v1774861622/WhatsApp_Image_2026-03-30_at_9.51.55_AM_gkp1mf.jpg"
+      ],
+      "evidence": ["blog-after.report.json", "blog-final.report.json", "blog.report.json"]
+    },
+    {
+      "title": "I Let AI Write Most of My Code Last Month. Here's My Honest Take.",
+      "slug": null,
+      "full_content": null,
+      "cover_images": [
+        "https://res.cloudinary.com/dl4x3ljrr/image/upload/f_auto,q_auto/WhatsApp_Image_2026-03-23_at_10.06.33_AM_dpmmd1",
+        "https://res.cloudinary.com/dl4x3ljrr/image/upload/f_auto,q_auto,w_900/f_auto,q_auto/WhatsApp_Image_2026-03-23_at_10.06.33_AM_dpmmd1"
+      ],
+      "evidence": ["blog-after.report.json", "blog-final.report.json", "blog.report.json"]
+    }
+  ]
+}
